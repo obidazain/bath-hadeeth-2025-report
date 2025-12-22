@@ -50,19 +50,44 @@ export function ProductionSlide() {
         </motion.div>
 
         {/* Main Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-3 flex-1 min-h-0">
-          {/* Monthly Production Chart */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 mb-3">
+          {/* Monthly Episodes Chart */}
           <motion.div
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
-            className="lg:col-span-3 card-compact flex flex-col"
+            className="card-compact flex flex-col"
+          >
+            <h3 className="font-semibold text-notion-text text-sm mb-2 flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-accent-pink"></div>
+              عدد الحلقات الشهرية
+            </h3>
+            <div className="chart-container flex-1 min-h-[180px]">
+              <BarChart
+                labels={monthlyTotals.map(m => m.monthName.slice(0, 3))}
+                datasets={[
+                  {
+                    label: 'حلقات',
+                    data: monthlyTotals.map(m => m.episodes),
+                    backgroundColor: 'rgba(236, 72, 153, 0.7)',
+                  },
+                ]}
+              />
+            </div>
+          </motion.div>
+
+          {/* Monthly Hours Chart */}
+          <motion.div
+            initial={{ opacity: 0, x: 10 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.25 }}
+            className="card-compact flex flex-col"
           >
             <h3 className="font-semibold text-notion-text text-sm mb-2 flex items-center gap-2">
               <div className="w-2 h-2 rounded-full bg-primary"></div>
               ساعات الإنتاج الشهرية
             </h3>
-            <div className="chart-container flex-1">
+            <div className="chart-container flex-1 min-h-[180px]">
               <BarChart
                 labels={monthlyTotals.map(m => m.monthName.slice(0, 3))}
                 datasets={[
@@ -75,61 +100,62 @@ export function ProductionSlide() {
               />
             </div>
           </motion.div>
+        </div>
 
-          {/* Top Programs */}
-          <motion.div
-            initial={{ opacity: 0, x: 10 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.3 }}
-            className="lg:col-span-2 card-compact flex flex-col"
-          >
-            <h3 className="font-semibold text-notion-text text-sm mb-2 flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-accent-pink"></div>
-              أعلى البرامج إنتاجاً
-            </h3>
-            <div className="flex-1 flex flex-col justify-between gap-1 overflow-auto">
-              {topPrograms.map((program, index) => {
-                const logoPath = programLogos[program.id];
-                const maxHours = topPrograms[0]?.totalHours || 1;
-                const percentage = (program.totalHours / maxHours) * 100;
+        {/* Top Programs - Full Width */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="card-compact"
+        >
+          <h3 className="font-semibold text-notion-text text-sm mb-3 flex items-center gap-2">
+            <div className="w-2 h-2 rounded-full bg-accent-green"></div>
+            أعلى البرامج إنتاجاً (بالساعات)
+          </h3>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
+            {topPrograms.map((program, index) => {
+              const logoPath = programLogos[program.id];
+              const maxHours = topPrograms[0]?.totalHours || 1;
+              const percentage = (program.totalHours / maxHours) * 100;
 
-                return (
-                  <motion.div
-                    key={program.id}
-                    initial={{ opacity: 0, x: 10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.4 + index * 0.05 }}
-                    className="flex items-center gap-2"
-                  >
-                    <div className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold shrink-0 ${
-                      index === 0 ? 'bg-yellow-100 text-yellow-600' :
-                      index === 1 ? 'bg-gray-100 text-gray-600' :
-                      index === 2 ? 'bg-orange-100 text-orange-600' :
+              return (
+                <motion.div
+                  key={program.id}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 + index * 0.05 }}
+                  className="bg-notion-secondary/50 rounded-xl p-3 text-center"
+                >
+                  <div className="flex items-center justify-center gap-2 mb-2">
+                    <div className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold shrink-0 ${
+                      index === 0 ? 'bg-yellow-400 text-yellow-900' :
+                      index === 1 ? 'bg-gray-300 text-gray-700' :
+                      index === 2 ? 'bg-orange-400 text-orange-900' :
                       'bg-notion-secondary text-notion-text-secondary'
                     }`}>
                       {index + 1}
                     </div>
                     {logoPath && (
-                      <img src={logoPath} alt="" className="w-5 h-5 rounded object-contain shrink-0" />
+                      <img src={logoPath} alt="" className="w-7 h-7 rounded object-contain" />
                     )}
-                    <div className="flex-1 min-w-0">
-                      <div className="flex justify-between items-center text-xs">
-                        <span className="font-medium text-notion-text truncate">{program.name}</span>
-                        <span className="text-primary font-bold shrink-0 mr-2">{program.totalHours.toFixed(0)}h</span>
-                      </div>
-                      <div className="h-1 bg-notion-secondary rounded-full overflow-hidden mt-0.5">
-                        <div
-                          className="h-full bg-gradient-to-r from-primary to-accent-pink rounded-full transition-all"
-                          style={{ width: `${percentage}%` }}
-                        />
-                      </div>
-                    </div>
-                  </motion.div>
-                );
-              })}
-            </div>
-          </motion.div>
-        </div>
+                  </div>
+                  <p className="text-xs font-medium text-notion-text truncate mb-1">{program.name}</p>
+                  <p className="text-lg font-bold text-primary">{program.totalHours.toFixed(0)}</p>
+                  <p className="text-[10px] text-notion-text-secondary">ساعة</p>
+                  <div className="h-1 bg-notion-secondary rounded-full overflow-hidden mt-2">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      animate={{ width: `${percentage}%` }}
+                      transition={{ duration: 0.8, delay: 0.5 + index * 0.05 }}
+                      className="h-full bg-gradient-to-r from-primary to-accent-pink rounded-full"
+                    />
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </motion.div>
       </div>
     </div>
   );

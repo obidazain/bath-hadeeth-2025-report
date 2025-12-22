@@ -63,34 +63,34 @@ export function MonthlyTrendSlide() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.1 }}
-          className="grid grid-cols-4 gap-2 mb-3"
+          className="grid grid-cols-4 gap-3 mb-4"
         >
-          <div className="card-compact text-center flex items-center justify-center gap-2 py-2">
-            <PlatformIcon platform="youtube" size="sm" />
+          <div className="card-compact text-center flex items-center justify-center gap-3 py-4 px-3">
+            <PlatformIcon platform="youtube" size="md" />
             <div>
-              <p className="text-sm font-bold" style={{ color: platformColors.youtube }}>{formatNumber(platformTotals.youtube)}</p>
-              <p className="text-[10px] text-notion-text-secondary">مشاهدة</p>
+              <p className="text-lg font-bold" style={{ color: platformColors.youtube }}>{formatNumber(platformTotals.youtube)}</p>
+              <p className="text-xs text-notion-text-secondary">مشاهدة</p>
             </div>
           </div>
-          <div className="card-compact text-center flex items-center justify-center gap-2 py-2">
-            <PlatformIcon platform="tiktok" size="sm" />
+          <div className="card-compact text-center flex items-center justify-center gap-3 py-4 px-3">
+            <PlatformIcon platform="tiktok" size="md" />
             <div>
-              <p className="text-sm font-bold" style={{ color: platformColors.tiktok }}>{formatNumber(platformTotals.tiktok)}</p>
-              <p className="text-[10px] text-notion-text-secondary">مشاهدة</p>
+              <p className="text-lg font-bold" style={{ color: platformColors.tiktok }}>{formatNumber(platformTotals.tiktok)}</p>
+              <p className="text-xs text-notion-text-secondary">مشاهدة</p>
             </div>
           </div>
-          <div className="card-compact text-center flex items-center justify-center gap-2 py-2">
-            <PlatformIcon platform="instagram" size="sm" />
+          <div className="card-compact text-center flex items-center justify-center gap-3 py-4 px-3">
+            <PlatformIcon platform="instagram" size="md" />
             <div>
-              <p className="text-sm font-bold" style={{ color: platformColors.instagram }}>{formatNumber(platformTotals.instagram)}</p>
-              <p className="text-[10px] text-notion-text-secondary">مشاهدة</p>
+              <p className="text-lg font-bold" style={{ color: platformColors.instagram }}>{formatNumber(platformTotals.instagram)}</p>
+              <p className="text-xs text-notion-text-secondary">مشاهدة</p>
             </div>
           </div>
-          <div className="card-compact text-center flex items-center justify-center gap-2 py-2">
-            <PlatformIcon platform="facebook" size="sm" />
+          <div className="card-compact text-center flex items-center justify-center gap-3 py-4 px-3">
+            <PlatformIcon platform="facebook" size="md" />
             <div>
-              <p className="text-sm font-bold" style={{ color: platformColors.facebook }}>{formatNumber(platformTotals.facebook)}</p>
-              <p className="text-[10px] text-notion-text-secondary">مشاهدة</p>
+              <p className="text-lg font-bold" style={{ color: platformColors.facebook }}>{formatNumber(platformTotals.facebook)}</p>
+              <p className="text-xs text-notion-text-secondary">مشاهدة</p>
             </div>
           </div>
         </motion.div>
@@ -112,27 +112,22 @@ export function MonthlyTrendSlide() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
-          className="grid grid-cols-4 gap-2"
+          className="grid grid-cols-3 gap-3"
         >
-          <div className="card-compact text-center">
-            <p className="text-[10px] text-notion-text-secondary">أعلى شهر</p>
-            <p className="text-sm sm:text-base font-bold text-accent-purple">نوفمبر</p>
-            <p className="text-[10px] text-notion-text-secondary">155M مشاهدة</p>
+          <div className="card-compact text-center py-3">
+            <p className="text-xs text-notion-text-secondary">أعلى شهر</p>
+            <p className="text-base sm:text-lg font-bold text-accent-purple">نوفمبر</p>
+            <p className="text-xs text-notion-text-secondary">155M مشاهدة</p>
           </div>
-          <div className="card-compact text-center">
-            <p className="text-[10px] text-notion-text-secondary">متوسط شهري</p>
-            <p className="text-sm sm:text-base font-bold text-accent-pink">104M</p>
-            <p className="text-[10px] text-notion-text-secondary">مشاهدة</p>
+          <div className="card-compact text-center py-3">
+            <p className="text-xs text-notion-text-secondary">متوسط شهري</p>
+            <p className="text-base sm:text-lg font-bold text-accent-pink">104M</p>
+            <p className="text-xs text-notion-text-secondary">مشاهدة</p>
           </div>
-          <div className="card-compact text-center">
-            <p className="text-[10px] text-notion-text-secondary">نمو فبراير-نوفمبر</p>
-            <p className="text-sm sm:text-base font-bold text-accent-green">+92%</p>
-            <p className="text-[10px] text-notion-text-secondary">زيادة</p>
-          </div>
-          <div className="card-compact text-center">
-            <p className="text-[10px] text-notion-text-secondary">أفضل منصة</p>
-            <p className="text-sm sm:text-base font-bold text-accent-orange">TikTok</p>
-            <p className="text-[10px] text-notion-text-secondary">379M مشاهدة</p>
+          <div className="card-compact text-center py-3">
+            <p className="text-xs text-notion-text-secondary">أفضل منصة</p>
+            <p className="text-base sm:text-lg font-bold text-accent-orange">TikTok</p>
+            <p className="text-xs text-notion-text-secondary">379M مشاهدة</p>
           </div>
         </motion.div>
       </div>
