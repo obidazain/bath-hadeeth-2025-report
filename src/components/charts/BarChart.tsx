@@ -51,8 +51,9 @@ export function BarChart({ labels, datasets, title, horizontal = false, stacked 
     indexAxis: horizontal ? ('y' as const) : ('x' as const),
     locale: 'ar',
     animation: {
-      duration: 800,
+      duration: 1200,
       easing: 'easeOutQuart' as const,
+      delay: (context: any) => context.dataIndex * 50, // Stagger animation
     },
     plugins: {
       legend: {
@@ -87,14 +88,14 @@ export function BarChart({ labels, datasets, title, horizontal = false, stacked 
         color: showLabelsOnBars ? '#ffffff' : '#37352f',
         anchor: showLabelsOnBars ? ('center' as const) : (horizontal ? ('end' as const) : ('end' as const)),
         align: showLabelsOnBars ? ('center' as const) : (horizontal ? ('end' as const) : ('top' as const)),
-        offset: showLabelsOnBars ? 0 : 4,
+        offset: showLabelsOnBars ? 0 : 6,
         font: {
           family: 'IBM Plex Sans Arabic',
           weight: 'bold' as const,
-          size: showLabelsOnBars ? 10 : 11,
+          size: showLabelsOnBars ? 12 : 13,
         },
-        textShadowColor: showLabelsOnBars ? 'rgba(0, 0, 0, 0.5)' : undefined,
-        textShadowBlur: showLabelsOnBars ? 3 : 0,
+        textShadowColor: showLabelsOnBars ? 'rgba(0, 0, 0, 0.6)' : undefined,
+        textShadowBlur: showLabelsOnBars ? 4 : 0,
         formatter: (value: number, context: any) => {
           if (showLabelsOnBars) {
             const label = labels[context.dataIndex];

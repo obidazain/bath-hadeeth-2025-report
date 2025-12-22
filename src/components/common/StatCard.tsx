@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useCountUp } from '../../hooks/useCountUp';
 import { formatNumber } from '../../utils/formatters';
 
 interface StatCardProps {
@@ -9,10 +10,28 @@ interface StatCardProps {
   suffix?: string;
   delay?: number;
   useRawValue?: boolean;
+  animate?: boolean;
 }
 
-export function StatCard({ title, value, icon, color = '#2383e2', suffix = '', delay = 0, useRawValue = false }: StatCardProps) {
-  const displayValue = useRawValue ? value.toString() : formatNumber(value);
+export function StatCard({
+  title,
+  value,
+  icon,
+  color = '#2383e2',
+  suffix = '',
+  delay = 0,
+  useRawValue = false,
+  animate = true
+}: StatCardProps) {
+  const animatedValue = useCountUp({
+    end: value,
+    duration: 2000,
+    delay: (delay + 0.3) * 1000, // Convert to ms and add extra delay for entrance
+  });
+
+  const displayValue = animate
+    ? (useRawValue ? animatedValue.toString() : formatNumber(animatedValue))
+    : (useRawValue ? value.toString() : formatNumber(value));
 
   return (
     <motion.div
@@ -28,7 +47,7 @@ export function StatCard({ title, value, icon, color = '#2383e2', suffix = '', d
             initial={{ scale: 0.5, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.5, delay: delay + 0.2 }}
-            className="text-3xl font-bold"
+            className="text-4xl font-bold tabular-nums"
             style={{ color }}
           >
             {displayValue}{suffix}
@@ -36,7 +55,7 @@ export function StatCard({ title, value, icon, color = '#2383e2', suffix = '', d
         </div>
         {icon && (
           <div
-            className="w-12 h-12 rounded-xl flex items-center justify-center"
+            className="w-14 h-14 rounded-xl flex items-center justify-center"
             style={{ backgroundColor: `${color}15` }}
           >
             {icon}
