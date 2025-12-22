@@ -1,14 +1,13 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import { PresentationPage } from './pages/PresentationPage';
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
-        <Route path="/" element={<Navigate to="/presentation" replace />} />
-        <Route path="/presentation" element={<PresentationPage />} />
+        <Route path="/" element={<PresentationPage />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
