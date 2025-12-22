@@ -1,22 +1,23 @@
 // Bath Hadeeth 2025 Annual Report Data
 // All data extracted from official Google Sheets
 
-// Program logos mapping
+// Program logos mapping - using base path for GitHub Pages
+const BASE_PATH = import.meta.env.BASE_URL || '/';
 export const programLogos: Record<string, string> = {
-  'shahada': '/src/assets/logos/SHAH.png',
-  'ihata': '/src/assets/logos/EH.png',
-  'malaz': '/src/assets/logos/M.png',
-  'ghada': '/src/assets/logos/GH.png',
-  'yemen': '/src/assets/logos/Y.png',
-  'syria': '/src/assets/logos/S.png',
-  'sudan': '/src/assets/logos/SUD.png',
-  'duetto': '/src/assets/logos/D.png',
-  'bast': '/src/assets/logos/BA.png',
-  'sharq': '/src/assets/logos/SH.png',
-  'iran': '/src/assets/logos/IR.png',
-  'arabi-post': '/src/assets/logos/AP.png',
-  'mawazen': '/src/assets/logos/M.png',
-  'falak': '/src/assets/logos/M.png',
+  'shahada': `${BASE_PATH}logos/SHAH.png`,
+  'ihata': `${BASE_PATH}logos/EH.png`,
+  'malaz': `${BASE_PATH}logos/M.png`,
+  'ghada': `${BASE_PATH}logos/GH.png`,
+  'yemen': `${BASE_PATH}logos/Y.png`,
+  'syria': `${BASE_PATH}logos/S.png`,
+  'sudan': `${BASE_PATH}logos/SUD.png`,
+  'duetto': `${BASE_PATH}logos/D.png`,
+  'bast': `${BASE_PATH}logos/BA.png`,
+  'sharq': `${BASE_PATH}logos/SH.png`,
+  'iran': `${BASE_PATH}logos/IR.png`,
+  'arabi-post': `${BASE_PATH}logos/AP.png`,
+  'mawazen': `${BASE_PATH}logos/M.png`,
+  'falak': `${BASE_PATH}logos/M.png`,
 };
 
 // Monthly data per program (Jan - Nov 2025)
