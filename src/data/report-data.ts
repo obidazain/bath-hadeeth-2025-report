@@ -242,6 +242,9 @@ export const reportData = {
     totalTikTokEngagement: 9955825,
     totalYoutubeVideos: 59478906,   // Total long-form videos views
     totalYoutubeShorts: 211208201,  // Total shorts views
+    postsCount2025: 51000,           // Total posts in 2025
+    totalEpisodes: 368,              // Total episodes produced
+    totalFilmingHours: 485,          // Total filming hours
   },
 
   // Watch time data per program (YouTube hours)

@@ -10,6 +10,8 @@ import {
   Legend,
   Filler,
 } from 'chart.js';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
+import { formatChartNumber } from '../../utils/formatters';
 
 ChartJS.register(
   CategoryScale,
@@ -19,7 +21,8 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend,
-  Filler
+  Filler,
+  ChartDataLabels
 );
 
 interface LineChartProps {
@@ -51,6 +54,14 @@ export function LineChart({ labels, datasets, title }: LineChartProps) {
     responsive: true,
     maintainAspectRatio: false,
     locale: 'ar',
+    interaction: {
+      mode: 'index' as const,
+      intersect: false,
+    },
+    animation: {
+      duration: 1000,
+      easing: 'easeOutQuart' as const,
+    },
     plugins: {
       legend: {
         position: 'top' as const,
@@ -58,8 +69,12 @@ export function LineChart({ labels, datasets, title }: LineChartProps) {
         textDirection: 'rtl',
         labels: {
           color: '#37352f',
+          padding: 15,
+          usePointStyle: true,
+          pointStyle: 'line',
           font: {
             family: 'IBM Plex Sans Arabic',
+            size: 12,
           },
         },
       },
@@ -73,18 +88,29 @@ export function LineChart({ labels, datasets, title }: LineChartProps) {
         },
       },
       tooltip: {
-        backgroundColor: 'rgba(55, 53, 47, 0.9)',
+        backgroundColor: 'rgba(255, 255, 255, 0.95)',
+        titleColor: '#37352f',
+        bodyColor: '#37352f',
+        borderColor: '#e5e7eb',
+        borderWidth: 1,
+        padding: 12,
         titleFont: {
           family: 'IBM Plex Sans Arabic',
+          size: 13,
+          weight: 'bold' as const,
         },
         bodyFont: {
           family: 'IBM Plex Sans Arabic',
+          size: 12,
         },
         callbacks: {
           label: function(context: any) {
-            return `${context.dataset.label || ''}: ${context.parsed.y?.toLocaleString() ?? 0}`;
+            return `${context.dataset.label || ''}: ${formatChartNumber(context.parsed.y ?? 0)}`;
           },
         },
+      },
+      datalabels: {
+        display: false, // Disable data labels on line charts to avoid overlap
       },
     },
     scales: {
@@ -96,10 +122,12 @@ export function LineChart({ labels, datasets, title }: LineChartProps) {
           color: '#787774',
           font: {
             family: 'IBM Plex Sans Arabic',
+            size: 11,
           },
         },
       },
       y: {
+        beginAtZero: true,
         grid: {
           color: 'rgba(55, 53, 47, 0.08)',
         },
@@ -107,11 +135,11 @@ export function LineChart({ labels, datasets, title }: LineChartProps) {
           color: '#787774',
           font: {
             family: 'IBM Plex Sans Arabic',
+            size: 11,
           },
           callback: function(value: number | string) {
             if (typeof value === 'number') {
-              if (value >= 1000000) return (value / 1000000).toFixed(1) + 'M';
-              if (value >= 1000) return (value / 1000).toFixed(0) + 'K';
+              return formatChartNumber(value);
             }
             return value;
           },

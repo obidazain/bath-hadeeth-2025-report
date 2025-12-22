@@ -8,6 +8,8 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
+import { formatChartNumber } from '../../utils/formatters';
 
 ChartJS.register(
   CategoryScale,
@@ -15,7 +17,8 @@ ChartJS.register(
   BarElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
+  ChartDataLabels
 );
 
 interface BarChartProps {
@@ -28,9 +31,11 @@ interface BarChartProps {
   title?: string;
   horizontal?: boolean;
   stacked?: boolean;
+  showDataLabels?: boolean;
+  showLabelsOnBars?: boolean; // Show label names on the bars
 }
 
-export function BarChart({ labels, datasets, title, horizontal = false, stacked = false }: BarChartProps) {
+export function BarChart({ labels, datasets, title, horizontal = false, stacked = false, showDataLabels = true, showLabelsOnBars = false }: BarChartProps) {
   const data = {
     labels,
     datasets: datasets.map((dataset) => ({
@@ -45,17 +50,13 @@ export function BarChart({ labels, datasets, title, horizontal = false, stacked 
     maintainAspectRatio: false,
     indexAxis: horizontal ? ('y' as const) : ('x' as const),
     locale: 'ar',
+    animation: {
+      duration: 800,
+      easing: 'easeOutQuart' as const,
+    },
     plugins: {
       legend: {
-        position: 'top' as const,
-        rtl: true,
-        textDirection: 'rtl',
-        labels: {
-          color: '#37352f',
-          font: {
-            family: 'IBM Plex Sans Arabic',
-          },
-        },
+        display: false, // Hide legend for cleaner look
       },
       title: {
         display: !!title,
@@ -77,8 +78,29 @@ export function BarChart({ labels, datasets, title, horizontal = false, stacked 
         callbacks: {
           label: function(context: any) {
             const value = horizontal ? context.parsed.x : context.parsed.y;
-            return `${context.dataset.label || ''}: ${value?.toLocaleString() ?? 0}`;
+            return `${context.dataset.label || ''}: ${formatChartNumber(value ?? 0)}`;
           },
+        },
+      },
+      datalabels: {
+        display: showDataLabels || showLabelsOnBars,
+        color: showLabelsOnBars ? '#ffffff' : '#37352f',
+        anchor: showLabelsOnBars ? ('center' as const) : (horizontal ? ('end' as const) : ('end' as const)),
+        align: showLabelsOnBars ? ('center' as const) : (horizontal ? ('end' as const) : ('top' as const)),
+        offset: showLabelsOnBars ? 0 : 4,
+        font: {
+          family: 'IBM Plex Sans Arabic',
+          weight: 'bold' as const,
+          size: showLabelsOnBars ? 10 : 11,
+        },
+        textShadowColor: showLabelsOnBars ? 'rgba(0, 0, 0, 0.5)' : undefined,
+        textShadowBlur: showLabelsOnBars ? 3 : 0,
+        formatter: (value: number, context: any) => {
+          if (showLabelsOnBars) {
+            const label = labels[context.dataIndex];
+            return label;
+          }
+          return formatChartNumber(value);
         },
       },
     },
@@ -92,11 +114,11 @@ export function BarChart({ labels, datasets, title, horizontal = false, stacked 
           color: '#787774',
           font: {
             family: 'IBM Plex Sans Arabic',
+            size: 11,
           },
           callback: function(value: number | string) {
             if (horizontal && typeof value === 'number') {
-              if (value >= 1000000) return (value / 1000000).toFixed(1) + 'M';
-              if (value >= 1000) return (value / 1000).toFixed(0) + 'K';
+              return formatChartNumber(value);
             }
             return value;
           },
@@ -104,18 +126,21 @@ export function BarChart({ labels, datasets, title, horizontal = false, stacked 
       },
       y: {
         stacked,
+        display: !(horizontal && showLabelsOnBars), // Hide Y-axis when labels are on bars
         grid: {
-          color: 'rgba(55, 53, 47, 0.08)',
+          color: horizontal ? 'transparent' : 'rgba(55, 53, 47, 0.08)',
         },
         ticks: {
-          color: '#787774',
+          color: '#37352f',
           font: {
             family: 'IBM Plex Sans Arabic',
+            size: horizontal ? 12 : 11,
+            weight: horizontal ? ('bold' as const) : ('normal' as const),
           },
+          padding: horizontal ? 8 : 4,
           callback: function(value: number | string) {
             if (!horizontal && typeof value === 'number') {
-              if (value >= 1000000) return (value / 1000000).toFixed(1) + 'M';
-              if (value >= 1000) return (value / 1000).toFixed(0) + 'K';
+              return formatChartNumber(value);
             }
             return value;
           },

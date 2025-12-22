@@ -6,6 +6,7 @@ import {
   Legend,
 } from 'chart.js';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
+import { formatChartNumber } from '../../utils/formatters';
 
 ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels);
 
@@ -36,6 +37,12 @@ export function DoughnutChart({ labels, data, colors, title, showLabels = true }
     maintainAspectRatio: false,
     cutout: '60%',
     locale: 'ar',
+    animation: {
+      duration: 1000,
+      easing: 'easeOutQuart' as const,
+      animateRotate: true,
+      animateScale: true,
+    },
     plugins: {
       legend: {
         position: 'bottom' as const,
@@ -43,7 +50,9 @@ export function DoughnutChart({ labels, data, colors, title, showLabels = true }
         textDirection: 'rtl',
         labels: {
           color: '#37352f',
-          padding: 20,
+          padding: 15,
+          usePointStyle: true,
+          pointStyle: 'rectRounded',
           font: {
             family: 'IBM Plex Sans Arabic',
             size: 12,
@@ -71,22 +80,27 @@ export function DoughnutChart({ labels, data, colors, title, showLabels = true }
           label: function(context: any) {
             const total = context.dataset.data.reduce((a: number, b: number) => a + b, 0);
             const percentage = ((context.parsed / total) * 100).toFixed(1);
-            return `${context.label}: ${context.parsed.toLocaleString()} (${percentage}%)`;
+            return `${context.label}: ${formatChartNumber(context.parsed)} (${percentage}%)`;
           },
         },
       },
       datalabels: {
         display: showLabels,
-        color: '#37352f',
+        color: '#ffffff',
+        anchor: 'center' as const,
+        align: 'center' as const,
         font: {
           family: 'IBM Plex Sans Arabic',
           weight: 'bold' as const,
           size: 14,
         },
+        textStrokeColor: 'rgba(0, 0, 0, 0.3)',
+        textStrokeWidth: 2,
         formatter: (value: any, context: any) => {
           const total = context.dataset.data.reduce((a: number, b: number) => a + b, 0);
           const percentage = ((value / total) * 100).toFixed(0);
-          return percentage + '%';
+          // Only show label if percentage is significant enough
+          return parseInt(percentage) >= 5 ? percentage + '%' : '';
         },
       },
     },

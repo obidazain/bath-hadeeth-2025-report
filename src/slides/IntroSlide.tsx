@@ -3,25 +3,25 @@ import { reportData } from '../data/report-data';
 
 export function IntroSlide() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-8 relative overflow-hidden bg-notion-bg">
+    <div className="slide relative overflow-hidden bg-notion-bg">
       {/* Background Effect */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-accent-pink/10 rounded-full blur-3xl" />
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 left-1/4 w-64 h-64 bg-accent-pink/10 rounded-full blur-3xl" />
       </div>
 
       {/* Content */}
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="text-center z-10"
+        transition={{ duration: 0.6 }}
+        className="flex-1 flex flex-col items-center justify-center z-10"
       >
         <motion.h1
-          initial={{ opacity: 0, scale: 0.8 }}
+          initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-6xl md:text-8xl font-bold mb-6"
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="text-4xl sm:text-5xl md:text-6xl font-bold mb-3"
         >
           <span className="text-gradient">بث حديث</span>
         </motion.h1>
@@ -29,26 +29,26 @@ export function IntroSlide() {
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-2xl md:text-3xl text-notion-text-secondary mb-12"
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="text-lg sm:text-xl md:text-2xl text-notion-text-secondary mb-6"
         >
           التقرير السنوي 2025
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
+          initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="relative"
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="relative mb-6"
         >
-          <div className="text-8xl md:text-[10rem] font-black text-gradient">
-            +1B
+          <div className="text-6xl sm:text-7xl md:text-8xl font-black text-gradient">
+            +1.2B
           </div>
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 1 }}
-            className="text-xl md:text-2xl text-notion-text-secondary mt-4"
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="text-base sm:text-lg text-notion-text-secondary mt-2 text-center"
           >
             مليار مشاهدة في 2025
           </motion.p>
@@ -57,20 +57,20 @@ export function IntroSlide() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 1.2 }}
-          className="flex flex-wrap justify-center gap-6 mt-12"
+          transition={{ duration: 0.5, delay: 0.6 }}
+          className="flex flex-wrap justify-center gap-3"
         >
-          <div className="card px-6 py-4">
-            <p className="text-3xl font-bold text-accent-purple">{reportData.totals.programsCount}</p>
-            <p className="text-sm text-notion-text-secondary">برنامج</p>
+          <div className="card-compact px-4 py-2 text-center">
+            <p className="text-xl sm:text-2xl font-bold text-accent-purple">{reportData.totals.programsCount}</p>
+            <p className="text-xs text-notion-text-secondary">برنامج</p>
           </div>
-          <div className="card px-6 py-4">
-            <p className="text-3xl font-bold text-accent-pink">+15M</p>
-            <p className="text-sm text-notion-text-secondary">متابع</p>
+          <div className="card-compact px-4 py-2 text-center">
+            <p className="text-xl sm:text-2xl font-bold text-accent-pink">+15M</p>
+            <p className="text-xs text-notion-text-secondary">متابع</p>
           </div>
-          <div className="card px-6 py-4">
-            <p className="text-3xl font-bold text-accent-orange">{reportData.totals.countriesReached}</p>
-            <p className="text-sm text-notion-text-secondary">دولة</p>
+          <div className="card-compact px-4 py-2 text-center">
+            <p className="text-xl sm:text-2xl font-bold text-accent-orange">{reportData.totals.countriesReached}</p>
+            <p className="text-xs text-notion-text-secondary">دولة</p>
           </div>
         </motion.div>
       </motion.div>

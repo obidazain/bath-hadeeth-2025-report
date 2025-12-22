@@ -45,33 +45,35 @@ export const formatWatchTime = (hours: number): string => {
   return hours.toLocaleString() + ' ساعة';
 };
 
-// Platform colors
-export const platformColors = {
-  youtube: '#FF0000',
-  tiktok: '#000000',
-  instagram: '#E4405F',
-  facebook: '#1877F2',
-  spotify: '#1DB954',
-  applePodcasts: '#9933CC',
+// Re-export platform colors from centralized config
+export { platformColors, platformChartColors } from '../config/platforms';
+
+// Chart number formatter for axis labels (K/M/B)
+export const formatChartNumber = (value: number | string): string => {
+  const num = typeof value === 'string' ? parseFloat(value) : value;
+  if (isNaN(num)) return String(value);
+
+  if (num >= 1_000_000_000) {
+    return (num / 1_000_000_000).toFixed(1).replace(/\.0$/, '') + 'B';
+  }
+  if (num >= 1_000_000) {
+    return (num / 1_000_000).toFixed(1).replace(/\.0$/, '') + 'M';
+  }
+  if (num >= 1_000) {
+    return (num / 1_000).toFixed(1).replace(/\.0$/, '') + 'K';
+  }
+  return num.toString();
 };
 
 // Notion-friendly chart colors for light theme
 export const chartColors = {
   primary: '#2383e2',
   secondary: '#9a6dd7',
-  youtube: '#eb5757',
-  tiktok: '#37352f',
-  instagram: '#e255a1',
-  facebook: '#529cca',
+  youtube: '#FF0000',
+  tiktok: '#000000',
+  instagram: '#E4405F',
+  facebook: '#1877F2',
   green: '#4dab9a',
   orange: '#fa9f47',
   yellow: '#f7c948',
-};
-
-// Chart colors with proper contrast for light theme
-export const chartColorsLight = {
-  youtube: 'rgba(235, 87, 87, 0.85)',
-  tiktok: 'rgba(55, 53, 47, 0.85)',
-  instagram: 'rgba(226, 85, 161, 0.85)',
-  facebook: 'rgba(82, 156, 202, 0.85)',
 };
