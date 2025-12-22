@@ -8,8 +8,8 @@ export function PlatformDistributionSlide() {
   const platforms = reportData.platforms;
 
   const viewsData = [
-    platforms.tiktok.totalViews,
     platforms.facebook.totalViews,
+    platforms.tiktok.totalViews,
     platforms.youtube.totalViews,
     platforms.instagram.totalViews,
   ];
@@ -21,10 +21,10 @@ export function PlatformDistributionSlide() {
     platforms.instagram.totalFollowers,
   ];
 
-  const labels = ['TikTok', 'Facebook', 'YouTube', 'Instagram'];
+  const labels = ['Facebook', 'TikTok', 'YouTube', 'Instagram'];
   const colors = [
-    platformColors.tiktok,
     platformColors.facebook,
+    platformColors.tiktok,
     platformColors.youtube,
     platformColors.instagram,
   ];
