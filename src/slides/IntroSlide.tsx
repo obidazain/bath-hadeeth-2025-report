@@ -65,7 +65,7 @@ export function IntroSlide() {
             <p className="text-xs text-notion-text-secondary">برنامج</p>
           </div>
           <div className="card-compact px-4 py-2 text-center">
-            <p className="text-xl sm:text-2xl font-bold text-accent-pink">+15M</p>
+            <p className="text-xl sm:text-2xl font-bold text-accent-pink">+{Math.round(reportData.totals.totalFollowers / 1000000)}M</p>
             <p className="text-xs text-notion-text-secondary">متابع</p>
           </div>
           <div className="card-compact px-4 py-2 text-center">
