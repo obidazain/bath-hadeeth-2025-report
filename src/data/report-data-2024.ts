@@ -15,8 +15,8 @@ export const reportData2024 = {
       nameAr: 'يوتيوب',
       totalViews: 268408988,
       totalSubscribers: 1208959,
-      shorts: 222957622,
-      videos: 45451366,
+      shorts: 222957622,  // مقاطع قصيرة
+      videos: 45451366,   // حلقات طويلة
     },
     tiktok: {
       nameAr: 'تيك توك',

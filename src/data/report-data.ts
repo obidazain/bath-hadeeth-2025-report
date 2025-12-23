@@ -289,6 +289,8 @@ export const reportData = {
       nameAr: "يوتيوب",
       color: "#FF0000",
       totalViews: 270687107,
+      videosViews: 47500000,    // حلقات طويلة
+      shortsViews: 223187107,   // مقاطع قصيرة
       totalSubscribers: 2563852,
       newSubscribers2025: 906270,
     },

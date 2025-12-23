@@ -23,16 +23,27 @@ export function ComparisonSlide() {
   const followersGrowth = calculateGrowth(data2024.totalFollowers, data2025.totalFollowers);
   const newFollowersGrowth = calculateGrowth(data2024.newFollowers, data2025.newFollowers);
 
-  // Platform comparison data
+  // Platform comparison data - YouTube split into Videos (long) and Shorts
   const platforms = [
     {
       key: 'youtube' as const,
-      name: 'يوتيوب',
-      views2024: reportData2024.platforms.youtube.totalViews,
-      views2025: reportData.platforms.youtube.totalViews,
-      followers2024: reportData2024.platforms.youtube.totalSubscribers,
-      followers2025: reportData.platforms.youtube.totalSubscribers,
+      name: 'يوتيوب (حلقات)',
+      views2024: reportData2024.platforms.youtube.videos,
+      views2025: reportData.platforms.youtube.videosViews,
+      followers2024: undefined,
+      followers2025: undefined,
       isNew: false,
+      isSubPlatform: true,
+    },
+    {
+      key: 'youtube' as const,
+      name: 'يوتيوب (شورتس)',
+      views2024: reportData2024.platforms.youtube.shorts,
+      views2025: reportData.platforms.youtube.shortsViews,
+      followers2024: undefined,
+      followers2025: undefined,
+      isNew: false,
+      isSubPlatform: true,
     },
     {
       key: 'tiktok' as const,
@@ -162,54 +173,57 @@ export function ComparisonSlide() {
         </div>
 
         {/* Row 2: Platform Cards */}
-        <div className="grid grid-cols-4 gap-4">
+        <div className="grid grid-cols-5 gap-3">
           {platforms.map((platform, index) => {
             const vGrowth = platform.views2024 > 0 ? calculateGrowth(platform.views2024, platform.views2025) : 0;
-            const fGrowth = platform.followers2024 > 0 ? calculateGrowth(platform.followers2024, platform.followers2025) : 0;
+            const fGrowth = platform.followers2024 && platform.followers2024 > 0 ? calculateGrowth(platform.followers2024, platform.followers2025 || 0) : 0;
+            const hasFollowers = platform.followers2024 !== undefined;
 
             return (
               <motion.div
-                key={platform.key}
+                key={`${platform.key}-${platform.name}`}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.25 + index * 0.05 }}
-                className="bg-white/5 backdrop-blur rounded-2xl p-4 border border-white/10"
+                className="bg-white/5 backdrop-blur rounded-2xl p-3 border border-white/10"
               >
                 {/* Platform Header */}
-                <div className="flex items-center justify-center gap-2 mb-4">
-                  <PlatformIcon platform={platform.key} size="md" />
-                  <span className="font-bold text-base">{platform.name}</span>
+                <div className="flex items-center justify-center gap-2 mb-3">
+                  <PlatformIcon platform={platform.key} size="sm" />
+                  <span className="font-bold text-sm">{platform.name}</span>
                 </div>
 
                 {/* Views Section */}
-                <div className="mb-4 p-3 rounded-xl bg-black/20">
-                  <p className="text-xs text-gray-400 mb-2 text-center">المشاهدات</p>
-                  <div className="text-center mb-2">
-                    <span className="text-gray-500 text-sm">{platform.isNew ? '-' : formatNumber(platform.views2024)}</span>
-                    <span className="text-gray-500 mx-2">→</span>
-                    <span className="font-bold text-base" style={{ color: platformColors[platform.key] }}>
+                <div className={`${hasFollowers ? 'mb-3' : ''} p-2 rounded-xl bg-black/20`}>
+                  <p className="text-xs text-gray-400 mb-1 text-center">المشاهدات</p>
+                  <div className="text-center mb-1">
+                    <span className="text-gray-500 text-xs">{platform.isNew ? '-' : formatNumber(platform.views2024)}</span>
+                    <span className="text-gray-500 mx-1">→</span>
+                    <span className="font-bold text-sm" style={{ color: platformColors[platform.key] }}>
                       {formatNumber(platform.views2025)}
                     </span>
                   </div>
-                  <p className={`text-center text-sm font-bold ${platform.isNew ? 'text-blue-400' : 'text-green-400'}`}>
+                  <p className={`text-center text-xs font-bold ${platform.isNew ? 'text-blue-400' : 'text-green-400'}`}>
                     {platform.isNew ? 'جديد' : formatGrowth(vGrowth)}
                   </p>
                 </div>
 
-                {/* Followers Section */}
-                <div className="p-3 rounded-xl bg-black/20">
-                  <p className="text-xs text-gray-400 mb-2 text-center">المتابعين</p>
-                  <div className="text-center mb-2">
-                    <span className="text-gray-500 text-sm">{platform.isNew ? '-' : formatNumber(platform.followers2024)}</span>
-                    <span className="text-gray-500 mx-2">→</span>
-                    <span className="font-bold text-base" style={{ color: platformColors[platform.key] }}>
-                      {formatNumber(platform.followers2025)}
-                    </span>
+                {/* Followers Section - only for non-subplatforms */}
+                {hasFollowers && (
+                  <div className="p-2 rounded-xl bg-black/20">
+                    <p className="text-xs text-gray-400 mb-1 text-center">المتابعين</p>
+                    <div className="text-center mb-1">
+                      <span className="text-gray-500 text-xs">{platform.isNew ? '-' : formatNumber(platform.followers2024 || 0)}</span>
+                      <span className="text-gray-500 mx-1">→</span>
+                      <span className="font-bold text-sm" style={{ color: platformColors[platform.key] }}>
+                        {formatNumber(platform.followers2025 || 0)}
+                      </span>
+                    </div>
+                    <p className={`text-center text-xs font-bold ${platform.isNew ? 'text-blue-400' : 'text-green-400'}`}>
+                      {platform.isNew ? 'جديد' : formatGrowth(fGrowth)}
+                    </p>
                   </div>
-                  <p className={`text-center text-sm font-bold ${platform.isNew ? 'text-blue-400' : 'text-green-400'}`}>
-                    {platform.isNew ? 'جديد' : formatGrowth(fGrowth)}
-                  </p>
-                </div>
+                )}
               </motion.div>
             );
           })}
