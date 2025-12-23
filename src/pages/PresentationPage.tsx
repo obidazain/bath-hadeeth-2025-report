@@ -5,6 +5,7 @@ import { SlideNav } from '../components/presentation/SlideNav';
 // Slides
 import { IntroSlide } from '../slides/IntroSlide';
 import { KeyNumbersSlide } from '../slides/KeyNumbersSlide';
+import { ComparisonSlide } from '../slides/ComparisonSlide';
 import { PlatformDistributionSlide } from '../slides/PlatformDistributionSlide';
 import { MonthlyTrendSlide } from '../slides/MonthlyTrendSlide';
 import { WatchTimeSlide } from '../slides/WatchTimeSlide';
@@ -19,6 +20,7 @@ import { ConclusionSlide } from '../slides/ConclusionSlide';
 const slides = [
   { component: IntroSlide, title: 'المقدمة' },
   { component: KeyNumbersSlide, title: 'الأرقام الرئيسية' },
+  { component: ComparisonSlide, title: 'مقارنة 2024 vs 2025' },
   { component: PlatformDistributionSlide, title: 'توزيع المنصات' },
   { component: MonthlyTrendSlide, title: 'النمو الشهري' },
   { component: WatchTimeSlide, title: 'مدة المشاهدة' },
