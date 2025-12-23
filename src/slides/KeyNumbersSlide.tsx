@@ -1,13 +1,20 @@
 import { motion } from 'framer-motion';
 import { StatCard } from '../components/common/StatCard';
 import { reportData } from '../data/report-data';
+import { reportData2024, calculateGrowth } from '../data/report-data-2024';
 
 export function KeyNumbersSlide() {
+  // Calculate growth percentages
+  const viewsGrowth = calculateGrowth(reportData2024.totals.totalViews, reportData.totals.viewsWithFacebook);
+  const followersGrowth = calculateGrowth(reportData2024.totals.totalFollowers, reportData.totals.totalFollowers);
+
   const stats = [
     {
       title: 'إجمالي المشاهدات',
       value: reportData.totals.viewsWithFacebook,
       color: '#a855f7',
+      value2024: reportData2024.totals.totalViews,
+      growth: viewsGrowth,
       icon: (
         <svg className="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -19,6 +26,8 @@ export function KeyNumbersSlide() {
       title: 'إجمالي المتابعين',
       value: reportData.totals.totalFollowers,
       color: '#ec4899',
+      value2024: reportData2024.totals.totalFollowers,
+      growth: followersGrowth,
       icon: (
         <svg className="w-6 h-6 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -97,6 +106,8 @@ export function KeyNumbersSlide() {
               color={stat.color}
               icon={stat.icon}
               delay={index * 0.1}
+              value2024={'value2024' in stat ? stat.value2024 : undefined}
+              growth={'growth' in stat ? stat.growth : undefined}
             />
           ))}
         </div>

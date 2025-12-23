@@ -11,6 +11,9 @@ interface StatCardProps {
   delay?: number;
   useRawValue?: boolean;
   animate?: boolean;
+  // Comparison props
+  value2024?: number;
+  growth?: number;
 }
 
 export function StatCard({
@@ -21,7 +24,9 @@ export function StatCard({
   suffix = '',
   delay = 0,
   useRawValue = false,
-  animate = true
+  animate = true,
+  value2024,
+  growth,
 }: StatCardProps) {
   const animatedValue = useCountUp({
     end: value,
@@ -32,6 +37,8 @@ export function StatCard({
   const displayValue = animate
     ? (useRawValue ? animatedValue.toString() : formatNumber(animatedValue))
     : (useRawValue ? value.toString() : formatNumber(value));
+
+  const hasComparison = value2024 !== undefined && growth !== undefined;
 
   return (
     <motion.div
@@ -62,6 +69,28 @@ export function StatCard({
           </div>
         )}
       </div>
+
+      {/* 2024 Comparison */}
+      {hasComparison && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: delay + 0.4 }}
+          className="mt-3 pt-3 border-t border-notion-border flex items-center justify-between"
+        >
+          <div className="text-sm">
+            <span className="text-gray-500">2024: </span>
+            <span className="text-gray-400 font-medium">{formatNumber(value2024)}</span>
+          </div>
+          <span
+            className={`text-sm font-bold px-2 py-0.5 rounded-full ${
+              growth >= 0 ? 'bg-green-500/20 text-green-400' : 'bg-red-500/20 text-red-400'
+            }`}
+          >
+            {growth >= 0 ? '+' : ''}{growth.toFixed(1)}%
+          </span>
+        </motion.div>
+      )}
     </motion.div>
   );
 }
