@@ -9,7 +9,7 @@ import { ComparisonSlide } from '../slides/ComparisonSlide';
 import { PlatformDistributionSlide } from '../slides/PlatformDistributionSlide';
 import { MonthlyTrendSlide } from '../slides/MonthlyTrendSlide';
 import { WatchTimeSlide } from '../slides/WatchTimeSlide';
-import { ProgramsRankingSlide } from '../slides/ProgramsRankingSlide';
+// HIDDEN: import { ProgramsRankingSlide } from '../slides/ProgramsRankingSlide';
 // HIDDEN: import { FollowersSlide } from '../slides/FollowersSlide';
 import { PodcastSlide } from '../slides/PodcastSlide';
 import { MasterDashboardSlide } from '../slides/MasterDashboardSlide';
@@ -24,7 +24,8 @@ const slides = [
   { component: PlatformDistributionSlide, title: 'توزيع المنصات' },
   { component: MonthlyTrendSlide, title: 'النمو الشهري' },
   { component: WatchTimeSlide, title: 'مدة المشاهدة' },
-  { component: ProgramsRankingSlide, title: 'ترتيب البرامج' },
+  // HIDDEN: ترتيب البرامج - مخفي مؤقتاً
+  // { component: ProgramsRankingSlide, title: 'ترتيب البرامج' },
   // HIDDEN: نمو المتابعين - مخفي مؤقتاً
   // { component: FollowersSlide, title: 'نمو المتابعين' },
   { component: PodcastSlide, title: 'المنصات الصوتية' },
