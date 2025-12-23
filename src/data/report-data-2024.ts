@@ -7,6 +7,7 @@ export const reportData2024 = {
     totalViews: 717152811,
     totalFollowers: 2995654,
     newFollowers: 2495784,
+    podcastDownloads: 588856, // Total from CSV
   },
 
   // Platform-specific data
@@ -138,6 +139,38 @@ export const reportData2024 = {
       instagram: 20710,
     },
   ],
+
+  // Podcast data 2024
+  podcast: {
+    totalDownloads: 588856,
+    programDownloads: [
+      { name: "بودكاست الشرق", downloads: 185484 },
+      { name: "سوريا بودكاست", downloads: 140119 },
+      { name: "اليمن بودكاست", downloads: 94334 },
+      { name: "الدويتو", downloads: 41630 },
+      { name: "بسط بودكاست", downloads: 36450 },
+      { name: "إحاطة بودكاست", downloads: 20138 },
+      { name: "ملاذ", downloads: 19507 },
+      { name: "فاهم قصدي؟ بودكاست", downloads: 17290 },
+      { name: "السودان بودكاست", downloads: 17174 },
+      { name: "شهادة بودكاست", downloads: 7933 },
+      { name: "العراق بودكاست", downloads: 5576 },
+      { name: "غادة بودكاست", downloads: 3126 },
+      { name: "إيران بودكاست", downloads: 95 },
+    ],
+    topCountries: [
+      { country: "السعودية", downloads: 118344 },
+      { country: "مصر", downloads: 99885 },
+      { country: "ألمانيا", downloads: 41095 },
+      { country: "اليمن", downloads: 30783 },
+      { country: "الإمارات", downloads: 25736 },
+      { country: "تركيا", downloads: 21429 },
+      { country: "أمريكا", downloads: 20241 },
+      { country: "عُمان", downloads: 18728 },
+      { country: "الأردن", downloads: 18711 },
+      { country: "المغرب", downloads: 15509 },
+    ],
+  },
 };
 
 // Helper function to calculate growth percentage
