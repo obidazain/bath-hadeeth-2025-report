@@ -9,12 +9,12 @@ import { ComparisonSlide } from '../slides/ComparisonSlide';
 import { PlatformDistributionSlide } from '../slides/PlatformDistributionSlide';
 import { MonthlyTrendSlide } from '../slides/MonthlyTrendSlide';
 import { WatchTimeSlide } from '../slides/WatchTimeSlide';
-// HIDDEN: import { ProgramsRankingSlide } from '../slides/ProgramsRankingSlide';
-// HIDDEN: import { FollowersSlide } from '../slides/FollowersSlide';
+import { ProgramsRankingSlide } from '../slides/ProgramsRankingSlide';
+import { FollowersSlide } from '../slides/FollowersSlide';
 import { PodcastSlide } from '../slides/PodcastSlide';
 import { MasterDashboardSlide } from '../slides/MasterDashboardSlide';
-// HIDDEN: import { ProductionSlide } from '../slides/ProductionSlide';
-// HIDDEN: import { programSlides } from '../slides/ProgramDetailSlide';
+import { ProductionSlide } from '../slides/ProductionSlide';
+import { programSlides } from '../slides/ProgramDetailSlide';
 import { ConclusionSlide } from '../slides/ConclusionSlide';
 
 const slides = [
@@ -24,17 +24,12 @@ const slides = [
   { component: PlatformDistributionSlide, title: 'توزيع المنصات' },
   { component: MonthlyTrendSlide, title: 'النمو الشهري' },
   { component: WatchTimeSlide, title: 'مدة المشاهدة' },
-  // HIDDEN: ترتيب البرامج - مخفي مؤقتاً
-  // { component: ProgramsRankingSlide, title: 'ترتيب البرامج' },
-  // HIDDEN: نمو المتابعين - مخفي مؤقتاً
-  // { component: FollowersSlide, title: 'نمو المتابعين' },
+  { component: ProgramsRankingSlide, title: 'ترتيب البرامج' },
+  { component: FollowersSlide, title: 'نمو المتابعين' },
   { component: PodcastSlide, title: 'المنصات الصوتية' },
-  // Overview slides
   { component: MasterDashboardSlide, title: 'لوحة التحكم الرئيسية' },
-  // HIDDEN: عمليات الإنتاج 2025 - مخفي مؤقتاً
-  // { component: ProductionSlide, title: 'عمليات الإنتاج 2025' },
-  // HIDDEN: صفحات البرامج التفصيلية (12-25) - مخفية مؤقتاً
-  // ...programSlides.map(p => ({ component: p.component, title: p.name })),
+  { component: ProductionSlide, title: 'عمليات الإنتاج 2025' },
+  ...programSlides.map(p => ({ component: p.component, title: p.name })),
   { component: ConclusionSlide, title: 'الخاتمة' },
 ];
 

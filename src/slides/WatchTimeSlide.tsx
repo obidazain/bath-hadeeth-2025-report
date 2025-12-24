@@ -1,207 +1,131 @@
 import { motion } from 'framer-motion';
-import { LineChart } from '../components/charts/LineChart';
-import { reportData, programLogos } from '../data/report-data';
+import { reportData } from '../data/report-data';
 import { formatNumber } from '../utils/formatters';
-
-// Generate distinct colors for programs
-const programColors = [
-  '#ef4444', '#f97316', '#eab308', '#22c55e', '#14b8a6',
-  '#0ea5e9', '#6366f1', '#a855f7', '#ec4899', '#f43f5e',
-  '#84cc16', '#06b6d4', '#8b5cf6', '#d946ef',
-];
+import { BarChart } from '../components/charts/BarChart';
 
 export function WatchTimeSlide() {
-  const watchTimeData = reportData.watchTime;
-  const allPrograms = [...watchTimeData.byProgram].sort((a, b) => b.hours - a.hours);
+  // Sort programs by watch hours descending
+  const sortedPrograms = [...reportData.watchTime.byProgram].sort(
+    (a, b) => b.hours - a.hours
+  );
 
-  const getProgramId = (name: string) => {
-    const program = reportData.programs.find(p => p.name === name);
-    return program?.id || '';
-  };
+  const totalHours = reportData.watchTime.total;
+  const programCount = sortedPrograms.length;
 
-  const programsWithColors = allPrograms.map((program, index) => ({
-    ...program,
-    color: programColors[index % programColors.length],
-    logo: programLogos[getProgramId(program.name)],
-  }));
+  // Calculate top 3 percentage
+  const top3Hours = sortedPrograms.slice(0, 3).reduce((sum, p) => sum + p.hours, 0);
+  const top3Percentage = ((top3Hours / totalHours) * 100).toFixed(1);
 
-  const totalHours = programsWithColors.reduce((sum, p) => sum + p.hours, 0);
+  // Calculate leader (الشرق) percentage
+  const leaderPercentage = ((sortedPrograms[0].hours / totalHours) * 100).toFixed(1);
 
-  const treemapLayout = () => {
-    const items = programsWithColors.map(p => ({
-      ...p,
-      percentage: (p.hours / totalHours) * 100,
-    }));
-    const row1 = items.slice(0, 3);
-    const row2 = items.slice(3, 7);
-    const row3 = items.slice(7);
-    return { row1, row2, row3 };
-  };
-
-  const { row1, row2, row3 } = treemapLayout();
+  // Generate gradient colors (red tones for YouTube theme)
+  const barColors = sortedPrograms.map((_, index) => {
+    const opacity = Math.max(0.3, 1 - index * 0.05);
+    return `rgba(239, 68, 68, ${opacity})`;
+  });
 
   return (
-    <div className="slide bg-white dark:bg-gray-900 p-3" dir="rtl">
-      {/* Header - Compact */}
+    <div className="slide bg-white dark:bg-gray-900" dir="rtl">
+      {/* Header */}
       <motion.div
-        initial={{ opacity: 0, y: -10 }}
+        initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="text-center mb-2"
+        className="text-center mb-4"
       >
-        <h2 className="text-xl sm:text-2xl font-bold text-gray-800 dark:text-white">
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 dark:text-white mb-1">
           مدة المشاهدة
         </h2>
-        <p className="text-gray-500 dark:text-gray-400 text-xs">
+        <p className="text-sm text-gray-500 dark:text-gray-400">
           إجمالي ساعات المشاهدة على يوتيوب خلال 2025
         </p>
       </motion.div>
 
-      <div className="max-w-6xl mx-auto flex flex-col gap-2" style={{ height: 'calc(100vh - 140px)' }}>
-        {/* Row 1: Total + Monthly Chart */}
-        <div className="grid grid-cols-4 gap-2 flex-shrink-0" style={{ height: '80px' }}>
-          {/* Total Watch Time */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.1 }}
-            className="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-2 flex items-center justify-center gap-2"
-          >
-            <div className="w-8 h-8 rounded-lg bg-red-100 dark:bg-red-900/30 flex items-center justify-center flex-shrink-0">
-              <svg className="w-4 h-4 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <div className="max-w-5xl mx-auto flex flex-col gap-4 px-4" style={{ height: 'calc(100vh - 140px)' }}>
+        {/* Hero Section */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.1 }}
+          className="text-center"
+        >
+          {/* Main Number */}
+          <div className="flex items-center justify-center gap-4 mb-4">
+            <div className="w-14 h-14 rounded-2xl bg-red-100 dark:bg-red-900/30 flex items-center justify-center">
+              <svg className="w-7 h-7 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
-            <div>
-              <p className="text-lg font-bold text-red-500 leading-tight">
-                {formatNumber(watchTimeData.total)}
+            <div className="text-right">
+              <p className="text-4xl sm:text-5xl font-black text-red-500">
+                {formatNumber(totalHours)}
               </p>
-              <p className="text-[10px] text-gray-500 dark:text-gray-400">ساعة مشاهدة</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400">ساعة مشاهدة</p>
             </div>
-          </motion.div>
+          </div>
 
-          {/* Monthly Watch Time - Line Chart */}
-          <motion.div
-            initial={{ opacity: 0, x: 10 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.2 }}
-            className="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-2 col-span-3"
-          >
-            <h3 className="text-[10px] font-semibold text-gray-600 dark:text-gray-300 mb-1">
-              مدة المشاهدة الشهرية
-            </h3>
-            <div style={{ height: '50px' }}>
-              <LineChart
-                labels={watchTimeData.monthly.map(m => m.monthName)}
-                datasets={[{
-                  label: 'ساعات المشاهدة',
-                  data: watchTimeData.monthly.map(m => m.hours),
-                  borderColor: '#ef4444',
-                  backgroundColor: 'rgba(239, 68, 68, 0.15)',
-                }]}
-              />
-            </div>
-          </motion.div>
-        </div>
+          {/* Supporting Stats */}
+          <div className="flex justify-center gap-3 sm:gap-4">
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="px-4 py-2 rounded-xl bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800"
+            >
+              <p className="text-lg sm:text-xl font-bold text-blue-600 dark:text-blue-400">
+                {top3Percentage}%
+              </p>
+              <p className="text-xs text-blue-500 dark:text-blue-400">من الأعلى 3</p>
+            </motion.div>
 
-        {/* Row 2: Treemap */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.25 }}
-          className="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-2 flex-1"
-        >
-          <h3 className="text-[10px] font-semibold text-gray-600 dark:text-gray-300 mb-1 text-center">
-            حصة البرامج من المشاهدة
-          </h3>
-          <div className="flex flex-col gap-1 h-[calc(100%-20px)]">
-            {/* Row 1 - Top 3 */}
-            <div className="flex gap-1 flex-[2]">
-              {row1.map((program, index) => {
-                const rowTotal = row1.reduce((sum, p) => sum + p.percentage, 0);
-                const width = (program.percentage / rowTotal) * 100;
-                return (
-                  <motion.div
-                    key={program.name}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.3 + index * 0.05 }}
-                    className="rounded-lg flex flex-col items-center justify-center text-white overflow-hidden shadow-sm"
-                    style={{ backgroundColor: program.color, width: `${width}%` }}
-                    title={`${program.name}: ${formatNumber(program.hours)} ساعة`}
-                  >
-                    {program.logo && <img src={program.logo} alt="" className="w-6 h-6 rounded object-contain" />}
-                    <span className="text-sm font-bold">{program.percentage.toFixed(0)}%</span>
-                    <span className="text-[9px] opacity-90 truncate max-w-full px-1">{program.name}</span>
-                  </motion.div>
-                );
-              })}
-            </div>
-            {/* Row 2 - Next 4 */}
-            <div className="flex gap-1 flex-[1.2]">
-              {row2.map((program, index) => {
-                const rowTotal = row2.reduce((sum, p) => sum + p.percentage, 0);
-                const width = (program.percentage / rowTotal) * 100;
-                return (
-                  <motion.div
-                    key={program.name}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.4 + index * 0.05 }}
-                    className="rounded-lg flex flex-col items-center justify-center text-white overflow-hidden shadow-sm"
-                    style={{ backgroundColor: program.color, width: `${width}%` }}
-                    title={`${program.name}: ${formatNumber(program.hours)} ساعة`}
-                  >
-                    <span className="text-xs font-bold">{program.percentage.toFixed(0)}%</span>
-                    <span className="text-[8px] opacity-90 truncate max-w-full px-1">{program.name}</span>
-                  </motion.div>
-                );
-              })}
-            </div>
-            {/* Row 3 - Remaining */}
-            {row3.length > 0 && (
-              <div className="flex gap-1 flex-[0.8]">
-                {row3.map((program, index) => {
-                  const rowTotal = row3.reduce((sum, p) => sum + p.percentage, 0);
-                  const width = (program.percentage / rowTotal) * 100;
-                  return (
-                    <motion.div
-                      key={program.name}
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: 0.5 + index * 0.05 }}
-                      className="rounded-lg flex flex-col items-center justify-center text-white overflow-hidden shadow-sm"
-                      style={{ backgroundColor: program.color, width: `${width}%` }}
-                      title={`${program.name}: ${formatNumber(program.hours)} ساعة`}
-                    >
-                      <span className="text-[8px] font-bold">{program.percentage.toFixed(0)}%</span>
-                    </motion.div>
-                  );
-                })}
-              </div>
-            )}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.25 }}
+              className="px-4 py-2 rounded-xl bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800"
+            >
+              <p className="text-lg sm:text-xl font-bold text-amber-600 dark:text-amber-400">
+                {leaderPercentage}%
+              </p>
+              <p className="text-xs text-amber-500 dark:text-amber-400">{sortedPrograms[0].name}</p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="px-4 py-2 rounded-xl bg-purple-50 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-800"
+            >
+              <p className="text-lg sm:text-xl font-bold text-purple-600 dark:text-purple-400">
+                {programCount}
+              </p>
+              <p className="text-xs text-purple-500 dark:text-purple-400">برنامج</p>
+            </motion.div>
           </div>
         </motion.div>
 
-        {/* Row 3: Programs Bar Chart */}
+        {/* Programs Bar Chart */}
         <motion.div
-          initial={{ opacity: 0, y: 10 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          className="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-2 flex-shrink-0"
-          style={{ height: '70px' }}
+          transition={{ delay: 0.35 }}
+          className="flex-1 rounded-2xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-4 flex flex-col min-h-0"
         >
-          <h3 className="text-[10px] font-semibold text-gray-600 dark:text-gray-300 mb-1">
+          <h3 className="text-sm font-semibold text-gray-600 dark:text-gray-300 mb-3">
             ترتيب البرامج حسب مدة المشاهدة
           </h3>
-          <div style={{ height: '45px' }}>
-            <LineChart
-              labels={programsWithColors.map(p => p.name)}
-              datasets={[{
-                label: 'ساعات المشاهدة',
-                data: programsWithColors.map(p => p.hours),
-                borderColor: '#ef4444',
-                backgroundColor: 'rgba(239, 68, 68, 0.15)',
-              }]}
+          <div className="flex-1 min-h-0">
+            <BarChart
+              labels={sortedPrograms.map(p => p.name)}
+              datasets={[
+                {
+                  label: 'ساعات المشاهدة',
+                  data: sortedPrograms.map(p => p.hours),
+                  backgroundColor: barColors,
+                },
+              ]}
+              horizontal={true}
+              showDataLabels={true}
             />
           </div>
         </motion.div>
