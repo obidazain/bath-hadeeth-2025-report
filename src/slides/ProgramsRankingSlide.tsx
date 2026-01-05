@@ -1,11 +1,14 @@
 import { motion } from 'framer-motion';
 import { LineChart } from '../components/charts/LineChart';
-import { reportData, programLogos } from '../data/report-data';
+import { usePrograms } from '../store/dataStore';
+import { programLogos } from '../data/report-data';
 import { formatNumber } from '../utils/formatters';
 
 export function ProgramsRankingSlide() {
+  const programs = usePrograms();
+
   // Sort programs by total views
-  const sortedPrograms = [...reportData.programs].sort(
+  const sortedPrograms = [...programs].sort(
     (a, b) => b.totalViews - a.totalViews
   );
 

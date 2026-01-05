@@ -1,17 +1,19 @@
 import { motion } from 'framer-motion';
 import { StatCard } from '../components/common/StatCard';
-import { reportData } from '../data/report-data';
+import { useTotals } from '../store/dataStore';
 import { reportData2024, calculateGrowth } from '../data/report-data-2024';
 
 export function KeyNumbersSlide() {
+  const totals = useTotals();
+
   // Calculate growth percentages
-  const viewsGrowth = calculateGrowth(reportData2024.totals.totalViews, reportData.totals.viewsWithFacebook);
-  const followersGrowth = calculateGrowth(reportData2024.totals.totalFollowers, reportData.totals.totalFollowers);
+  const viewsGrowth = calculateGrowth(reportData2024.totals.totalViews, totals.viewsWithFacebook);
+  const followersGrowth = calculateGrowth(reportData2024.totals.totalFollowers, totals.totalFollowers);
 
   const stats = [
     {
       title: 'إجمالي المشاهدات',
-      value: reportData.totals.viewsWithFacebook,
+      value: totals.viewsWithFacebook,
       color: '#a855f7',
       value2024: reportData2024.totals.totalViews,
       growth: viewsGrowth,
@@ -24,7 +26,7 @@ export function KeyNumbersSlide() {
     },
     {
       title: 'إجمالي المتابعين',
-      value: reportData.totals.totalFollowers,
+      value: totals.totalFollowers,
       color: '#ec4899',
       value2024: reportData2024.totals.totalFollowers,
       growth: followersGrowth,
@@ -36,7 +38,7 @@ export function KeyNumbersSlide() {
     },
     {
       title: 'عدد المنشورات 2025',
-      value: reportData.totals.postsCount2025,
+      value: totals.postsCount2025,
       color: '#f97316',
       icon: (
         <svg className="w-6 h-6 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -46,7 +48,7 @@ export function KeyNumbersSlide() {
     },
     {
       title: 'عدد الحلقات',
-      value: reportData.totals.totalEpisodes,
+      value: totals.totalEpisodes,
       color: '#10b981',
       icon: (
         <svg className="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -57,7 +59,7 @@ export function KeyNumbersSlide() {
     },
     {
       title: 'ساعات التصوير',
-      value: reportData.totals.totalFilmingHours,
+      value: totals.totalFilmingHours,
       color: '#3b82f6',
       icon: (
         <svg className="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -67,7 +69,7 @@ export function KeyNumbersSlide() {
     },
     {
       title: 'الدول الوصول إليها',
-      value: reportData.totals.countriesReached,
+      value: totals.countriesReached,
       color: '#8b5cf6',
       icon: (
         <svg className="w-6 h-6 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">

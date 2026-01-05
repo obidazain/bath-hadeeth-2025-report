@@ -1,13 +1,15 @@
 import { motion } from 'framer-motion';
-import { reportData } from '../data/report-data';
+import { useTotals } from '../store/dataStore';
 import { formatNumber } from '../utils/formatters';
 
 export function ConclusionSlide() {
+  const totals = useTotals();
+
   const highlights = [
-    { label: 'مليار+ مشاهدة', value: reportData.totals.viewsWithFacebook, icon: '👁️' },
-    { label: 'مليون متابع', value: reportData.totals.totalFollowers, icon: '👥' },
-    { label: 'برنامج', value: reportData.totals.programsCount, icon: '🎬' },
-    { label: 'دولة', value: reportData.totals.countriesReached, icon: '🌍' },
+    { label: 'مليار+ مشاهدة', value: totals.viewsWithFacebook, icon: '👁️' },
+    { label: 'مليون متابع', value: totals.totalFollowers, icon: '👥' },
+    { label: 'برنامج', value: totals.programsCount, icon: '🎬' },
+    { label: 'دولة', value: totals.countriesReached, icon: '🌍' },
   ];
 
   return (

@@ -1,10 +1,13 @@
 import { motion } from 'framer-motion';
-import { reportData } from '../data/report-data';
+import { useTotals, usePlatforms } from '../store/dataStore';
 import { reportData2024, calculateGrowth, formatGrowth } from '../data/report-data-2024';
 import { formatNumber } from '../utils/formatters';
 import { PlatformIcon } from '../config/platforms';
 
 export function ComparisonSlide() {
+  const totals = useTotals();
+  const platformsData = usePlatforms();
+
   // Accurate data from files
   const data2024 = {
     totalViews: reportData2024.totals.totalViews,
@@ -13,9 +16,9 @@ export function ComparisonSlide() {
   };
 
   const data2025 = {
-    totalViews: reportData.totals.viewsWithFacebook,
-    totalFollowers: reportData.totals.totalFollowers,
-    newFollowers: reportData.totals.newFollowers2025,
+    totalViews: totals.viewsWithFacebook,
+    totalFollowers: totals.totalFollowers,
+    newFollowers: totals.newFollowers2025,
   };
 
   // Calculate accurate growth percentages
@@ -51,7 +54,7 @@ export function ComparisonSlide() {
       key: 'youtube' as const,
       name: 'يوتيوب (حلقات)',
       views2024: reportData2024.platforms.youtube.videos,
-      views2025: reportData.platforms.youtube.videosViews,
+      views2025: platformsData.youtube.videosViews || 0,
       followers2024: undefined,
       followers2025: undefined,
       isNew: false,
@@ -60,7 +63,7 @@ export function ComparisonSlide() {
       key: 'youtube' as const,
       name: 'يوتيوب (شورتس)',
       views2024: reportData2024.platforms.youtube.shorts,
-      views2025: reportData.platforms.youtube.shortsViews,
+      views2025: platformsData.youtube.shortsViews || 0,
       followers2024: undefined,
       followers2025: undefined,
       isNew: false,
@@ -69,27 +72,27 @@ export function ComparisonSlide() {
       key: 'tiktok' as const,
       name: 'تيك توك',
       views2024: reportData2024.platforms.tiktok.totalViews,
-      views2025: reportData.platforms.tiktok.totalViews,
+      views2025: platformsData.tiktok.totalViews,
       followers2024: reportData2024.platforms.tiktok.totalFollowers,
-      followers2025: reportData.platforms.tiktok.totalFollowers,
+      followers2025: platformsData.tiktok.totalFollowers || 0,
       isNew: false,
     },
     {
       key: 'instagram' as const,
       name: 'انستغرام',
       views2024: reportData2024.platforms.instagram.totalViews,
-      views2025: reportData.platforms.instagram.totalViews,
+      views2025: platformsData.instagram.totalViews,
       followers2024: reportData2024.platforms.instagram.totalFollowers,
-      followers2025: reportData.platforms.instagram.totalFollowers,
+      followers2025: platformsData.instagram.totalFollowers || 0,
       isNew: false,
     },
     {
       key: 'facebook' as const,
       name: 'فيسبوك',
       views2024: 0,
-      views2025: reportData.platforms.facebook.totalViews,
+      views2025: platformsData.facebook.totalViews,
       followers2024: 0,
-      followers2025: reportData.platforms.facebook.totalFollowers,
+      followers2025: platformsData.facebook.totalFollowers || 0,
       isNew: true,
     },
   ];

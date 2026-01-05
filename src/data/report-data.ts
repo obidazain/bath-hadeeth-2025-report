@@ -16,8 +16,8 @@ export const programLogos: Record<string, string> = {
   'sharq': `${BASE_PATH}logos/SH.png`,
   'iran': `${BASE_PATH}logos/IR.png`,
   'arabi-post': `${BASE_PATH}logos/AP.png`,
-  'mawazen': `${BASE_PATH}logos/M.png`,
-  'falak': `${BASE_PATH}logos/M.png`,
+  'mawazen': `${BASE_PATH}logos/`,
+  'falak': `${BASE_PATH}logos/`,
 };
 
 // Monthly data per program (Jan - Nov 2025)

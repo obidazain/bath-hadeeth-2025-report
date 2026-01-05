@@ -1,15 +1,17 @@
 import { motion } from 'framer-motion';
-import { reportData } from '../data/report-data';
+import { useWatchTime } from '../store/dataStore';
 import { formatNumber } from '../utils/formatters';
 import { BarChart } from '../components/charts/BarChart';
 
 export function WatchTimeSlide() {
+  const watchTime = useWatchTime();
+
   // Sort programs by watch hours descending
-  const sortedPrograms = [...reportData.watchTime.byProgram].sort(
+  const sortedPrograms = [...watchTime.byProgram].sort(
     (a, b) => b.hours - a.hours
   );
 
-  const totalHours = reportData.watchTime.total;
+  const totalHours = watchTime.total;
   const programCount = sortedPrograms.length;
 
   // Calculate top 3 percentage

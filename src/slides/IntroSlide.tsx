@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion';
-import { reportData } from '../data/report-data';
+import { useTotals } from '../store/dataStore';
 
 export function IntroSlide() {
+  const totals = useTotals();
   return (
     <div className="slide relative overflow-hidden bg-notion-bg">
       {/* Background Effect */}
@@ -61,15 +62,15 @@ export function IntroSlide() {
           className="flex flex-wrap justify-center gap-3"
         >
           <div className="card-compact px-4 py-2 text-center">
-            <p className="text-xl sm:text-2xl font-bold text-accent-purple">{reportData.totals.programsCount}</p>
+            <p className="text-xl sm:text-2xl font-bold text-accent-purple">{totals.programsCount}</p>
             <p className="text-xs text-notion-text-secondary">برنامج</p>
           </div>
           <div className="card-compact px-4 py-2 text-center">
-            <p className="text-xl sm:text-2xl font-bold text-accent-pink">+{Math.round(reportData.totals.totalFollowers / 1000000)}M</p>
+            <p className="text-xl sm:text-2xl font-bold text-accent-pink">+{Math.round(totals.totalFollowers / 1000000)}M</p>
             <p className="text-xs text-notion-text-secondary">متابع</p>
           </div>
           <div className="card-compact px-4 py-2 text-center">
-            <p className="text-xl sm:text-2xl font-bold text-accent-orange">{reportData.totals.countriesReached}</p>
+            <p className="text-xl sm:text-2xl font-bold text-accent-orange">{totals.countriesReached}</p>
             <p className="text-xs text-notion-text-secondary">دولة</p>
           </div>
         </motion.div>

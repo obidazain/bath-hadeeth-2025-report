@@ -1,11 +1,11 @@
 import { motion } from 'framer-motion';
 import { DoughnutChart } from '../components/charts/DoughnutChart';
-import { reportData } from '../data/report-data';
+import { usePlatforms } from '../store/dataStore';
 import { formatNumber } from '../utils/formatters';
 import { platformColors, PlatformIcon } from '../config/platforms';
 
 export function PlatformDistributionSlide() {
-  const platforms = reportData.platforms;
+  const platforms = usePlatforms();
 
   const viewsData = [
     platforms.facebook.totalViews,
@@ -15,10 +15,10 @@ export function PlatformDistributionSlide() {
   ];
 
   const followersData = [
-    platforms.facebook.totalFollowers,
-    platforms.tiktok.totalFollowers,
-    platforms.youtube.totalSubscribers,
-    platforms.instagram.totalFollowers,
+    platforms.facebook.totalFollowers || 0,
+    platforms.tiktok.totalFollowers || 0,
+    platforms.youtube.totalSubscribers || 0,
+    platforms.instagram.totalFollowers || 0,
   ];
 
   const labels = ['Facebook', 'TikTok', 'YouTube', 'Instagram'];
