@@ -5,9 +5,9 @@ import { reportData, programLogos, programMonthlyData } from '../data/report-dat
 import { formatNumber } from '../utils/formatters';
 import { PlatformIcon } from '../config/platforms';
 
-type SortOption = 'views' | 'followers' | 'growth' | 'watchTime' | 'engagement' | 'name';
+type SortOption = 'views' | 'followers' | 'growth' | 'watchTime' | 'name';
 type ViewMode = 'grid' | 'chart' | 'compare';
-type MetricType = 'views' | 'watchTime' | 'engagement' | 'followers';
+type MetricType = 'views' | 'watchTime' | 'followers';
 
 interface Filters {
   platforms: {
@@ -64,7 +64,6 @@ export function MasterDashboardSlide() {
       let views = 0;
       let followers = 0;
       let watchTime = 0;
-      let engagement = 0;
       let shorts = 0;
       let videos = 0;
 
@@ -84,7 +83,6 @@ export function MasterDashboardSlide() {
         if (filters.platforms.tiktok) {
           views += p.tiktok.views;
           followers += p.tiktok.followers;
-          engagement += monthlyData.reduce((sum, m) => sum + m.tiktokEngagement, 0);
         }
         if (filters.platforms.instagram) {
           views += p.instagram.views;
@@ -108,7 +106,6 @@ export function MasterDashboardSlide() {
           if (filters.platforms.tiktok) {
             views += monthData.tiktokViews;
             followers += monthData.newTiktokFollowers;
-            engagement += monthData.tiktokEngagement;
           }
           if (filters.platforms.instagram) {
             views += monthData.instagramViews;
@@ -122,7 +119,6 @@ export function MasterDashboardSlide() {
         filteredViews: views,
         filteredFollowers: followers,
         filteredWatchTime: watchTime,
-        filteredEngagement: engagement,
         filteredShorts: shorts,
         filteredVideos: videos,
       };
@@ -142,9 +138,6 @@ export function MasterDashboardSlide() {
       case 'watchTime':
         programs.sort((a, b) => b.filteredWatchTime - a.filteredWatchTime);
         break;
-      case 'engagement':
-        programs.sort((a, b) => b.filteredEngagement - a.filteredEngagement);
-        break;
       case 'name':
         programs.sort((a, b) => a.name.localeCompare(b.name, 'ar'));
         break;
@@ -160,11 +153,10 @@ export function MasterDashboardSlide() {
         views: acc.views + p.filteredViews,
         followers: acc.followers + p.filteredFollowers,
         watchTime: acc.watchTime + p.filteredWatchTime,
-        engagement: acc.engagement + p.filteredEngagement,
         shorts: acc.shorts + p.filteredShorts,
         videos: acc.videos + p.filteredVideos,
       }),
-      { views: 0, followers: 0, watchTime: 0, engagement: 0, shorts: 0, videos: 0 }
+      { views: 0, followers: 0, watchTime: 0, shorts: 0, videos: 0 }
     );
   }, [filteredPrograms]);
 
@@ -205,7 +197,7 @@ export function MasterDashboardSlide() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="grid grid-cols-3 sm:grid-cols-6 gap-2 mb-3"
+          className="grid grid-cols-4 sm:grid-cols-8 gap-2 mb-3"
         >
           <div className="card-compact px-2 py-2 text-center">
             <p className="text-xs sm:text-sm font-bold text-primary">{formatNumber(totals.views)}</p>
@@ -224,12 +216,20 @@ export function MasterDashboardSlide() {
             <p className="text-[9px] sm:text-[10px] text-notion-text-secondary">ساعة مشاهدة</p>
           </div>
           <div className="card-compact px-2 py-2 text-center">
-            <p className="text-xs sm:text-sm font-bold text-green-500">{formatNumber(totals.engagement)}</p>
-            <p className="text-[9px] sm:text-[10px] text-notion-text-secondary">تفاعل TikTok</p>
-          </div>
-          <div className="card-compact px-2 py-2 text-center">
             <p className="text-xs sm:text-sm font-bold text-orange-500">{formatNumber(totals.shorts)}</p>
             <p className="text-[9px] sm:text-[10px] text-notion-text-secondary">Shorts</p>
+          </div>
+          <div className="card-compact px-2 py-2 text-center">
+            <p className="text-xs sm:text-sm font-bold text-green-500">{formatNumber(51000)}</p>
+            <p className="text-[9px] sm:text-[10px] text-notion-text-secondary">منشور فيديو</p>
+          </div>
+          <div className="card-compact px-2 py-2 text-center">
+            <p className="text-xs sm:text-sm font-bold text-cyan-500">60</p>
+            <p className="text-[9px] sm:text-[10px] text-notion-text-secondary">حساب تواصل</p>
+          </div>
+          <div className="card-compact px-2 py-2 text-center">
+            <p className="text-xs sm:text-sm font-bold text-teal-500">50</p>
+            <p className="text-[9px] sm:text-[10px] text-notion-text-secondary">منصة بودكاست</p>
           </div>
         </motion.div>
 
@@ -282,7 +282,6 @@ export function MasterDashboardSlide() {
               <option value="followers">المتابعين</option>
               <option value="growth">النمو 2025</option>
               <option value="watchTime">وقت المشاهدة</option>
-              <option value="engagement">التفاعل</option>
               <option value="name">الاسم</option>
             </select>
 
@@ -395,16 +394,16 @@ export function MasterDashboardSlide() {
                           <p className="font-bold text-blue-500 text-base">{formatNumber(program.filteredWatchTime)}</p>
                         </div>
                       )}
-                      {program.filteredEngagement > 0 && (
-                        <div>
-                          <p className="text-notion-text-secondary text-[10px]">تفاعل</p>
-                          <p className="font-bold text-green-500 text-base">{formatNumber(program.filteredEngagement)}</p>
-                        </div>
-                      )}
                       {program.filteredShorts > 0 && (
                         <div>
-                          <p className="text-notion-text-secondary text-[10px]">Shorts</p>
+                          <p className="text-notion-text-secondary text-[10px]">مشاهدات Shorts</p>
                           <p className="font-bold text-orange-500 text-base">{formatNumber(program.filteredShorts)}</p>
+                        </div>
+                      )}
+                      {program.filteredVideos > 0 && (
+                        <div>
+                          <p className="text-notion-text-secondary text-[10px]">حلقات طويلة</p>
+                          <p className="font-bold text-red-500 text-base">{formatNumber(program.filteredVideos)}</p>
                         </div>
                       )}
                     </div>
@@ -429,7 +428,6 @@ export function MasterDashboardSlide() {
                 >
                   <option value="views">المشاهدات</option>
                   <option value="watchTime">وقت المشاهدة</option>
-                  <option value="engagement">التفاعل</option>
                   <option value="followers">المتابعين</option>
                 </select>
               </div>
@@ -439,17 +437,14 @@ export function MasterDashboardSlide() {
                   datasets={[
                     {
                       label: filters.metric === 'views' ? 'المشاهدات' :
-                             filters.metric === 'watchTime' ? 'ساعات المشاهدة' :
-                             filters.metric === 'engagement' ? 'التفاعل' : 'المتابعين',
+                             filters.metric === 'watchTime' ? 'ساعات المشاهدة' : 'المتابعين',
                       data: filteredPrograms.slice(0, 10).map(p =>
                         filters.metric === 'views' ? p.filteredViews :
                         filters.metric === 'watchTime' ? p.filteredWatchTime :
-                        filters.metric === 'engagement' ? p.filteredEngagement :
                         p.filteredFollowers
                       ),
                       backgroundColor: filters.metric === 'views' ? 'rgba(124, 58, 237, 0.7)' :
                                        filters.metric === 'watchTime' ? 'rgba(59, 130, 246, 0.7)' :
-                                       filters.metric === 'engagement' ? 'rgba(16, 185, 129, 0.7)' :
                                        'rgba(236, 72, 153, 0.7)',
                     },
                   ]}
@@ -477,7 +472,6 @@ export function MasterDashboardSlide() {
                       <th className="text-center py-3 px-3 font-bold text-primary w-32">المشاهدات</th>
                       <th className="text-center py-3 px-3 font-bold text-accent-pink w-24">المتابعين</th>
                       <th className="text-center py-3 px-3 font-bold text-blue-500 w-24">الساعات</th>
-                      <th className="text-center py-3 px-3 font-bold text-green-500 w-24">التفاعل</th>
                       <th className="text-center py-3 px-3 font-bold text-orange-500 w-24">Shorts</th>
                     </tr>
                   </thead>
@@ -509,7 +503,6 @@ export function MasterDashboardSlide() {
                           </td>
                           <td className="py-3 px-3 text-center font-bold text-accent-pink text-base">{formatNumber(program.filteredFollowers)}</td>
                           <td className="py-3 px-3 text-center font-bold text-blue-500 text-base">{formatNumber(program.filteredWatchTime)}</td>
-                          <td className="py-3 px-3 text-center font-bold text-green-500 text-base">{formatNumber(program.filteredEngagement)}</td>
                           <td className="py-3 px-3 text-center font-bold text-orange-500 text-base">{formatNumber(program.filteredShorts)}</td>
                         </tr>
                       );

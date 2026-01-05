@@ -1,89 +1,82 @@
 import { motion } from 'framer-motion';
-import { useTotals } from '../store/dataStore';
 import bathHadeethLogo from '../assets/logos/LOGO_Bath hadeeth.png';
 
 export function IntroSlide() {
-  const totals = useTotals();
   return (
-    <div className="slide relative overflow-hidden bg-notion-bg">
-      {/* Background Effect */}
+    <div className="slide relative overflow-hidden bg-white">
+      {/* Background gradient effect */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 left-1/4 w-64 h-64 bg-accent-pink/10 rounded-full blur-3xl" />
+        <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-[#9a6dd7]/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-[#e255a1]/5 rounded-full blur-3xl" />
       </div>
 
       {/* Content */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="flex-1 flex flex-col items-center justify-center z-10"
-      >
-        {/* Logo at top */}
-        <motion.img
-          src={bathHadeethLogo}
-          alt="بث حديث"
-          initial={{ opacity: 0, scale: 0.9 }}
+      <div className="flex-1 flex flex-col items-center justify-center z-10">
+        {/* Logo */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="w-[280px] h-[280px] sm:w-[350px] sm:h-[350px] md:w-[420px] md:h-[420px] mb-4 object-contain"
-          style={{ filter: 'brightness(0) saturate(100%) invert(29%) sepia(98%) saturate(1868%) hue-rotate(243deg) brightness(87%) contrast(92%)' }}
-        />
+          transition={{ duration: 0.8, ease: 'easeOut' }}
+          className="mb-6"
+        >
+          <img
+            src={bathHadeethLogo}
+            alt="بث حديث"
+            className="h-28 md:h-36 object-contain"
+            style={{ filter: 'brightness(0) saturate(100%) invert(29%) sepia(98%) saturate(1868%) hue-rotate(243deg) brightness(87%) contrast(92%)' }}
+          />
+        </motion.div>
 
-        {/* Text content below logo */}
+        {/* Subtitle */}
         <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.15 }}
-          className="text-lg sm:text-xl md:text-2xl text-accent-purple mb-2"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="text-xl sm:text-2xl text-[#9a6dd7] font-medium mb-1"
         >
           حاضنة البودكاست العربي
         </motion.p>
 
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.25 }}
-          className="text-base sm:text-lg md:text-xl text-accent-purple mb-6"
-        >
-          التقرير السنوي 2025
-        </motion.p>
-
+        {/* Big Number */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.35 }}
-          className="relative mb-6"
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="text-center mb-6"
         >
-          <div className="text-6xl sm:text-7xl md:text-8xl font-black text-gradient">
+          <div className="text-6xl sm:text-7xl md:text-8xl font-black bg-gradient-to-r from-[#9a6dd7] to-[#e255a1] bg-clip-text text-transparent">
             +1.2B
           </div>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            className="text-base sm:text-lg text-notion-text-secondary mt-2 text-center"
-          >
+          <p className="text-base sm:text-lg text-gray-500 mt-2">
             مليار مشاهدة في 2025
-          </motion.p>
+          </p>
         </motion.div>
 
+        {/* Stats Cards */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.6 }}
-          className="flex flex-wrap justify-center gap-3"
+          className="flex flex-wrap justify-center gap-4"
         >
-          <div className="card-compact px-4 py-2 text-center">
-            <p className="text-xl sm:text-2xl font-bold text-accent-purple">{totals.programsCount}</p>
-            <p className="text-xs text-notion-text-secondary">برنامج</p>
+          <div className="bg-gray-50 border border-gray-100 rounded-2xl px-6 py-3 text-center">
+            <p className="text-2xl sm:text-3xl font-bold text-[#9a6dd7]">12</p>
+            <p className="text-sm text-gray-500">برنامج</p>
           </div>
-          <div className="card-compact px-4 py-2 text-center">
-            <p className="text-xl sm:text-2xl font-bold text-accent-pink">+{Math.round(totals.totalFollowers / 1000000)}M</p>
-            <p className="text-xs text-notion-text-secondary">متابع</p>
+          <div className="bg-gray-50 border border-gray-100 rounded-2xl px-6 py-3 text-center">
+            <p className="text-2xl sm:text-3xl font-bold text-[#e255a1]">+8.2M</p>
+            <p className="text-sm text-gray-500">متابع</p>
           </div>
         </motion.div>
-      </motion.div>
+
+        {/* Decorative line */}
+        <motion.div
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+          className="w-32 h-1 bg-gradient-to-r from-[#9a6dd7] to-[#e255a1] rounded-full mt-8"
+        />
+      </div>
     </div>
   );
 }

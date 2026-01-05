@@ -36,6 +36,12 @@ export function ComparisonSlide() {
       value2025: 143,
       color: 'blue',
     },
+    {
+      title: 'عدد المنشورات',
+      value2024: 31000,
+      value2025: 51000,
+      color: 'cyan',
+    },
   ];
 
   // Platform stats - Updated from /Users/obidazain/Downloads/ana files
@@ -142,6 +148,8 @@ export function ComparisonSlide() {
                     stat.color === 'green' ? 'text-green-500' :
                     stat.color === 'blue' ? 'text-blue-500' :
                     stat.color === 'orange' ? 'text-orange-500' :
+                    stat.color === 'cyan' ? 'text-cyan-500' :
+                    stat.color === 'teal' ? 'text-teal-500' :
                     'text-red-500'
                   }`}>
                     {formatNumber(stat.value2025)}

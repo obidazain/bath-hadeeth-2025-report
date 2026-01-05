@@ -4,12 +4,14 @@ export const investigationsData = [
     description: 'منتجات عربية في إسرائيل - تحقيق حصري',
     url: 'https://arabicpost.net/تحقيقات/2024/06/24/منتجات-إماراتية-في-إسرائيل/',
     thumbnail: 'https://arabicpost.net/wp-content/uploads/2024/06/-22-scaled.jpg',
+    viral: true,
   },
   {
     title: 'عرب المسخار',
     description: 'آلاف المنتجات تبادلتها دول عربية مع إسرائيل خلال حرب غزة',
     url: 'https://arabicpost.net/عرب-المسخار/',
     thumbnail: 'https://arabicpost.net/wp-content/uploads/2025/04/all-2.jpg',
+    viral: true,
   },
   {
     title: '5 موانئ مصرية',
@@ -36,16 +38,18 @@ export const investigationsData = [
     thumbnail: 'https://arabicpost.net/wp-content/uploads/2024/07/a2843f39-32dd-4440-ba9e-20a3150de18c.jpg',
   },
   {
-    title: 'معركة رقمية خفية',
-    description: 'شبكة حسابات تدعم تدخل إسرائيل في سوريا',
-    url: 'https://arabicpost.net/تحقيقات/2025/03/08/حسابات-تدعم-تدخل-إسرائيل-في-سوريا/',
-    thumbnail: 'https://arabicpost.net/wp-content/uploads/2025/03/artboard-1-2.jpg',
+    title: 'تطبيق إسرائيلي على سامسونج',
+    description: 'AppCloud لا يمكن حذفه ويجمع معلوماتك ويستهدف المستخدمين بالشرق الأوسط',
+    url: 'https://arabicpost.net/تحقيقات/2025/09/17/appcloud-في-سامسونج/',
+    thumbnail: 'https://arabicpost.net/wp-content/uploads/2025/09/artboard-1-1-1.png',
+    viral: true,
   },
   {
-    title: 'تطبيقات VPN إسرائيلية',
-    description: 'تطبيقات شهيرة يستخدمها عرب ومرتبطة بشركات إسرائيلية',
+    title: 'وهم الخصوصية - VPN إسرائيلية',
+    description: 'تطبيقات VPN شهيرة ومجانية يستخدمها عرب ومرتبطة بشركات إسرائيلية',
     url: 'https://arabicpost.net/تحقيقات/2025/10/07/تطبيقات-vpn-إسرائيل-عرب/',
     thumbnail: 'https://arabicpost.net/wp-content/uploads/2025/10/artboard-1-9.jpg',
+    viral: true,
   },
 ];
 

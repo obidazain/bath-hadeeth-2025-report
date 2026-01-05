@@ -51,6 +51,14 @@ export function ArabyPostInvestigationsSlide() {
                     target.parentElement!.classList.add('flex', 'items-center', 'justify-center', 'bg-gradient-to-br', 'from-[#08b2e3]/20', 'to-[#08b2e3]/5');
                   }}
                 />
+                {/* Viral Badge */}
+                {'viral' in item && item.viral && (
+                  <div className="absolute top-2 right-2">
+                    <div className="bg-orange-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
+                      انتشار واسع
+                    </div>
+                  </div>
+                )}
                 {/* Link Icon */}
                 <div className="absolute top-2 left-2 opacity-0 group-hover:opacity-100 transition-opacity">
                   <div className="bg-[#08b2e3] text-white rounded-full p-1.5">

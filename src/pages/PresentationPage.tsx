@@ -9,6 +9,9 @@ import { MonthlyTrendSlide } from '../slides/MonthlyTrendSlide';
 import { ProgramsRankingSlide } from '../slides/ProgramsRankingSlide';
 import { PodcastSlide } from '../slides/PodcastSlide';
 import { MasterDashboardSlide } from '../slides/MasterDashboardSlide';
+import { ProgramsSystemSlide } from '../slides/ProgramsSystemSlide';
+import { ContentStrategySlide } from '../slides/ContentStrategySlide';
+import { AutomationSlide } from '../slides/AutomationSlide';
 import { ConclusionSlide } from '../slides/ConclusionSlide';
 
 // Slides - Integral Media
@@ -34,6 +37,9 @@ import { IntegralDecentralSlide } from '../slides/integral/IntegralDecentralSlid
 import { IntegralAdaptSlide } from '../slides/integral/IntegralAdaptSlide';
 import { IntegralDocumentSlide } from '../slides/integral/IntegralDocumentSlide';
 import { IntegralDataSlide } from '../slides/integral/IntegralDataSlide';
+import { IntegralTimelineSlide } from '../slides/integral/IntegralTimelineSlide';
+import { IntegralTeamSlide } from '../slides/integral/IntegralTeamSlide';
+import { IntegralVision2028Slide } from '../slides/integral/IntegralVision2028Slide';
 
 // Slides - Araby Post
 import { ArabyPostIntroSlide } from '../slides/arabypost/ArabyPostIntroSlide';
@@ -105,7 +111,15 @@ const slides = [
   { component: ProgramsRankingSlide, title: 'ترتيب البرامج' },
   { component: PodcastSlide, title: 'المنصات الصوتية' },
   { component: MasterDashboardSlide, title: 'لوحة التحكم الرئيسية' },
+  { component: ProgramsSystemSlide, title: 'منظومة البرامج' },
+  { component: ContentStrategySlide, title: 'استراتيجية المحتوى' },
+  { component: AutomationSlide, title: 'الأتمتة والذكاء الاصطناعي' },
   { component: ConclusionSlide, title: 'الخاتمة' },
+
+  // Timeline & Vision Slides
+  { component: IntegralTimelineSlide, title: 'الخط الزمني والمؤشرات' },
+  { component: IntegralTeamSlide, title: 'فريق العمل' },
+  { component: IntegralVision2028Slide, title: 'رؤية 2026-2028' },
 ];
 
 export function PresentationPage() {
