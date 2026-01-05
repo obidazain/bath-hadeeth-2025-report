@@ -6,10 +6,9 @@ export function ConclusionSlide() {
   const totals = useTotals();
 
   const highlights = [
-    { label: 'مليار+ مشاهدة', value: totals.viewsWithFacebook, icon: '👁️' },
-    { label: 'مليون متابع', value: totals.totalFollowers, icon: '👥' },
-    { label: 'برنامج', value: totals.programsCount, icon: '🎬' },
-    { label: 'دولة', value: totals.countriesReached, icon: '🌍' },
+    { label: 'إجمالي المشاهدات', value: totals.viewsWithFacebook, icon: '👁️' },
+    { label: 'إجمالي المتابعين', value: totals.totalFollowers, icon: '👥' },
+    { label: 'برنامج', value: 12, icon: '🎬' },
   ];
 
   return (
@@ -32,7 +31,7 @@ export function ConclusionSlide() {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="text-4xl sm:text-5xl font-bold mb-3"
         >
-          <span className="text-gradient">شكراً لكم</span>
+          <span className="text-gradient">بث حديث</span>
         </motion.h2>
 
         <motion.p
@@ -41,7 +40,7 @@ export function ConclusionSlide() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="text-base sm:text-lg text-notion-text-secondary mb-6"
         >
-          على ثقتكم ودعمكم المستمر
+          حاضنة البودكاست العربي
         </motion.p>
 
         {/* Highlights Grid */}
@@ -49,7 +48,7 @@ export function ConclusionSlide() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="grid grid-cols-4 gap-3 mb-6 w-full"
+          className="grid grid-cols-3 gap-3 mb-6 w-full"
         >
           {highlights.map((item, index) => (
             <motion.div

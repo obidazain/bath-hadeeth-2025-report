@@ -4,32 +4,26 @@ import { SlideNav } from '../components/presentation/SlideNav';
 
 // Slides
 import { IntroSlide } from '../slides/IntroSlide';
-import { KeyNumbersSlide } from '../slides/KeyNumbersSlide';
 import { ComparisonSlide } from '../slides/ComparisonSlide';
-import { PlatformDistributionSlide } from '../slides/PlatformDistributionSlide';
 import { MonthlyTrendSlide } from '../slides/MonthlyTrendSlide';
-import { WatchTimeSlide } from '../slides/WatchTimeSlide';
 import { ProgramsRankingSlide } from '../slides/ProgramsRankingSlide';
-import { FollowersSlide } from '../slides/FollowersSlide';
 import { PodcastSlide } from '../slides/PodcastSlide';
 import { MasterDashboardSlide } from '../slides/MasterDashboardSlide';
-import { ProductionSlide } from '../slides/ProductionSlide';
-import { programSlides } from '../slides/ProgramDetailSlide';
 import { ConclusionSlide } from '../slides/ConclusionSlide';
 
 const slides = [
   { component: IntroSlide, title: 'المقدمة' },
-  { component: KeyNumbersSlide, title: 'الأرقام الرئيسية' },
+  // { component: KeyNumbersSlide, title: 'الأرقام الرئيسية' }, // Hidden in this version
   { component: ComparisonSlide, title: 'مقارنة 2024 vs 2025' },
-  { component: PlatformDistributionSlide, title: 'توزيع المنصات' },
+  // { component: PlatformDistributionSlide, title: 'توزيع المنصات' }, // Hidden in this version
   { component: MonthlyTrendSlide, title: 'النمو الشهري' },
-  { component: WatchTimeSlide, title: 'مدة المشاهدة' },
+  // { component: WatchTimeSlide, title: 'مدة المشاهدة' }, // Hidden in this version
   { component: ProgramsRankingSlide, title: 'ترتيب البرامج' },
-  { component: FollowersSlide, title: 'نمو المتابعين' },
+  // { component: FollowersSlide, title: 'نمو المتابعين' }, // Hidden in this version
   { component: PodcastSlide, title: 'المنصات الصوتية' },
   { component: MasterDashboardSlide, title: 'لوحة التحكم الرئيسية' },
-  { component: ProductionSlide, title: 'عمليات الإنتاج 2025' },
-  ...programSlides.map(p => ({ component: p.component, title: p.name })),
+  // { component: ProductionSlide, title: 'عمليات الإنتاج 2025' }, // Hidden
+  // ...programSlides.map(p => ({ component: p.component, title: p.name })), // Hidden - all program slides
   { component: ConclusionSlide, title: 'الخاتمة' },
 ];
 
@@ -49,13 +43,13 @@ export function PresentationPage() {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       switch (e.key) {
-        case 'ArrowRight':
+        case 'ArrowLeft':
         case 'ArrowDown':
         case ' ':
           e.preventDefault();
           goToNext();
           break;
-        case 'ArrowLeft':
+        case 'ArrowRight':
         case 'ArrowUp':
           e.preventDefault();
           goToPrev();

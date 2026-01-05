@@ -33,9 +33,11 @@ interface BarChartProps {
   stacked?: boolean;
   showDataLabels?: boolean;
   showLabelsOnBars?: boolean; // Show label names on the bars
+  showLabels?: boolean; // Force show axis labels clearly
+  compact?: boolean; // Compact mode for smaller charts
 }
 
-export function BarChart({ labels, datasets, title, horizontal = false, stacked = false, showDataLabels = true, showLabelsOnBars = false }: BarChartProps) {
+export function BarChart({ labels, datasets, title, horizontal = false, stacked = false, showDataLabels: _showDataLabels = true, showLabelsOnBars = false, showLabels = false, compact: _compact = false }: BarChartProps) {
   const data = {
     labels,
     datasets: datasets.map((dataset) => ({
@@ -84,15 +86,15 @@ export function BarChart({ labels, datasets, title, horizontal = false, stacked 
         },
       },
       datalabels: {
-        display: showDataLabels || showLabelsOnBars,
+        display: true, // Always show data labels
         color: showLabelsOnBars ? '#ffffff' : '#37352f',
         anchor: showLabelsOnBars ? ('center' as const) : (horizontal ? ('end' as const) : ('end' as const)),
-        align: showLabelsOnBars ? ('center' as const) : (horizontal ? ('end' as const) : ('top' as const)),
-        offset: showLabelsOnBars ? 0 : 6,
+        align: showLabelsOnBars ? ('center' as const) : (horizontal ? ('start' as const) : ('top' as const)),
+        offset: showLabelsOnBars ? 0 : 4,
         font: {
           family: 'IBM Plex Sans Arabic',
           weight: 'bold' as const,
-          size: showLabelsOnBars ? 12 : 13,
+          size: showLabels ? 9 : (showLabelsOnBars ? 12 : 11),
         },
         textShadowColor: showLabelsOnBars ? 'rgba(0, 0, 0, 0.6)' : undefined,
         textShadowBlur: showLabelsOnBars ? 4 : 0,
@@ -101,6 +103,8 @@ export function BarChart({ labels, datasets, title, horizontal = false, stacked 
             const label = labels[context.dataIndex];
             return label;
           }
+          // Only show label for first dataset to avoid duplicate labels
+          if (context.datasetIndex > 0) return '';
           return formatChartNumber(value);
         },
       },
@@ -127,7 +131,7 @@ export function BarChart({ labels, datasets, title, horizontal = false, stacked 
       },
       y: {
         stacked,
-        display: !(horizontal && showLabelsOnBars), // Hide Y-axis when labels are on bars
+        display: true, // Always show Y-axis labels
         grid: {
           color: horizontal ? 'transparent' : 'rgba(55, 53, 47, 0.08)',
         },
@@ -135,10 +139,10 @@ export function BarChart({ labels, datasets, title, horizontal = false, stacked 
           color: '#37352f',
           font: {
             family: 'IBM Plex Sans Arabic',
-            size: horizontal ? 12 : 11,
-            weight: horizontal ? ('bold' as const) : ('normal' as const),
+            size: showLabels ? 11 : (horizontal ? 12 : 11),
+            weight: ('bold' as const),
           },
-          padding: horizontal ? 8 : 4,
+          padding: horizontal ? 6 : 4,
           callback: function(value: number | string) {
             if (!horizontal && typeof value === 'number') {
               return formatChartNumber(value);
@@ -148,10 +152,13 @@ export function BarChart({ labels, datasets, title, horizontal = false, stacked 
         },
       },
     },
+    layout: {
+      padding: showLabels ? { left: 5, right: 15, top: 5, bottom: 5 } : {},
+    },
   };
 
   return (
-    <div className="w-full h-full min-h-[300px]">
+    <div className="w-full h-full min-h-[200px]">
       <Bar data={data} options={options} />
     </div>
   );

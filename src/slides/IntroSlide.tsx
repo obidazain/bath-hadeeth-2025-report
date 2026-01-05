@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useTotals } from '../store/dataStore';
+import bathHadeethLogo from '../assets/logos/LOGO_Bath hadeeth.png';
 
 export function IntroSlide() {
   const totals = useTotals();
@@ -18,20 +19,32 @@ export function IntroSlide() {
         transition={{ duration: 0.6 }}
         className="flex-1 flex flex-col items-center justify-center z-10"
       >
-        <motion.h1
+        {/* Logo at top */}
+        <motion.img
+          src={bathHadeethLogo}
+          alt="بث حديث"
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-4xl sm:text-5xl md:text-6xl font-bold mb-3"
+          className="w-[280px] h-[280px] sm:w-[350px] sm:h-[350px] md:w-[420px] md:h-[420px] mb-4 object-contain"
+          style={{ filter: 'brightness(0) saturate(100%) invert(29%) sepia(98%) saturate(1868%) hue-rotate(243deg) brightness(87%) contrast(92%)' }}
+        />
+
+        {/* Text content below logo */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.15 }}
+          className="text-lg sm:text-xl md:text-2xl text-accent-purple mb-2"
         >
-          <span className="text-gradient">بث حديث</span>
-        </motion.h1>
+          حاضنة البودكاست العربي
+        </motion.p>
 
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-lg sm:text-xl md:text-2xl text-notion-text-secondary mb-6"
+          transition={{ duration: 0.5, delay: 0.25 }}
+          className="text-base sm:text-lg md:text-xl text-accent-purple mb-6"
         >
           التقرير السنوي 2025
         </motion.p>
@@ -39,7 +52,7 @@ export function IntroSlide() {
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.35 }}
           className="relative mb-6"
         >
           <div className="text-6xl sm:text-7xl md:text-8xl font-black text-gradient">
@@ -68,10 +81,6 @@ export function IntroSlide() {
           <div className="card-compact px-4 py-2 text-center">
             <p className="text-xl sm:text-2xl font-bold text-accent-pink">+{Math.round(totals.totalFollowers / 1000000)}M</p>
             <p className="text-xs text-notion-text-secondary">متابع</p>
-          </div>
-          <div className="card-compact px-4 py-2 text-center">
-            <p className="text-xl sm:text-2xl font-bold text-accent-orange">{totals.countriesReached}</p>
-            <p className="text-xs text-notion-text-secondary">دولة</p>
           </div>
         </motion.div>
       </motion.div>

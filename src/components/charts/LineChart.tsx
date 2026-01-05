@@ -30,9 +30,14 @@ interface LineChartProps {
   datasets: {
     label: string;
     data: number[];
-    borderColor: string;
+    borderColor: string | string[];
     backgroundColor?: string;
     fill?: boolean;
+    pointBackgroundColor?: string | string[];
+    pointBorderColor?: string | string[];
+    segment?: {
+      borderColor?: (ctx: any) => string;
+    };
   }[];
   title?: string;
 }
@@ -43,10 +48,13 @@ export function LineChart({ labels, datasets, title }: LineChartProps) {
     datasets: datasets.map((dataset) => ({
       ...dataset,
       tension: 0.4,
-      pointRadius: 4,
-      pointHoverRadius: 6,
+      pointRadius: 6,
+      pointHoverRadius: 8,
       borderWidth: 3,
       fill: dataset.fill ?? true,
+      pointBackgroundColor: dataset.pointBackgroundColor || dataset.borderColor,
+      pointBorderColor: dataset.pointBorderColor || dataset.borderColor,
+      segment: dataset.segment,
     })),
   };
 
@@ -149,7 +157,7 @@ export function LineChart({ labels, datasets, title }: LineChartProps) {
   };
 
   return (
-    <div className="w-full h-full min-h-[300px]">
+    <div className="w-full h-full">
       <Line data={data} options={options} />
     </div>
   );
