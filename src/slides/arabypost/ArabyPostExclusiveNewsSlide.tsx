@@ -40,12 +40,17 @@ export function ArabyPostExclusiveNewsSlide() {
               className="group bg-gray-50 rounded-3xl overflow-hidden border border-gray-100 hover:border-[#08b2e3]/50 hover:shadow-xl transition-all duration-300 cursor-pointer"
             >
               {/* Thumbnail */}
-              <div className="aspect-[16/10] bg-gradient-to-br from-[#08b2e3]/30 to-[#08b2e3]/10 relative overflow-hidden">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <svg className="w-16 h-16 text-[#08b2e3]/40 group-hover:text-[#08b2e3]/60 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeWidth="1.5" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
-                  </svg>
-                </div>
+              <div className="aspect-[16/10] bg-gray-200 relative overflow-hidden">
+                <img
+                  src={item.thumbnail}
+                  alt={item.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                    target.parentElement!.classList.add('flex', 'items-center', 'justify-center', 'bg-gradient-to-br', 'from-[#08b2e3]/30', 'to-[#08b2e3]/10');
+                  }}
+                />
                 {/* Exclusive Badge */}
                 <div className="absolute top-3 right-3">
                   <div className="bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full">

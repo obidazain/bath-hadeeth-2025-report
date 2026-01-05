@@ -40,12 +40,17 @@ export function ArabyPostInvestigationsSlide() {
               className="group bg-gray-50 rounded-2xl overflow-hidden border border-gray-100 hover:border-[#08b2e3]/50 hover:shadow-lg transition-all duration-300 cursor-pointer"
             >
               {/* Thumbnail */}
-              <div className="aspect-video bg-gradient-to-br from-[#08b2e3]/20 to-[#08b2e3]/5 relative overflow-hidden">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <svg className="w-12 h-12 text-[#08b2e3]/30 group-hover:text-[#08b2e3]/50 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeWidth="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                </div>
+              <div className="aspect-video bg-gray-200 relative overflow-hidden">
+                <img
+                  src={item.thumbnail}
+                  alt={item.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                    target.parentElement!.classList.add('flex', 'items-center', 'justify-center', 'bg-gradient-to-br', 'from-[#08b2e3]/20', 'to-[#08b2e3]/5');
+                  }}
+                />
                 {/* Link Icon */}
                 <div className="absolute top-2 left-2 opacity-0 group-hover:opacity-100 transition-opacity">
                   <div className="bg-[#08b2e3] text-white rounded-full p-1.5">
