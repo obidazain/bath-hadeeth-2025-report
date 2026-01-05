@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { SlideContainer } from '../components/presentation/SlideContainer';
 import { SlideNav } from '../components/presentation/SlideNav';
 
-// Slides
+// Slides - Bath Hadeeth
 import { IntroSlide } from '../slides/IntroSlide';
 import { ComparisonSlide } from '../slides/ComparisonSlide';
 import { MonthlyTrendSlide } from '../slides/MonthlyTrendSlide';
@@ -11,19 +11,100 @@ import { PodcastSlide } from '../slides/PodcastSlide';
 import { MasterDashboardSlide } from '../slides/MasterDashboardSlide';
 import { ConclusionSlide } from '../slides/ConclusionSlide';
 
+// Slides - Integral Media
+import { IntegralIntroSlide } from '../slides/integral/IntegralIntroSlide';
+import { IntegralAboutSlide } from '../slides/integral/IntegralAboutSlide';
+import { IntegralValuesIntroSlide } from '../slides/integral/IntegralValuesIntroSlide';
+import { IntegralQuranSlide } from '../slides/integral/IntegralQuranSlide';
+import { IntegralUmmaSlide } from '../slides/integral/IntegralUmmaSlide';
+import { IntegralSocietySlide } from '../slides/integral/IntegralSocietySlide';
+import { IntegralTrustSlide } from '../slides/integral/IntegralTrustSlide';
+import { IntegralTyrannySlide } from '../slides/integral/IntegralTyrannySlide';
+import { IntegralPalestineSlide } from '../slides/integral/IntegralPalestineSlide';
+import { IntegralFaithSlide } from '../slides/integral/IntegralFaithSlide';
+import { IntegralFamilySlide } from '../slides/integral/IntegralFamilySlide';
+import { IntegralWomanSlide } from '../slides/integral/IntegralWomanSlide';
+import { IntegralEconomySlide } from '../slides/integral/IntegralEconomySlide';
+import { IntegralCultureIntroSlide } from '../slides/integral/IntegralCultureIntroSlide';
+import { IntegralNamingSlide } from '../slides/integral/IntegralNamingSlide';
+import { IntegralInnovationSlide } from '../slides/integral/IntegralInnovationSlide';
+import { IntegralCommunicationSlide } from '../slides/integral/IntegralCommunicationSlide';
+import { IntegralCriticalSlide } from '../slides/integral/IntegralCriticalSlide';
+import { IntegralDecentralSlide } from '../slides/integral/IntegralDecentralSlide';
+import { IntegralAdaptSlide } from '../slides/integral/IntegralAdaptSlide';
+import { IntegralDocumentSlide } from '../slides/integral/IntegralDocumentSlide';
+import { IntegralDataSlide } from '../slides/integral/IntegralDataSlide';
+
+// Slides - Araby Post
+import { ArabyPostIntroSlide } from '../slides/arabypost/ArabyPostIntroSlide';
+import { ArabyPostStorySlide } from '../slides/arabypost/ArabyPostStorySlide';
+import { ArabyPostChallengesSlide } from '../slides/arabypost/ArabyPostChallengesSlide';
+import { ArabyPostCoronaSlide } from '../slides/arabypost/ArabyPostCoronaSlide';
+import { ArabyPostTransformSlide } from '../slides/arabypost/ArabyPostTransformSlide';
+import { ArabyPostWhyChangeSlide } from '../slides/arabypost/ArabyPostWhyChangeSlide';
+import { ArabyPostReasonsSlide } from '../slides/arabypost/ArabyPostReasonsSlide';
+import { ArabyPostNewDirectionSlide } from '../slides/arabypost/ArabyPostNewDirectionSlide';
+import { ArabyPostPolicySlide } from '../slides/arabypost/ArabyPostPolicySlide';
+import { ArabyPostWebsiteStatsSlide } from '../slides/arabypost/ArabyPostWebsiteStatsSlide';
+import { ArabyPostSocialGrowthSlide } from '../slides/arabypost/ArabyPostSocialGrowthSlide';
+import { ArabyPostEngagementSlide } from '../slides/arabypost/ArabyPostEngagementSlide';
+import { ArabyPostTransformSummarySlide } from '../slides/arabypost/ArabyPostTransformSummarySlide';
+import { ArabyPostInvestigationsSlide } from '../slides/arabypost/ArabyPostInvestigationsSlide';
+import { ArabyPostExclusiveNewsSlide } from '../slides/arabypost/ArabyPostExclusiveNewsSlide';
+
 const slides = [
-  { component: IntroSlide, title: 'المقدمة' },
-  // { component: KeyNumbersSlide, title: 'الأرقام الرئيسية' }, // Hidden in this version
+  // Integral Media Slides
+  { component: IntegralIntroSlide, title: 'Integral Media' },
+  { component: IntegralAboutSlide, title: 'ماهي انتجرال ميديا' },
+
+  // المضامين والرسالة
+  { component: IntegralValuesIntroSlide, title: 'المضامين والرسالة' },
+  { component: IntegralQuranSlide, title: 'القرآن الكريم' },
+  { component: IntegralUmmaSlide, title: 'وحدة الأمة' },
+  { component: IntegralSocietySlide, title: 'المجتمع' },
+  { component: IntegralTrustSlide, title: 'الإنسان مؤتمن' },
+  { component: IntegralTyrannySlide, title: 'الاستبداد' },
+  { component: IntegralPalestineSlide, title: 'تحرير فلسطين' },
+  { component: IntegralFaithSlide, title: 'التدين فطرة' },
+  { component: IntegralFamilySlide, title: 'الأسرة' },
+  { component: IntegralWomanSlide, title: 'المرأة الركيزة' },
+  { component: IntegralEconomySlide, title: 'الاقتصاد' },
+
+  // ثقافة العمل التوجيهية
+  { component: IntegralCultureIntroSlide, title: 'ثقافة العمل التوجيهية' },
+  { component: IntegralNamingSlide, title: 'التسمية' },
+  { component: IntegralInnovationSlide, title: 'الابتكارية' },
+  { component: IntegralCommunicationSlide, title: 'التواصل' },
+  { component: IntegralCriticalSlide, title: 'النقدية' },
+  { component: IntegralDecentralSlide, title: 'اللامركزية' },
+  { component: IntegralAdaptSlide, title: 'التكيف' },
+  { component: IntegralDocumentSlide, title: 'التوثيق' },
+  { component: IntegralDataSlide, title: 'قراءة البيانات' },
+
+  // Araby Post Slides
+  { component: ArabyPostIntroSlide, title: 'عربي بوست' },
+  { component: ArabyPostStorySlide, title: 'البداية' },
+  { component: ArabyPostPolicySlide, title: 'سياسة التحرير' },
+  { component: ArabyPostChallengesSlide, title: 'التحديات' },
+  { component: ArabyPostCoronaSlide, title: 'قفزة كورونا' },
+  { component: ArabyPostTransformSlide, title: 'التحول 2024' },
+  { component: ArabyPostWhyChangeSlide, title: 'لماذا التغيير' },
+  { component: ArabyPostReasonsSlide, title: 'أسباب التغيير' },
+  { component: ArabyPostNewDirectionSlide, title: 'الاتجاه الجديد' },
+  { component: ArabyPostWebsiteStatsSlide, title: 'زيارات الموقع' },
+  { component: ArabyPostSocialGrowthSlide, title: 'نمو السوشيال' },
+  { component: ArabyPostEngagementSlide, title: 'التفاعل' },
+  { component: ArabyPostTransformSummarySlide, title: 'ملخص التحول' },
+  { component: ArabyPostInvestigationsSlide, title: 'تحقيقات مفتوحة المصدر' },
+  { component: ArabyPostExclusiveNewsSlide, title: 'أخبار حصرية' },
+
+  // Bath Hadeeth Slides
+  { component: IntroSlide, title: 'بث حديث' },
   { component: ComparisonSlide, title: 'مقارنة 2024 vs 2025' },
-  // { component: PlatformDistributionSlide, title: 'توزيع المنصات' }, // Hidden in this version
   { component: MonthlyTrendSlide, title: 'النمو الشهري' },
-  // { component: WatchTimeSlide, title: 'مدة المشاهدة' }, // Hidden in this version
   { component: ProgramsRankingSlide, title: 'ترتيب البرامج' },
-  // { component: FollowersSlide, title: 'نمو المتابعين' }, // Hidden in this version
   { component: PodcastSlide, title: 'المنصات الصوتية' },
   { component: MasterDashboardSlide, title: 'لوحة التحكم الرئيسية' },
-  // { component: ProductionSlide, title: 'عمليات الإنتاج 2025' }, // Hidden
-  // ...programSlides.map(p => ({ component: p.component, title: p.name })), // Hidden - all program slides
   { component: ConclusionSlide, title: 'الخاتمة' },
 ];
 
