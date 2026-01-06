@@ -50,8 +50,8 @@ export function ArabyPostEngagementSlide() {
             >
               <defs>
                 <linearGradient id="color2024" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#08b2e3" stopOpacity={0.1} />
-                  <stop offset="95%" stopColor="#08b2e3" stopOpacity={0} />
+                  <stop offset="5%" stopColor="#9ca3af" stopOpacity={0.2} />
+                  <stop offset="95%" stopColor="#9ca3af" stopOpacity={0} />
                 </linearGradient>
                 <linearGradient id="color2025" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="5%" stopColor="#08b2e3" stopOpacity={0.4} />
@@ -67,6 +67,7 @@ export function ArabyPostEngagementSlide() {
               <YAxis
                 stroke="#6b7280"
                 fontSize={12}
+                tickFormatter={(value) => `${(value / 1000).toFixed(0)}M`}
               />
               <Tooltip
                 contentStyle={{
@@ -75,16 +76,15 @@ export function ArabyPostEngagementSlide() {
                   borderRadius: '12px',
                   boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)',
                 }}
-                formatter={(value) => [Number(value).toLocaleString(), '']}
+                formatter={(value) => [`${(Number(value) / 1000).toFixed(1)}M تفاعل`, '']}
               />
               <Legend />
               <Area
                 type="monotone"
                 dataKey="year2024"
                 name="2024"
-                stroke="#08b2e3"
+                stroke="#9ca3af"
                 strokeWidth={2}
-                strokeOpacity={0.4}
                 fill="url(#color2024)"
               />
               <Area
@@ -108,15 +108,11 @@ export function ArabyPostEngagementSlide() {
         >
           <div className="text-center">
             <p className="text-sm text-gray-500">يناير 2024</p>
-            <p className="text-2xl font-bold text-gray-400">300</p>
+            <p className="text-2xl font-bold text-gray-400">300K تفاعل</p>
           </div>
           <div className="text-center">
             <p className="text-sm text-gray-500">ذروة سبتمبر 2025</p>
-            <p className="text-2xl font-bold text-[#08b2e3]">1,845</p>
-          </div>
-          <div className="text-center">
-            <p className="text-sm text-gray-500">النمو</p>
-            <p className="text-2xl font-bold text-green-500">+515%</p>
+            <p className="text-2xl font-bold text-[#08b2e3]">1.8M تفاعل</p>
           </div>
         </motion.div>
       </div>

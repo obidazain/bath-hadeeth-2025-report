@@ -208,27 +208,27 @@ export function MasterDashboardSlide() {
             <p className="text-[9px] sm:text-[10px] text-notion-text-secondary">متابع</p>
           </div>
           <div className="card-compact px-2 py-2 text-center">
-            <p className="text-xs sm:text-sm font-bold text-accent-purple">{filteredPrograms.length}</p>
+            <p className="text-xs sm:text-sm font-bold text-primary">{filteredPrograms.length}</p>
             <p className="text-[9px] sm:text-[10px] text-notion-text-secondary">برنامج</p>
           </div>
           <div className="card-compact px-2 py-2 text-center">
-            <p className="text-xs sm:text-sm font-bold text-blue-500">{formatNumber(totals.watchTime)}</p>
+            <p className="text-xs sm:text-sm font-bold text-accent-pink">{formatNumber(totals.watchTime)}</p>
             <p className="text-[9px] sm:text-[10px] text-notion-text-secondary">ساعة مشاهدة</p>
           </div>
           <div className="card-compact px-2 py-2 text-center">
-            <p className="text-xs sm:text-sm font-bold text-orange-500">{formatNumber(totals.shorts)}</p>
+            <p className="text-xs sm:text-sm font-bold text-primary">{formatNumber(totals.shorts)}</p>
             <p className="text-[9px] sm:text-[10px] text-notion-text-secondary">Shorts</p>
           </div>
           <div className="card-compact px-2 py-2 text-center">
-            <p className="text-xs sm:text-sm font-bold text-green-500">{formatNumber(51000)}</p>
+            <p className="text-xs sm:text-sm font-bold text-accent-pink">{formatNumber(51000)}</p>
             <p className="text-[9px] sm:text-[10px] text-notion-text-secondary">منشور فيديو</p>
           </div>
           <div className="card-compact px-2 py-2 text-center">
-            <p className="text-xs sm:text-sm font-bold text-cyan-500">60</p>
+            <p className="text-xs sm:text-sm font-bold text-primary">60</p>
             <p className="text-[9px] sm:text-[10px] text-notion-text-secondary">حساب تواصل</p>
           </div>
           <div className="card-compact px-2 py-2 text-center">
-            <p className="text-xs sm:text-sm font-bold text-teal-500">50</p>
+            <p className="text-xs sm:text-sm font-bold text-accent-pink">50</p>
             <p className="text-[9px] sm:text-[10px] text-notion-text-secondary">منصة بودكاست</p>
           </div>
         </motion.div>
@@ -341,11 +341,7 @@ export function MasterDashboardSlide() {
                     <div className="flex items-center gap-2 mb-2">
                       {/* Rank Badge */}
                       <span className={`w-8 h-8 rounded-full text-white text-sm font-bold flex items-center justify-center shadow-sm flex-shrink-0 ${
-                        isStopped ? 'bg-gray-400' :
-                        index === 0 ? 'bg-gradient-to-br from-yellow-400 to-yellow-600' :
-                        index === 1 ? 'bg-gradient-to-br from-gray-300 to-gray-500' :
-                        index === 2 ? 'bg-gradient-to-br from-orange-400 to-orange-600' :
-                        'bg-gradient-to-br from-purple-500 to-purple-700'
+                        isStopped ? 'bg-gray-400' : 'bg-[#9a6dd7]'
                       }`}>
                         {index + 1}
                       </span>
@@ -378,7 +374,7 @@ export function MasterDashboardSlide() {
                         initial={{ width: 0 }}
                         animate={{ width: `${Math.min(100, (program.filteredViews / maxViews) * 100)}%` }}
                         transition={{ duration: 0.8, delay: index * 0.03 }}
-                        className="h-full bg-gradient-to-r from-primary to-accent-pink rounded-full"
+                        className="h-full bg-[#9a6dd7] rounded-full"
                       />
                     </div>
 
@@ -391,19 +387,19 @@ export function MasterDashboardSlide() {
                       {program.filteredWatchTime > 0 && (
                         <div>
                           <p className="text-notion-text-secondary text-[10px]">ساعات</p>
-                          <p className="font-bold text-blue-500 text-base">{formatNumber(program.filteredWatchTime)}</p>
+                          <p className="font-bold text-primary text-base">{formatNumber(program.filteredWatchTime)}</p>
                         </div>
                       )}
                       {program.filteredShorts > 0 && (
                         <div>
                           <p className="text-notion-text-secondary text-[10px]">مشاهدات Shorts</p>
-                          <p className="font-bold text-orange-500 text-base">{formatNumber(program.filteredShorts)}</p>
+                          <p className="font-bold text-accent-pink text-base">{formatNumber(program.filteredShorts)}</p>
                         </div>
                       )}
                       {program.filteredVideos > 0 && (
                         <div>
                           <p className="text-notion-text-secondary text-[10px]">حلقات طويلة</p>
-                          <p className="font-bold text-red-500 text-base">{formatNumber(program.filteredVideos)}</p>
+                          <p className="font-bold text-primary text-base">{formatNumber(program.filteredVideos)}</p>
                         </div>
                       )}
                     </div>
@@ -471,8 +467,8 @@ export function MasterDashboardSlide() {
                       <th className="text-right py-3 px-3 font-bold text-notion-text w-40">البرنامج</th>
                       <th className="text-center py-3 px-3 font-bold text-primary w-32">المشاهدات</th>
                       <th className="text-center py-3 px-3 font-bold text-accent-pink w-24">المتابعين</th>
-                      <th className="text-center py-3 px-3 font-bold text-blue-500 w-24">الساعات</th>
-                      <th className="text-center py-3 px-3 font-bold text-orange-500 w-24">Shorts</th>
+                      <th className="text-center py-3 px-3 font-bold text-primary w-24">الساعات</th>
+                      <th className="text-center py-3 px-3 font-bold text-accent-pink w-24">Shorts</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -481,12 +477,7 @@ export function MasterDashboardSlide() {
                       return (
                         <tr key={program.id} className="border-b border-notion-border/30 hover:bg-notion-secondary/20 transition-colors">
                           <td className="py-3 px-3 text-center">
-                            <span className={`w-8 h-8 rounded-full text-white text-sm font-bold inline-flex items-center justify-center ${
-                              index === 0 ? 'bg-gradient-to-br from-yellow-400 to-yellow-600' :
-                              index === 1 ? 'bg-gradient-to-br from-gray-300 to-gray-500' :
-                              index === 2 ? 'bg-gradient-to-br from-orange-400 to-orange-600' :
-                              'bg-gradient-to-br from-purple-500 to-purple-700'
-                            }`}>
+                            <span className="w-8 h-8 rounded-full text-white text-sm font-bold inline-flex items-center justify-center bg-[#9a6dd7]">
                               {index + 1}
                             </span>
                           </td>
@@ -502,8 +493,8 @@ export function MasterDashboardSlide() {
                             <span className="font-bold text-primary text-base">{formatNumber(program.filteredViews)}</span>
                           </td>
                           <td className="py-3 px-3 text-center font-bold text-accent-pink text-base">{formatNumber(program.filteredFollowers)}</td>
-                          <td className="py-3 px-3 text-center font-bold text-blue-500 text-base">{formatNumber(program.filteredWatchTime)}</td>
-                          <td className="py-3 px-3 text-center font-bold text-orange-500 text-base">{formatNumber(program.filteredShorts)}</td>
+                          <td className="py-3 px-3 text-center font-bold text-primary text-base">{formatNumber(program.filteredWatchTime)}</td>
+                          <td className="py-3 px-3 text-center font-bold text-accent-pink text-base">{formatNumber(program.filteredShorts)}</td>
                         </tr>
                       );
                     })}

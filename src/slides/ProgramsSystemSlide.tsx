@@ -1,4 +1,6 @@
 import { motion } from 'framer-motion';
+import { MapPin, GraduationCap, Globe, Star } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 import { programLogos } from '../data/report-data';
 
 interface ProgramItem {
@@ -11,7 +13,7 @@ interface ProgramItem {
 interface CategoryData {
   title: string;
   subtitle: string;
-  icon: string;
+  icon: LucideIcon;
   color: string;
   programs: ProgramItem[];
 }
@@ -20,7 +22,7 @@ const categories: CategoryData[] = [
   {
     title: 'المحتوى المحلي',
     subtitle: 'تغطية محلية متخصصة',
-    icon: '🗺️',
+    icon: MapPin,
     color: 'purple',
     programs: [
       { id: 'syria', name: 'سوريا بودكاست', description: 'نشط', status: 'active' },
@@ -33,8 +35,8 @@ const categories: CategoryData[] = [
   {
     title: 'المحتوى المتخصص',
     subtitle: 'برامج تخصصية متعمقة',
-    icon: '🎓',
-    color: 'pink',
+    icon: GraduationCap,
+    color: 'purple',
     programs: [
       { id: 'bast', name: 'بسط بودكاست', description: 'الدين والفكر والواقع', status: 'active' },
       { id: 'shahada', name: 'شهادة بودكاست', description: 'شهادات من الواقع', status: 'active' },
@@ -46,19 +48,19 @@ const categories: CategoryData[] = [
   {
     title: 'المحتوى العام',
     subtitle: 'تغطية شاملة ومتنوعة',
-    icon: '🌐',
-    color: 'blue',
+    icon: Globe,
+    color: 'purple',
     programs: [
-      { id: 'ehata', name: 'إحاطة', description: 'خبري نخبوي', status: 'active' },
-      { id: 'arabypost', name: 'عربي بوست', description: 'اخباري ومنوع', status: 'active' },
+      { id: 'ihata', name: 'إحاطة', description: 'خبري نخبوي', status: 'active' },
+      { id: 'arabi-post', name: 'عربي بوست', description: 'اخباري ومنوع', status: 'active' },
       { id: 'sharq', name: 'الشرق بودكاست', description: 'السرديات والصورة الكبيرة للمنطقة والعالم', status: 'active' },
     ],
   },
   {
     title: 'إنتاجات أخرى',
     subtitle: 'منتجات نقدمها للمؤسسات الرديفة',
-    icon: '⭐',
-    color: 'orange',
+    icon: Star,
+    color: 'purple',
     programs: [
       { id: 'mawazen', name: 'موازين', description: 'جيوبولتيك العالم', status: 'active' },
       { id: 'rabee', name: 'الربيع الأول', description: 'نظرة استراتيجية في السيرة النبوية', status: 'active' },
@@ -77,15 +79,9 @@ const stats = [
 ];
 
 export function ProgramsSystemSlide() {
-  const getColorClasses = (color: string) => {
-    const colors: Record<string, { bg: string; border: string; text: string; icon: string }> = {
-      purple: { bg: 'bg-purple-50', border: 'border-purple-200', text: 'text-purple-600', icon: 'bg-purple-500' },
-      pink: { bg: 'bg-pink-50', border: 'border-pink-200', text: 'text-pink-600', icon: 'bg-pink-500' },
-      blue: { bg: 'bg-blue-50', border: 'border-blue-200', text: 'text-blue-600', icon: 'bg-blue-500' },
-      orange: { bg: 'bg-orange-50', border: 'border-orange-200', text: 'text-orange-600', icon: 'bg-orange-500' },
-      gray: { bg: 'bg-gray-50', border: 'border-gray-200', text: 'text-gray-600', icon: 'bg-gray-500' },
-    };
-    return colors[color] || colors.purple;
+  // توحيد الألوان - بنفسجي فقط مع رمادي
+  const getColorClasses = () => {
+    return { bg: 'bg-gray-50', border: 'border-gray-200', text: 'text-[#9a6dd7]', icon: 'bg-[#9a6dd7]' };
   };
 
   return (
@@ -134,7 +130,7 @@ export function ProgramsSystemSlide() {
         {/* Categories Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {categories.map((category, catIndex) => {
-            const colors = getColorClasses(category.color);
+            const colors = getColorClasses();
             return (
               <motion.div
                 key={category.title}
@@ -146,7 +142,7 @@ export function ProgramsSystemSlide() {
                 {/* Category Header */}
                 <div className="text-center mb-4">
                   <div className={`w-12 h-12 ${colors.icon} rounded-full flex items-center justify-center mx-auto mb-2`}>
-                    <span className="text-2xl">{category.icon}</span>
+                    <category.icon className="w-6 h-6 text-white" />
                   </div>
                   <h3 className={`text-lg font-bold ${colors.text}`}>{category.title}</h3>
                   <p className="text-xs text-gray-500">{category.subtitle}</p>

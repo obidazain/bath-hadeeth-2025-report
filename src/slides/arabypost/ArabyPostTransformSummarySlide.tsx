@@ -8,10 +8,9 @@ const stats = [
         <path strokeWidth="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
       </svg>
     ),
-    change: -72,
     from: '22.9M',
     to: '6.5M',
-    color: 'red',
+    is2024Higher: true,
   },
   {
     platform: 'إنستجرام',
@@ -22,10 +21,10 @@ const stats = [
         <circle cx="18" cy="6" r="1" fill="currentColor" />
       </svg>
     ),
-    change: 524,
-    from: '6.2K',
-    to: '38.7K',
-    color: 'green',
+    from: '6.2M',
+    to: '38.7M',
+    is2024Higher: false,
+    subtitle: 'ذروة المشاهدات',
   },
   {
     platform: 'تيكتوك',
@@ -34,10 +33,10 @@ const stats = [
         <path strokeWidth="2" d="M9 12a4 4 0 104 4V4a5 5 0 005 5" />
       </svg>
     ),
-    change: 12222,
-    from: '180',
-    to: '22K',
-    color: 'green',
+    from: '180K',
+    to: '22M',
+    is2024Higher: false,
+    subtitle: 'ذروة المشاهدات',
   },
   {
     platform: 'فيسبوك',
@@ -46,10 +45,9 @@ const stats = [
         <path strokeWidth="2" d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
       </svg>
     ),
-    change: 515,
     from: '300',
     to: '1.8K',
-    color: 'green',
+    is2024Higher: false,
     subtitle: 'التفاعلات',
   },
 ];
@@ -97,21 +95,22 @@ export function ArabyPostTransformSummarySlide() {
               {/* Platform Name */}
               <h3 className="text-lg font-bold text-gray-800 mb-1">{stat.platform}</h3>
               {stat.subtitle && (
-                <p className="text-xs text-gray-500 mb-2">{stat.subtitle}</p>
+                <p className="text-xs text-gray-500 mb-3">{stat.subtitle}</p>
               )}
 
-              {/* Change Percentage */}
-              <div className={`text-3xl font-bold mb-3 ${stat.color === 'green' ? 'text-green-500' : 'text-red-500'}`}>
-                {stat.change > 0 ? '+' : ''}{stat.change.toLocaleString()}%
-              </div>
-
               {/* From/To */}
-              <div className="flex items-center justify-center gap-2 text-sm">
-                <span className="text-gray-400">{stat.from}</span>
-                <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="flex items-center justify-center gap-3 mt-2">
+                <div className="text-center">
+                  <p className="text-xs text-gray-400 mb-1">2024</p>
+                  <span className={`text-xl font-bold ${stat.is2024Higher ? 'text-[#08b2e3]' : 'text-gray-400'}`}>{stat.from}</span>
+                </div>
+                <svg className="w-5 h-5 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
-                <span className="text-gray-700 font-semibold">{stat.to}</span>
+                <div className="text-center">
+                  <p className="text-xs text-gray-400 mb-1">2025</p>
+                  <span className={`text-xl font-bold ${stat.is2024Higher ? 'text-gray-400' : 'text-[#08b2e3]'}`}>{stat.to}</span>
+                </div>
               </div>
             </motion.div>
           ))}

@@ -7,7 +7,7 @@ export function IntroSlide() {
       {/* Background gradient effect */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-[#9a6dd7]/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-[#e255a1]/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-[#9a6dd7]/5 rounded-full blur-3xl" />
       </div>
 
       {/* Content */}
@@ -44,7 +44,7 @@ export function IntroSlide() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="text-center mb-6"
         >
-          <div className="text-6xl sm:text-7xl md:text-8xl font-black bg-gradient-to-r from-[#9a6dd7] to-[#e255a1] bg-clip-text text-transparent">
+          <div className="text-6xl sm:text-7xl md:text-8xl font-black text-[#9a6dd7]">
             +1.2B
           </div>
           <p className="text-base sm:text-lg text-gray-500 mt-2">
@@ -64,7 +64,7 @@ export function IntroSlide() {
             <p className="text-sm text-gray-500">برنامج</p>
           </div>
           <div className="bg-gray-50 border border-gray-100 rounded-2xl px-6 py-3 text-center">
-            <p className="text-2xl sm:text-3xl font-bold text-[#e255a1]">+8.2M</p>
+            <p className="text-2xl sm:text-3xl font-bold text-[#9a6dd7]">+8.2M</p>
             <p className="text-sm text-gray-500">متابع</p>
           </div>
         </motion.div>
@@ -74,7 +74,7 @@ export function IntroSlide() {
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="w-32 h-1 bg-gradient-to-r from-[#9a6dd7] to-[#e255a1] rounded-full mt-8"
+          className="w-32 h-1 bg-[#9a6dd7] rounded-full mt-8"
         />
       </div>
     </div>

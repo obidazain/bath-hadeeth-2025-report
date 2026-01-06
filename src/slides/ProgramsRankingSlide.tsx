@@ -26,7 +26,7 @@ export function ProgramsRankingSlide() {
 
   // Create colors array - gray for stopped programs, purple for active
   const pointColors = sortedPrograms.map(p =>
-    stoppedPrograms.includes(p.id) ? '#9ca3af' : '#7c3aed'
+    stoppedPrograms.includes(p.id) ? '#9ca3af' : '#9a6dd7'
   );
 
   // Create legend data with logos - show all programs
@@ -74,11 +74,7 @@ export function ProgramsRankingSlide() {
                 transition={{ delay: 0.1 + index * 0.1 }}
                 className="card-compact text-center px-5 py-3 flex items-center gap-3 shadow-md hover:shadow-lg transition-shadow"
               >
-                <div className={`w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold text-white shadow-sm ${
-                  index === 0 ? 'bg-gradient-to-br from-yellow-400 to-yellow-600' :
-                  index === 1 ? 'bg-gradient-to-br from-gray-300 to-gray-500' :
-                  'bg-gradient-to-br from-orange-400 to-orange-600'
-                }`}>
+                <div className={`w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold text-white shadow-sm bg-[#9a6dd7]`}>
                   {index + 1}
                 </div>
                 {logoPath && (
@@ -109,8 +105,8 @@ export function ProgramsRankingSlide() {
                 {
                   label: 'إجمالي المشاهدات',
                   data,
-                  borderColor: '#7c3aed',
-                  backgroundColor: 'rgba(124, 58, 237, 0.15)',
+                  borderColor: '#9a6dd7',
+                  backgroundColor: 'rgba(154, 109, 215, 0.15)',
                   pointBackgroundColor: pointColors,
                   pointBorderColor: pointColors,
                 },
@@ -137,11 +133,7 @@ export function ProgramsRankingSlide() {
               <div className="flex items-center gap-4">
                 {/* Rank Badge */}
                 <span className={`w-10 h-10 rounded-full text-white text-lg font-bold flex items-center justify-center shadow-sm flex-shrink-0 ${
-                  item.isStopped ? 'bg-gray-400' :
-                  index === 0 ? 'bg-gradient-to-br from-yellow-400 to-yellow-600' :
-                  index === 1 ? 'bg-gradient-to-br from-gray-300 to-gray-500' :
-                  index === 2 ? 'bg-gradient-to-br from-orange-400 to-orange-600' :
-                  'bg-gradient-to-br from-purple-500 to-purple-700'
+                  item.isStopped ? 'bg-gray-400' : 'bg-[#9a6dd7]'
                 }`}>
                   {item.rank}
                 </span>
@@ -155,9 +147,9 @@ export function ProgramsRankingSlide() {
                 <div className="flex-1 min-w-0">
                   <p className="text-base font-semibold text-notion-text truncate">{item.name}</p>
                   {item.isStopped ? (
-                    <p className="text-xs text-red-500 font-medium">برنامج متوقف</p>
+                    <p className="text-xs text-gray-500 font-medium">برنامج متوقف</p>
                   ) : (
-                    <p className="text-lg text-purple-600 font-bold">{formatNumber(item.views)}</p>
+                    <p className="text-lg text-[#9a6dd7] font-bold">{formatNumber(item.views)}</p>
                   )}
                 </div>
               </div>

@@ -45,26 +45,25 @@ export function ArabyPostSocialGrowthSlide() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="bg-gray-50 rounded-3xl p-5 border border-gray-100"
           >
-            <h3 className="text-xl font-bold text-gray-800 mb-4 text-right flex items-center justify-end gap-2">
-              <span>إنستجرام</span>
-              <span className="text-green-500 text-sm font-normal">+524%</span>
+            <h3 className="text-xl font-bold text-gray-800 mb-4 text-right">
+              إنستجرام
             </h3>
             <div className="h-[280px]">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={instagramData} margin={{ top: 10, right: 10, left: 0, bottom: 10 }}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
                   <XAxis dataKey="monthEn" stroke="#6b7280" fontSize={10} />
-                  <YAxis stroke="#6b7280" fontSize={10} tickFormatter={(v: number) => `${v / 1000}K`} />
+                  <YAxis stroke="#6b7280" fontSize={10} tickFormatter={(v: number) => `${(v / 1000).toFixed(0)}M`} />
                   <Tooltip
                     contentStyle={{
                       backgroundColor: '#fff',
                       border: '1px solid #e5e7eb',
                       borderRadius: '8px',
                     }}
-                    formatter={(value) => [Number(value).toLocaleString(), '']}
+                    formatter={(value) => [`${(Number(value) / 1000).toFixed(1)}M`, '']}
                   />
                   <Legend />
-                  <Bar dataKey="year2024" name="2024" fill="#08b2e3" fillOpacity={0.3} radius={[4, 4, 0, 0]} />
+                  <Bar dataKey="year2024" name="2024" fill="#9ca3af" radius={[4, 4, 0, 0]} />
                   <Bar dataKey="year2025" name="2025" fill="#08b2e3" radius={[4, 4, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
@@ -78,26 +77,25 @@ export function ArabyPostSocialGrowthSlide() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="bg-gray-50 rounded-3xl p-5 border border-gray-100"
           >
-            <h3 className="text-xl font-bold text-gray-800 mb-4 text-right flex items-center justify-end gap-2">
-              <span>تيكتوك</span>
-              <span className="text-green-500 text-sm font-normal">نمو هائل</span>
+            <h3 className="text-xl font-bold text-gray-800 mb-4 text-right">
+              تيكتوك
             </h3>
             <div className="h-[280px]">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={tiktokData} margin={{ top: 10, right: 10, left: 0, bottom: 10 }}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
                   <XAxis dataKey="monthEn" stroke="#6b7280" fontSize={10} />
-                  <YAxis stroke="#6b7280" fontSize={10} tickFormatter={(v: number) => `${v / 1000}K`} />
+                  <YAxis stroke="#6b7280" fontSize={10} tickFormatter={(v: number) => `${(v / 1000).toFixed(0)}M`} />
                   <Tooltip
                     contentStyle={{
                       backgroundColor: '#fff',
                       border: '1px solid #e5e7eb',
                       borderRadius: '8px',
                     }}
-                    formatter={(value) => [Number(value).toLocaleString(), '']}
+                    formatter={(value) => [`${(Number(value) / 1000).toFixed(1)}M`, '']}
                   />
                   <Legend />
-                  <Bar dataKey="year2024" name="2024" fill="#08b2e3" fillOpacity={0.3} radius={[4, 4, 0, 0]} />
+                  <Bar dataKey="year2024" name="2024" fill="#9ca3af" radius={[4, 4, 0, 0]} />
                   <Bar dataKey="year2025" name="2025" fill="#08b2e3" radius={[4, 4, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
@@ -114,11 +112,11 @@ export function ArabyPostSocialGrowthSlide() {
         >
           <div className="text-center">
             <p className="text-sm text-gray-500">ذروة إنستجرام 2025</p>
-            <p className="text-xl font-bold text-[#08b2e3]">38,700</p>
+            <p className="text-xl font-bold text-[#08b2e3]">38.7M مشاهدة</p>
           </div>
           <div className="text-center">
             <p className="text-sm text-gray-500">ذروة تيكتوك 2024</p>
-            <p className="text-xl font-bold text-[#08b2e3]">41,100</p>
+            <p className="text-xl font-bold text-gray-400">41.1M مشاهدة</p>
           </div>
         </motion.div>
       </div>

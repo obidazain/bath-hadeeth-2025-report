@@ -1,14 +1,16 @@
 import { motion } from 'framer-motion';
+import { Eye, Users, Clapperboard } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 import { useTotals } from '../store/dataStore';
 import { formatNumber } from '../utils/formatters';
 
 export function ConclusionSlide() {
   const totals = useTotals();
 
-  const highlights = [
-    { label: 'إجمالي المشاهدات', value: totals.viewsWithFacebook, icon: '👁️' },
-    { label: 'إجمالي المتابعين', value: totals.totalFollowers, icon: '👥' },
-    { label: 'برنامج', value: 12, icon: '🎬' },
+  const highlights: { label: string; value: number; icon: LucideIcon }[] = [
+    { label: 'إجمالي المشاهدات', value: totals.viewsWithFacebook, icon: Eye },
+    { label: 'إجمالي المتابعين', value: totals.totalFollowers, icon: Users },
+    { label: 'برنامج', value: 12, icon: Clapperboard },
   ];
 
   return (
@@ -58,7 +60,7 @@ export function ConclusionSlide() {
               transition={{ delay: 0.4 + index * 0.08 }}
               className="card-compact text-center py-3"
             >
-              <span className="text-2xl mb-1 block">{item.icon}</span>
+              <item.icon className="w-7 h-7 mx-auto mb-1 text-primary" />
               <p className="text-xl sm:text-2xl font-bold text-gradient mb-0.5">
                 {formatNumber(item.value)}
               </p>

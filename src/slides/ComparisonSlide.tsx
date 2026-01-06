@@ -10,37 +10,31 @@ export function ComparisonSlide() {
       title: 'إجمالي المشاهدات',
       value2024: 717152811, // From report-data-2024.ts
       value2025: 1229213147, // Sum of all platforms 2025
-      color: 'purple',
     },
     {
       title: 'إجمالي المتابعين',
       value2024: 2995654, // From report-data-2024.ts
       value2025: 8200537, // From Total Followers.csv
-      color: 'pink',
     },
     {
       title: 'مدة المشاهدة "يوتيوب"',
       value2024: 10500000, // Estimated 2024
       value2025: 26598566, // From YouTube.csv watch time
-      color: 'orange',
     },
     {
       title: 'عدد الحلقات',
       value2024: 373,
       value2025: 438,
-      color: 'green',
     },
     {
       title: 'عدد الضيوف',
       value2024: 253,
       value2025: 143,
-      color: 'blue',
     },
     {
       title: 'عدد المنشورات',
       value2024: 31000,
       value2025: 51000,
-      color: 'cyan',
     },
   ];
 
@@ -110,7 +104,7 @@ export function ComparisonSlide() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.1 }}
-            className="grid grid-cols-3 gap-4 mb-3 px-6 py-2 rounded-xl bg-gradient-to-l from-purple-100 to-pink-100"
+            className="grid grid-cols-3 gap-4 mb-3 px-6 py-2 rounded-xl bg-gray-100"
           >
             <div className="text-right">
               <span className="text-lg font-bold text-accent-purple">المؤشر</span>
@@ -142,16 +136,7 @@ export function ComparisonSlide() {
                   </p>
                 </div>
                 <div className="text-center">
-                  <p className={`text-xl font-bold tabular-nums ${
-                    stat.color === 'purple' ? 'text-accent-purple' :
-                    stat.color === 'pink' ? 'text-accent-pink' :
-                    stat.color === 'green' ? 'text-green-500' :
-                    stat.color === 'blue' ? 'text-blue-500' :
-                    stat.color === 'orange' ? 'text-orange-500' :
-                    stat.color === 'cyan' ? 'text-cyan-500' :
-                    stat.color === 'teal' ? 'text-teal-500' :
-                    'text-red-500'
-                  }`}>
+                  <p className="text-xl font-bold tabular-nums text-accent-purple">
                     {formatNumber(stat.value2025)}
                   </p>
                 </div>
@@ -193,9 +178,9 @@ export function ComparisonSlide() {
                     {platform.hasBreakdown ? (
                       <div className="grid grid-cols-2 gap-2">
                         {/* حلقات طويلة */}
-                        <div className="bg-red-50 rounded-lg p-2">
-                          <p className="text-[10px] font-medium text-red-600 mb-0.5">حلقات طويلة</p>
-                          <p className="text-base font-bold text-red-500 tabular-nums mb-0.5">
+                        <div className="bg-gray-50 rounded-lg p-2">
+                          <p className="text-[10px] font-medium text-gray-600 mb-0.5">حلقات طويلة</p>
+                          <p className="text-base font-bold text-accent-purple tabular-nums mb-0.5">
                             {formatNumber(platform.videos2025)}
                           </p>
                           <p className="text-xs font-semibold text-gray-500 tabular-nums">
@@ -203,8 +188,8 @@ export function ComparisonSlide() {
                           </p>
                         </div>
                         {/* مقاطع قصيرة */}
-                        <div className="bg-purple-50 rounded-lg p-2">
-                          <p className="text-[10px] font-medium text-purple-600 mb-0.5">مقاطع قصيرة</p>
+                        <div className="bg-gray-50 rounded-lg p-2">
+                          <p className="text-[10px] font-medium text-gray-600 mb-0.5">مقاطع قصيرة</p>
                           <p className="text-base font-bold text-accent-purple tabular-nums mb-0.5">
                             {formatNumber(platform.shorts2025)}
                           </p>
@@ -214,7 +199,7 @@ export function ComparisonSlide() {
                         </div>
                       </div>
                     ) : (
-                      <div className="bg-purple-50 rounded-lg p-3">
+                      <div className="bg-gray-50 rounded-lg p-3">
                         <p className="text-xl font-bold text-accent-purple tabular-nums mb-1">
                           {formatNumber(platform.views2025)}
                         </p>
@@ -228,7 +213,7 @@ export function ComparisonSlide() {
                   {/* المتابعين */}
                   <div>
                     <p className="text-xs font-semibold text-notion-text mb-1.5">المتابعين</p>
-                    <div className="bg-pink-50 rounded-lg p-3">
+                    <div className="bg-gray-50 rounded-lg p-3">
                       <p className="text-xl font-bold text-accent-pink tabular-nums mb-1">
                         {formatNumber(platform.followers2025)}
                       </p>

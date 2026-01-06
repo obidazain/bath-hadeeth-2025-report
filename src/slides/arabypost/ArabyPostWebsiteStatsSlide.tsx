@@ -57,7 +57,7 @@ export function ArabyPostWebsiteStatsSlide() {
               <YAxis
                 stroke="#6b7280"
                 fontSize={12}
-                tickFormatter={(value) => `${value}K`}
+                tickFormatter={(value) => `${(value / 1000).toFixed(1)}M`}
               />
               <Tooltip
                 contentStyle={{
@@ -66,17 +66,16 @@ export function ArabyPostWebsiteStatsSlide() {
                   borderRadius: '12px',
                   boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)',
                 }}
-                formatter={(value) => [`${Number(value).toLocaleString()}K`, '']}
+                formatter={(value) => [`${(Number(value) / 1000).toFixed(2)}M`, '']}
               />
               <Legend />
               <Line
                 type="monotone"
                 dataKey="year2024"
                 name="2024"
-                stroke="#08b2e3"
+                stroke="#9ca3af"
                 strokeWidth={3}
-                strokeOpacity={0.4}
-                dot={{ fill: '#08b2e3', strokeWidth: 2, r: 4, fillOpacity: 0.4 }}
+                dot={{ fill: '#9ca3af', strokeWidth: 2, r: 4 }}
                 activeDot={{ r: 6 }}
               />
               <Line
@@ -106,10 +105,6 @@ export function ArabyPostWebsiteStatsSlide() {
           <div className="text-center">
             <p className="text-sm text-gray-500">إجمالي 2025</p>
             <p className="text-2xl font-bold text-[#08b2e3]">6.5M</p>
-          </div>
-          <div className="text-center">
-            <p className="text-sm text-gray-500">التغير</p>
-            <p className="text-2xl font-bold text-red-500">-72%</p>
           </div>
         </motion.div>
       </div>
