@@ -29,11 +29,12 @@ export function ArabyPostEngagementSlide() {
           transition={{ duration: 0.5 }}
           className="mb-6"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 text-right">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900">
             التفاعل على{' '}
             <span className="text-[#08b2e3]">فيسبوك</span>
           </h2>
-          <p className="text-lg text-gray-500 mt-2 text-right">عدد التفاعلات الشهرية - مقارنة 2024 vs 2025</p>
+          <p className="text-xl text-gray-500 mt-1" dir="ltr" style={{ textAlign: 'left' }}>Facebook Engagement</p>
+          <p className="text-lg text-gray-400 mt-2">عدد التفاعلات الشهرية - مقارنة 2024 vs 2025 | Monthly Interactions - 2024 vs 2025</p>
         </motion.div>
 
         {/* Chart */}
@@ -76,7 +77,7 @@ export function ArabyPostEngagementSlide() {
                   borderRadius: '12px',
                   boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)',
                 }}
-                formatter={(value) => [`${(Number(value) / 1000).toFixed(1)}M تفاعل`, '']}
+                formatter={(value) => [`${(Number(value) / 1000).toFixed(1)}M interactions`, '']}
               />
               <Legend />
               <Area
@@ -107,12 +108,12 @@ export function ArabyPostEngagementSlide() {
           className="flex justify-center gap-8 mt-6"
         >
           <div className="text-center">
-            <p className="text-sm text-gray-500">يناير 2024</p>
-            <p className="text-2xl font-bold text-gray-400">300K تفاعل</p>
+            <p className="text-sm text-gray-500">يناير 2024 | January 2024</p>
+            <p className="text-2xl font-bold text-gray-400">300 ألف تفاعل | 300K interactions</p>
           </div>
           <div className="text-center">
-            <p className="text-sm text-gray-500">ذروة سبتمبر 2025</p>
-            <p className="text-2xl font-bold text-[#08b2e3]">1.8M تفاعل</p>
+            <p className="text-sm text-gray-500">ذروة سبتمبر 2025 | Peak September 2025</p>
+            <p className="text-2xl font-bold text-[#08b2e3]">1.8 مليون تفاعل | 1.8M interactions</p>
           </div>
         </motion.div>
       </div>

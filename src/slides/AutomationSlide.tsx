@@ -17,14 +17,14 @@ const comparisonStats: ComparisonStat[] = [
 export function AutomationSlide() {
 
   return (
-    <div className="slide bg-white" dir="rtl">
+    <div className="slide bg-white flex items-center justify-center" dir="rtl">
       {/* Background Effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-[#9a6dd7]/5 rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-[#9a6dd7]/5 rounded-full blur-3xl" />
       </div>
 
-      <div className="relative z-10 w-full max-w-6xl mx-auto px-4 py-4">
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-4">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -37,8 +37,9 @@ export function AutomationSlide() {
               الأتمتة والذكاء الاصطناعي
             </span>
           </h2>
-          <p className="text-notion-text-secondary text-sm">
-            تحول جذري من العمل اليدوي إلى الأتمتة
+          <p className="text-notion-text-secondary text-base" dir="ltr" style={{ textAlign: 'center' }}>Automation & AI</p>
+          <p className="text-notion-text-secondary text-sm mt-1">
+            تحول جذري من العمل اليدوي إلى الأتمتة | A radical shift from manual work to automation
           </p>
         </motion.div>
 
@@ -60,7 +61,7 @@ export function AutomationSlide() {
               <div className="w-16 h-16 bg-gray-400 rounded-full flex items-center justify-center mx-auto mb-2 shadow-lg">
                 <User className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-xl font-bold text-gray-600">الوضع السابق</h3>
+              <h3 className="text-xl font-bold text-gray-600">الوضع السابق | Before</h3>
             </div>
 
             <div className="space-y-2">
@@ -128,7 +129,7 @@ export function AutomationSlide() {
               <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-2 shadow-lg">
                 <Bot className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-xl font-bold text-green-600">الوضع الحالي</h3>
+              <h3 className="text-xl font-bold text-green-600">الوضع الحالي | After</h3>
             </div>
 
             <div className="space-y-2">

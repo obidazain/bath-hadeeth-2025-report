@@ -29,11 +29,12 @@ export function ArabyPostWebsiteStatsSlide() {
           transition={{ duration: 0.5 }}
           className="mb-6"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 text-right">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900">
             زيارات{' '}
             <span className="text-[#08b2e3]">الموقع</span>
           </h2>
-          <p className="text-lg text-gray-500 mt-2 text-right">مشاهدات الصفحات (بالآلاف) - مقارنة 2024 vs 2025</p>
+          <p className="text-xl text-gray-500 mt-1" dir="ltr" style={{ textAlign: 'left' }}>Website Traffic</p>
+          <p className="text-lg text-gray-400 mt-2">مشاهدات الصفحات (بالآلاف) - مقارنة 2024 vs 2025 | Page Views (in thousands) - 2024 vs 2025</p>
         </motion.div>
 
         {/* Chart */}
@@ -99,12 +100,12 @@ export function ArabyPostWebsiteStatsSlide() {
           className="flex justify-center gap-8 mt-6"
         >
           <div className="text-center">
-            <p className="text-sm text-gray-500">إجمالي 2024</p>
-            <p className="text-2xl font-bold text-gray-400">22.9M</p>
+            <p className="text-sm text-gray-500">إجمالي 2024 | Total 2024</p>
+            <p className="text-2xl font-bold text-gray-400">22.9 مليون</p>
           </div>
           <div className="text-center">
-            <p className="text-sm text-gray-500">إجمالي 2025</p>
-            <p className="text-2xl font-bold text-[#08b2e3]">6.5M</p>
+            <p className="text-sm text-gray-500">إجمالي 2025 | Total 2025</p>
+            <p className="text-2xl font-bold text-[#08b2e3]">6.5 مليون</p>
           </div>
         </motion.div>
       </div>

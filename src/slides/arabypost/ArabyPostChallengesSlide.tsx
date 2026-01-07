@@ -30,22 +30,44 @@ export function ArabyPostChallengesSlide() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-8"
+          className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-2"
         >
           <span className="text-[#08b2e3]">التحديات</span>
         </motion.h2>
-
-        {/* Content */}
-        <motion.div
+        <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="bg-gray-50 rounded-3xl p-8 border border-gray-100"
+          transition={{ duration: 0.5, delay: 0.25 }}
+          className="text-xl text-gray-500 mb-8"
+          dir="ltr"
+          style={{ textAlign: 'left' }}
         >
-          <p className="text-xl sm:text-2xl leading-relaxed text-gray-700 text-right" style={{ textAlign: 'justify', direction: 'rtl' }}>
-            تعرض الموقع لظروف مختلفة ارتفاع للضرائب وانهيار للعملة، بالإضافة للحظر من قبل مصر والسعودية والإمارات، وتجميد الحسابات على التواصل الاجتماعي بسبب تغطية الأخبار عن فلسطين في أوقات الحروب.
-          </p>
-        </motion.div>
+          Challenges
+        </motion.p>
+
+        {/* Content */}
+        <div className="grid grid-cols-2 gap-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="bg-gray-50 rounded-3xl p-8 border border-gray-100"
+          >
+            <p className="text-lg sm:text-xl leading-relaxed text-gray-700 text-right" style={{ textAlign: 'justify', direction: 'rtl' }}>
+              تعرض الموقع لظروف مختلفة ارتفاع للضرائب وانهيار للعملة، بالإضافة للحظر من قبل مصر والسعودية والإمارات، وتجميد الحسابات على التواصل الاجتماعي بسبب تغطية الأخبار عن فلسطين في أوقات الحروب.
+            </p>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="bg-[#08b2e3]/5 rounded-3xl p-8 border border-[#08b2e3]/20"
+          >
+            <p className="text-lg sm:text-xl leading-relaxed text-gray-700" dir="ltr" style={{ textAlign: 'justify' }}>
+              The platform was also subjected to a series of external challenges, including increased taxation, currency devaluation, and access bans imposed by Egypt, Saudi Arabia, and the United Arab Emirates. In addition, ArabicPost's social media accounts were suspended or restricted due to its coverage of Palestine during periods of war.
+            </p>
+          </motion.div>
+        </div>
       </div>
     </div>
   );

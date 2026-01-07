@@ -47,6 +47,8 @@ export function ComparisonSlide() {
       views2025: 278787403, // From YouTube.csv
       shorts2024: 222957622, // From report-data-2024.ts
       shorts2025: 219138867, // From YouTube.csv shorts
+      shortsCount2024: 7000, // عدد المقاطع القصيرة 2024
+      shortsCount2025: 24323, // عدد المقاطع القصيرة 2025
       videos2024: 45451366, // From report-data-2024.ts
       videos2025: 59648536, // From YouTube.csv videos
       followers2024: 1208959, // From report-data-2024.ts
@@ -88,11 +90,12 @@ export function ComparisonSlide() {
         animate={{ opacity: 1, y: 0 }}
         className="text-center mb-4"
       >
-        <h2 className="text-4xl sm:text-5xl font-bold mb-2">
+        <h2 className="text-4xl sm:text-5xl font-bold mb-1">
           <span className="text-gradient">الأرقام الرئيسية</span>
         </h2>
-        <p className="text-notion-text-secondary text-lg">
-          مقارنة 2024 ⟷ 2025
+        <p className="text-notion-text-secondary text-lg" dir="ltr" style={{ textAlign: 'center' }}>Key Numbers</p>
+        <p className="text-notion-text-secondary text-base mt-1">
+          مقارنة 2024 ⟷ 2025 | Comparison 2024 ⟷ 2025
         </p>
       </motion.div>
 
@@ -107,7 +110,7 @@ export function ComparisonSlide() {
             className="grid grid-cols-3 gap-4 mb-3 px-6 py-2 rounded-xl bg-gray-100"
           >
             <div className="text-right">
-              <span className="text-lg font-bold text-accent-purple">المؤشر</span>
+              <span className="text-lg font-bold text-accent-purple">المؤشر | Metric</span>
             </div>
             <div className="text-center">
               <span className="text-lg font-bold text-gray-600">2024</span>
@@ -170,56 +173,86 @@ export function ComparisonSlide() {
                 </div>
 
                 {/* Stats Grid */}
-                <div className="space-y-3">
+                <div className="space-y-2">
                   {/* المشاهدات */}
                   <div>
-                    <p className="text-xs font-semibold text-notion-text mb-1.5">المشاهدات</p>
+                    <p className="text-xs font-semibold text-notion-text mb-1">المشاهدات</p>
 
                     {platform.hasBreakdown ? (
-                      <div className="grid grid-cols-2 gap-2">
+                      <div className="space-y-1.5">
                         {/* حلقات طويلة */}
                         <div className="bg-gray-50 rounded-lg p-2">
-                          <p className="text-[10px] font-medium text-gray-600 mb-0.5">حلقات طويلة</p>
-                          <p className="text-base font-bold text-accent-purple tabular-nums mb-0.5">
-                            {formatNumber(platform.videos2025)}
-                          </p>
-                          <p className="text-xs font-semibold text-gray-500 tabular-nums">
-                            2024: {formatNumber(platform.videos2024)}
-                          </p>
+                          <p className="text-[10px] text-gray-500 mb-1">حلقات</p>
+                          <div className="flex justify-between items-center">
+                            <div className="text-center">
+                              <p className="text-[9px] text-gray-400">2024</p>
+                              <p className="text-xs font-semibold text-gray-500 tabular-nums">{formatNumber(platform.videos2024)}</p>
+                            </div>
+                            <div className="text-center">
+                              <p className="text-[9px] text-accent-purple font-medium">2025</p>
+                              <p className="text-sm font-bold text-accent-purple tabular-nums">{formatNumber(platform.videos2025)}</p>
+                            </div>
+                          </div>
                         </div>
-                        {/* مقاطع قصيرة */}
+                        {/* مقاطع قصيرة - المشاهدات */}
                         <div className="bg-gray-50 rounded-lg p-2">
-                          <p className="text-[10px] font-medium text-gray-600 mb-0.5">مقاطع قصيرة</p>
-                          <p className="text-base font-bold text-accent-purple tabular-nums mb-0.5">
-                            {formatNumber(platform.shorts2025)}
-                          </p>
-                          <p className="text-xs font-semibold text-gray-500 tabular-nums">
-                            2024: {formatNumber(platform.shorts2024)}
-                          </p>
+                          <p className="text-[10px] text-gray-500 mb-1">المقاطع القصيرة</p>
+                          <div className="flex justify-between items-center">
+                            <div className="text-center">
+                              <p className="text-[9px] text-gray-400">2024</p>
+                              <p className="text-xs font-semibold text-gray-500 tabular-nums">{formatNumber(platform.shorts2024)}</p>
+                            </div>
+                            <div className="text-center">
+                              <p className="text-[9px] text-accent-purple font-medium">2025</p>
+                              <p className="text-sm font-bold text-accent-purple tabular-nums">{formatNumber(platform.shorts2025)}</p>
+                            </div>
+                          </div>
+                        </div>
+                        {/* عدد المقاطع القصيرة */}
+                        <div className="bg-accent-pink/10 rounded-lg p-2">
+                          <p className="text-[10px] text-gray-600 font-medium mb-1">عدد المقاطع القصيرة</p>
+                          <div className="flex justify-between items-center">
+                            <div className="text-center">
+                              <p className="text-[9px] text-gray-400">2024</p>
+                              <p className="text-xs font-semibold text-gray-500 tabular-nums">+{formatNumber(platform.shortsCount2024)}</p>
+                            </div>
+                            <div className="text-center">
+                              <p className="text-[9px] text-accent-pink font-medium">2025</p>
+                              <p className="text-sm font-bold text-accent-pink tabular-nums">{formatNumber(platform.shortsCount2025)}</p>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     ) : (
-                      <div className="bg-gray-50 rounded-lg p-3">
-                        <p className="text-xl font-bold text-accent-purple tabular-nums mb-1">
-                          {formatNumber(platform.views2025)}
-                        </p>
-                        <p className="text-sm font-semibold text-gray-500 tabular-nums">
-                          2024: {platform.isNew ? 'جديد' : formatNumber(platform.views2024)}
-                        </p>
+                      <div className="bg-gray-50 rounded-lg p-2">
+                        <div className="flex justify-between items-center">
+                          <div className="text-center">
+                            <p className="text-[9px] text-gray-400">2024</p>
+                            <p className="text-xs font-semibold text-gray-500 tabular-nums">{platform.isNew ? 'جديد' : formatNumber(platform.views2024)}</p>
+                          </div>
+                          <div className="text-center">
+                            <p className="text-[9px] text-accent-purple font-medium">2025</p>
+                            <p className="text-lg font-bold text-accent-purple tabular-nums">{formatNumber(platform.views2025)}</p>
+                          </div>
+                        </div>
                       </div>
                     )}
                   </div>
 
                   {/* المتابعين */}
                   <div>
-                    <p className="text-xs font-semibold text-notion-text mb-1.5">المتابعين</p>
-                    <div className="bg-gray-50 rounded-lg p-3">
-                      <p className="text-xl font-bold text-accent-pink tabular-nums mb-1">
-                        {formatNumber(platform.followers2025)}
-                      </p>
-                      <p className="text-sm font-semibold text-gray-500 tabular-nums">
-                        2024: {platform.isNew ? 'جديد' : formatNumber(platform.followers2024)}
-                      </p>
+                    <p className="text-xs font-semibold text-notion-text mb-1">المتابعين</p>
+                    <div className="bg-gray-50 rounded-lg p-2">
+                      <div className="flex justify-between items-center">
+                        <div className="text-center">
+                          <p className="text-[9px] text-gray-400">2024</p>
+                          <p className="text-xs font-semibold text-gray-500 tabular-nums">{platform.isNew ? 'جديد' : formatNumber(platform.followers2024)}</p>
+                        </div>
+                        <div className="text-center">
+                          <p className="text-[9px] text-accent-pink font-medium">2025</p>
+                          <p className="text-lg font-bold text-accent-pink tabular-nums">{formatNumber(platform.followers2025)}</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
 

@@ -4,7 +4,9 @@ interface VisionGoal {
   id: number;
   icon: React.FC<{ className?: string }>;
   title: string;
+  titleEn: string;
   description: string;
+  descriptionEn: string;
   color: string;
 }
 
@@ -39,46 +41,50 @@ const SparklesIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const RocketIcon = ({ className }: { className?: string }) => (
-  <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
-  </svg>
-);
-
 const visionGoals: VisionGoal[] = [
   {
     id: 1,
     icon: MicrophoneIcon,
     title: 'برامج جديدة في البودكاست',
+    titleEn: 'New Podcast Programs',
     description: 'إطلاق برامج جديدة وإعادة إطلاق برامج متوقفة لتوسيع المحتوى',
+    descriptionEn: 'Launching new programs and relaunching suspended ones to expand content',
     color: 'purple',
   },
   {
     id: 2,
     icon: CpuIcon,
     title: 'تجارب إنتاجية بالذكاء الاصطناعي',
+    titleEn: 'AI-Driven Content Production',
     description: 'تطوير محتوى عربي بوست باستخدام تقنيات الذكاء الاصطناعي',
+    descriptionEn: 'Developing Arabi Post content using AI technologies',
     color: 'blue',
   },
   {
     id: 3,
     icon: VideoCameraIcon,
     title: 'برنامج حواري بالإنجليزية',
+    titleEn: 'English Talk Show',
     description: 'إطلاق برنامج حواري باللغة الإنجليزية للوصول لجمهور عالمي',
+    descriptionEn: 'Launching an English-language talk show to reach a global audience',
     color: 'green',
   },
   {
     id: 4,
     icon: GlobeIcon,
     title: 'ترجمة ودبلجة متعددة اللغات',
+    titleEn: 'Multi-Language Translation & Dubbing',
     description: 'ترجمة ودبلجة بلغات العالم الإسلامي الحية ولغات رئيسية أخرى',
+    descriptionEn: 'Translation and dubbing into living languages of the Islamic world and other major languages',
     color: 'orange',
   },
   {
     id: 5,
     icon: SparklesIcon,
     title: 'إنتاج فني بالذكاء الاصطناعي',
+    titleEn: 'AI-Based Artistic Production',
     description: 'استخدام الذكاء الاصطناعي لإنتاج محتوى فني ومرئي مبتكر',
+    descriptionEn: 'Using AI to produce innovative artistic and visual content',
     color: 'pink',
   },
 ];
@@ -112,13 +118,18 @@ export function IntegralVision2028Slide() {
           className="text-center mb-8"
         >
           <div className="inline-block px-4 py-1 bg-orange-500/20 border border-orange-500/30 rounded-full mb-3">
-            <span className="text-orange-400 text-sm font-medium">المرافئ الجديدة</span>
+            <span className="text-orange-400 text-sm font-medium">المرافئ الجديدة | <span dir="ltr">New Harbors</span></span>
           </div>
-          <h2 className="text-4xl sm:text-5xl font-bold text-orange-400 mb-2">
+          <h2 className="text-4xl sm:text-5xl font-bold text-orange-400 mb-1">
             رؤية 2026-2028
           </h2>
-          <p className="text-gray-400 text-lg">
+          <p className="text-gray-300 text-xl font-medium" dir="ltr">
+            Vision 2026–2028
+          </p>
+          <p className="text-gray-400 text-base mt-2">
             خارطة الطريق للمرحلة القادمة
+            <span className="mx-2">|</span>
+            <span dir="ltr">Roadmap for the Next Phase</span>
           </p>
         </motion.div>
 
@@ -147,8 +158,10 @@ export function IntegralVision2028Slide() {
                 </div>
 
                 {/* Content */}
-                <h3 className="text-lg font-bold text-gray-800 mb-2">{goal.title}</h3>
+                <h3 className="text-lg font-bold text-gray-800 mb-1">{goal.title}</h3>
+                <p className="text-sm font-medium text-gray-500 mb-2" dir="ltr">{goal.titleEn}</p>
                 <p className="text-sm text-gray-600 leading-relaxed">{goal.description}</p>
+                <p className="text-xs text-gray-400 leading-relaxed mt-1" dir="ltr">{goal.descriptionEn}</p>
               </motion.div>
             );
           })}
@@ -178,25 +191,15 @@ export function IntegralVision2028Slide() {
                 </div>
 
                 {/* Content */}
-                <h3 className="text-lg font-bold text-gray-800 mb-2">{goal.title}</h3>
+                <h3 className="text-lg font-bold text-gray-800 mb-1">{goal.title}</h3>
+                <p className="text-sm font-medium text-gray-500 mb-2" dir="ltr">{goal.titleEn}</p>
                 <p className="text-sm text-gray-600 leading-relaxed">{goal.description}</p>
+                <p className="text-xs text-gray-400 leading-relaxed mt-1" dir="ltr">{goal.descriptionEn}</p>
               </motion.div>
             );
           })}
         </div>
 
-        {/* Bottom CTA */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.6 }}
-          className="mt-8 text-center"
-        >
-          <div className="inline-flex items-center gap-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-3 rounded-full shadow-lg">
-            <RocketIcon className="w-6 h-6" />
-            <span className="font-bold text-lg">نحو مستقبل إعلامي عربي مبتكر</span>
-          </div>
-        </motion.div>
       </div>
     </div>
   );

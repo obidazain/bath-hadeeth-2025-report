@@ -28,7 +28,8 @@ export function PodcastSlide() {
           <h2 className="text-5xl font-bold mb-2">
             <span className="text-gradient">المنصات الصوتية</span>
           </h2>
-          <p className="text-notion-text-secondary text-xl">
+          <p className="text-notion-text-secondary text-lg" dir="ltr" style={{ textAlign: 'center' }}>Audio Platforms</p>
+          <p className="text-notion-text-secondary text-base mt-1">
             البودكاست على Spotify و Apple Podcasts وغيرها
           </p>
         </motion.div>
@@ -63,9 +64,10 @@ export function PodcastSlide() {
             transition={{ delay: 0.2 }}
             className="card-compact p-4 flex flex-col h-full"
           >
-            <h3 className="text-base font-semibold text-center mb-3 text-notion-text">
+            <h3 className="text-base font-semibold text-center mb-1 text-notion-text">
               أكثر البرامج استماعاً
             </h3>
+            <p className="text-xs text-center text-gray-400 mb-3" dir="ltr">Top Programs by Listens</p>
             <div className="space-y-3 flex-1 flex flex-col justify-around">
               {topPrograms.map((program, index) => {
                 const value2024 = programs2024Map.get(program.name) || 0;
@@ -115,9 +117,10 @@ export function PodcastSlide() {
             transition={{ delay: 0.3 }}
             className="card-compact p-4 flex flex-col h-full"
           >
-            <h3 className="text-base font-semibold text-center mb-3 text-notion-text">
+            <h3 className="text-base font-semibold text-center mb-1 text-notion-text">
               أكثر الدول استماعاً
             </h3>
+            <p className="text-xs text-center text-gray-400 mb-3" dir="ltr">Top Countries by Listens</p>
             <div className="space-y-3 flex-1 flex flex-col justify-around">
               {topCountries.map((country, index) => {
                 const value2024 = countries2024Map.get(country.countryAr) || 0;

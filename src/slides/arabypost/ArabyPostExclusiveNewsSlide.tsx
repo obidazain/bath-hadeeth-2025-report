@@ -19,11 +19,12 @@ export function ArabyPostExclusiveNewsSlide() {
           transition={{ duration: 0.5 }}
           className="mb-8"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 text-right">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900">
             أخبار{' '}
             <span className="text-[#08b2e3]">حصرية</span>
           </h2>
-          <p className="text-lg text-gray-500 mt-2 text-right">سبق صحفي وأخبار انفردت بها عربي بوست</p>
+          <p className="text-xl text-gray-500 mt-1" dir="ltr" style={{ textAlign: 'left' }}>Exclusive News</p>
+          <p className="text-lg text-gray-400 mt-2">سبق صحفي وأخبار انفردت بها عربي بوست | Breaking news & exclusives from ArabicPost</p>
         </motion.div>
 
         {/* News Cards - Larger for 3 items */}
@@ -54,7 +55,7 @@ export function ArabyPostExclusiveNewsSlide() {
                 {/* Exclusive Badge */}
                 <div className="absolute top-3 right-3">
                   <div className="bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full">
-                    حصري
+                    حصري | Exclusive
                   </div>
                 </div>
                 {/* Link Icon */}
@@ -88,7 +89,7 @@ export function ArabyPostExclusiveNewsSlide() {
           className="mt-8 text-center"
         >
           <p className="text-sm text-gray-400">
-            انقر على أي خبر لقراءة التفاصيل الكاملة
+            انقر على أي خبر لقراءة التفاصيل الكاملة | Click any news to read full details
           </p>
         </motion.div>
       </div>

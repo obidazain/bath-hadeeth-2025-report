@@ -72,11 +72,6 @@ const categories: CategoryData[] = [
   },
 ];
 
-const stats = [
-  { value: '10', label: 'برنامج نشط', color: 'purple' },
-  { value: '3', label: 'برنامج متوقف', color: 'gray' },
-  { value: '839', label: 'حلقة منشورة منذ نوفمبر 2023', color: 'purple' },
-];
 
 export function ProgramsSystemSlide() {
   // توحيد الألوان - بنفسجي فقط مع رمادي
@@ -99,10 +94,11 @@ export function ProgramsSystemSlide() {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-6"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold mb-2">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-1">
             <span className="text-gradient">منظومة البرامج المتكاملة</span>
           </h2>
-          <p className="text-notion-text-secondary text-base">
+          <p className="text-notion-text-secondary text-lg" dir="ltr" style={{ textAlign: 'center' }}>Integrated Programs System</p>
+          <p className="text-notion-text-secondary text-sm mt-1">
             شبكة متنوعة من البرامج تغطي المنطقة والتخصصات المختلفة
           </p>
         </motion.div>
@@ -112,19 +108,12 @@ export function ProgramsSystemSlide() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="grid grid-cols-3 gap-4 mb-6 max-w-2xl mx-auto"
+          className="flex justify-center mb-6"
         >
-          {stats.map((stat) => (
-            <div
-              key={stat.label}
-              className="bg-gray-50 border border-gray-100 rounded-2xl p-4 text-center"
-            >
-              <p className={`text-3xl font-bold ${stat.color === 'purple' ? 'text-primary' : 'text-gray-500'}`}>
-                {stat.value}
-              </p>
-              <p className="text-sm text-gray-500">{stat.label}</p>
-            </div>
-          ))}
+          <div className="bg-gray-50 border border-gray-100 rounded-2xl p-4 text-center">
+            <p className="text-3xl font-bold text-primary">10</p>
+            <p className="text-sm text-gray-500">برنامج نشط</p>
+          </div>
         </motion.div>
 
         {/* Categories Grid */}
@@ -152,8 +141,8 @@ export function ProgramsSystemSlide() {
                 <div className="space-y-2">
                   {category.programs.map((program) => {
                     const logoPath = programLogos[program.id];
-                    // موازين وفلك نعرضهم كحروف فقط
-                    const showAsLetter = program.id === 'mawazen' || program.id === 'falak' || !logoPath || !logoPath.endsWith('.png');
+                    // Show letter fallback for programs without logos
+                    const showAsLetter = !logoPath;
                     const isActive = program.status === 'active';
                     return (
                       <div

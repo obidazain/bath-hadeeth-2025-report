@@ -1,11 +1,12 @@
 import { motion } from 'framer-motion';
+import integralLogo from '../../assets/logos/integral_media_danismanlik_cover.jpeg';
 
-export function ArabyPostIntroSlide() {
+export function IntegralThanksSlide() {
   return (
     <div className="slide relative overflow-hidden bg-white">
       {/* Background gradient effect */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-[#08b2e3]/5 rounded-full blur-3xl" />
+        <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-orange-500/5 rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-gray-900/5 rounded-full blur-3xl" />
       </div>
 
@@ -16,34 +17,32 @@ export function ArabyPostIntroSlide() {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
+          className="mb-8"
         >
           <img
-            src="https://youth.sharqforum.org/wp-content/uploads/2019/09/arbic-post.jpg"
-            alt="Arabi Post"
-            className="h-48 md:h-64 object-contain"
+            src={integralLogo}
+            alt="Integral Media"
+            className="h-32 md:h-40 object-contain"
           />
         </motion.div>
 
-        {/* Slogan Arabic */}
-        <motion.p
+        {/* Thanks Text */}
+        <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-2xl sm:text-3xl font-bold text-[#08b2e3] mt-6"
+          className="text-5xl sm:text-6xl md:text-7xl font-bold text-gray-900 mb-2"
         >
-          أجرأ. أعمق. أبسط
-        </motion.p>
-
-        {/* Slogan English */}
+          شكراً لكم
+        </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-xl sm:text-2xl font-medium text-gray-500 mt-2"
+          className="text-2xl sm:text-3xl text-gray-500"
           dir="ltr"
-          style={{ textAlign: 'center' }}
         >
-          Bolder. Deeper. Simpler
+          Thank You
         </motion.p>
 
         {/* Decorative line */}
@@ -51,7 +50,7 @@ export function ArabyPostIntroSlide() {
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="w-32 h-1 bg-gradient-to-r from-[#08b2e3] to-[#06a0cf] rounded-full mt-8"
+          className="w-32 h-1 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full mt-8"
         />
       </div>
     </div>

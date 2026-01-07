@@ -1,19 +1,23 @@
 import { motion } from 'framer-motion';
 
 const values = [
-  'القرآن الكريم مصدر إلهامنا',
-  'وحدة الأمة',
-  'المجتمع أهم من الفرد وأكبر من الدولة',
-  'الإنسان مؤتمن',
-  'الاستبداد سبب التبعية والتطرف والفقر',
-  'تحرير فلسطين خطوة',
-  'التدين فطرة وانسجام مع الكون',
-  'القيام على الأسرة عبادة',
-  'المرأة الركيزة',
-  'الاقتصاد',
+  { title: 'القرآن الكريم مصدر إلهامنا', titleEn: 'The Quran is Our Source of Inspiration', slideIndex: 3 },
+  { title: 'وحدة الأمة', titleEn: 'Unity of the Ummah', slideIndex: 4 },
+  { title: 'المجتمع أهم من الفرد وأكبر من الدولة', titleEn: 'Society is Greater than the Individual and the State', slideIndex: 5 },
+  { title: 'الإنسان مؤتمن', titleEn: 'Humans are Entrusted', slideIndex: 6 },
+  { title: 'الاستبداد سبب التبعية والتطرف والفقر', titleEn: 'Tyranny Causes Dependency, Extremism & Poverty', slideIndex: 7 },
+  { title: 'تحرير فلسطين خطوة', titleEn: 'Liberating Palestine is a Step', slideIndex: 8 },
+  { title: 'التدين فطرة وانسجام مع الكون', titleEn: 'Faith is Natural & Harmony with the Universe', slideIndex: 9 },
+  { title: 'القيام على الأسرة عبادة', titleEn: 'Family Care is Worship', slideIndex: 10 },
+  { title: 'المرأة الركيزة', titleEn: 'Women are the Foundation', slideIndex: 11 },
+  { title: 'الاقتصاد', titleEn: 'Economy', slideIndex: 12 },
 ];
 
-export function IntegralValuesIntroSlide() {
+interface IntegralValuesIntroSlideProps {
+  onNavigate?: (slideIndex: number) => void;
+}
+
+export function IntegralValuesIntroSlide({ onNavigate }: IntegralValuesIntroSlideProps) {
   return (
     <div className="slide relative overflow-hidden bg-white">
       {/* Background */}
@@ -34,6 +38,7 @@ export function IntegralValuesIntroSlide() {
             المضامين{' '}
             <span className="text-orange-500">والرسالة</span>
           </h1>
+          <p className="text-2xl text-gray-500 mt-2" dir="ltr" style={{ textAlign: 'left' }}>Values & Message</p>
         </motion.div>
 
         {/* Values Grid - 2 rows x 5 columns */}
@@ -44,12 +49,13 @@ export function IntegralValuesIntroSlide() {
           className="grid grid-cols-5 gap-4"
         >
           {values.map((value, index) => (
-            <motion.div
-              key={value}
+            <motion.button
+              key={value.title}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 + index * 0.08 }}
-              className="bg-white border-2 border-gray-100 rounded-2xl p-5 hover:border-orange-300 hover:shadow-lg transition-all text-center"
+              onClick={() => onNavigate?.(value.slideIndex)}
+              className="bg-white border-2 border-gray-100 rounded-2xl p-5 hover:border-orange-300 hover:shadow-lg transition-all text-center cursor-pointer"
             >
               {/* Number */}
               <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-orange-500 to-orange-600 text-white text-lg font-bold mb-3 shadow-md">
@@ -57,9 +63,12 @@ export function IntegralValuesIntroSlide() {
               </span>
               {/* Title */}
               <h3 className="text-base font-bold text-gray-900 leading-relaxed">
-                {value}
+                {value.title}
               </h3>
-            </motion.div>
+              <p className="text-xs text-gray-500 mt-1" dir="ltr" style={{ textAlign: 'left' }}>
+                {value.titleEn}
+              </p>
+            </motion.button>
           ))}
         </motion.div>
       </div>

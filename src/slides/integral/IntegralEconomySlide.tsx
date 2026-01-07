@@ -1,6 +1,10 @@
 import { motion } from 'framer-motion';
 
-export function IntegralEconomySlide() {
+interface IntegralEconomySlideProps {
+  onNavigate?: (slideIndex: number) => void;
+}
+
+export function IntegralEconomySlide({ onNavigate }: IntegralEconomySlideProps) {
   return (
     <div className="slide relative overflow-hidden bg-white">
       {/* Background */}
@@ -30,23 +34,61 @@ export function IntegralEconomySlide() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-8"
+          className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-2"
         >
           <span className="text-orange-500">الاقتصاد</span>
         </motion.h2>
-
-        {/* Content */}
-        <motion.div
+        <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="bg-gray-50 rounded-3xl p-8 border border-gray-100"
+          transition={{ duration: 0.5, delay: 0.25 }}
+          className="text-xl text-gray-500 mb-8"
+          dir="ltr"
+          style={{ textAlign: 'left' }}
         >
-          <p className="text-xl sm:text-2xl leading-relaxed text-gray-700 text-right" style={{ textAlign: 'justify', direction: 'rtl' }}>
-            يمثل الاقتصاد التطبيق الفعلي واختبار لسلوك الإنسان الحقيقي أمام القيم التي يؤمن بها، فنشر العدل وحفظ الكرامة ونفع الناس يتعارض مع الاستغلال والاحتكار والربا، ويتناقض بلا شك مع الازدهار النخبوي والفئوي أحد بوابات الارتهان والتبعية وإقصاء للقوى الاجتماعية التعددية والتحرر.
-          </p>
-        </motion.div>
+          Economics
+        </motion.p>
+
+        {/* Content */}
+        <div className="grid grid-cols-2 gap-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="bg-gray-50 rounded-3xl p-8 border border-gray-100"
+          >
+            <p className="text-xl sm:text-2xl leading-relaxed text-gray-700 text-right" style={{ textAlign: 'justify', direction: 'rtl' }}>
+              يمثل الاقتصاد التطبيق الفعلي واختبار لسلوك الإنسان الحقيقي أمام القيم التي يؤمن بها، فنشر العدل وحفظ الكرامة ونفع الناس يتعارض مع الاستغلال والاحتكار والربا، ويتناقض بلا شك مع الازدهار النخبوي والفئوي أحد بوابات الارتهان والتبعية وإقصاء للقوى الاجتماعية التعددية والتحرر.
+            </p>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="bg-orange-50 rounded-3xl p-8 border border-orange-100"
+          >
+            <p className="text-xl sm:text-2xl leading-relaxed text-gray-700" dir="ltr" style={{ textAlign: 'justify' }}>
+              The economy represents the practical application and test of genuine human behavior against the values one professes to believe in. Spreading justice, preserving dignity, and benefiting people stand in contrast to exploitation, monopoly, and usury. It undoubtedly conflicts with elite and sectoral prosperity—which serves as one of the gateways to dependency, subordination, and the exclusion of pluralistic social forces and liberation.
+            </p>
+          </motion.div>
+        </div>
+
       </div>
+
+      {/* Back Button - Fixed Left */}
+      {onNavigate && (
+        <motion.button
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.6 }}
+          onClick={() => onNavigate(2)}
+          className="absolute left-6 bottom-6 w-12 h-12 flex items-center justify-center bg-orange-500 hover:bg-orange-600 text-white rounded-full shadow-lg transition-colors z-20"
+        >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </motion.button>
+      )}
     </div>
   );
 }

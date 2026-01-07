@@ -29,11 +29,12 @@ export function ArabyPostSocialGrowthSlide() {
           transition={{ duration: 0.5 }}
           className="mb-6"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 text-right">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900">
             نمو{' '}
             <span className="text-[#08b2e3]">السوشيال ميديا</span>
           </h2>
-          <p className="text-lg text-gray-500 mt-2 text-right">مشاهدات إنستجرام وتيكتوك</p>
+          <p className="text-xl text-gray-500 mt-1" dir="ltr" style={{ textAlign: 'left' }}>Social Media Growth</p>
+          <p className="text-lg text-gray-400 mt-2">مشاهدات إنستجرام وتيكتوك | Instagram & TikTok Views</p>
         </motion.div>
 
         {/* Charts Grid */}
@@ -45,8 +46,8 @@ export function ArabyPostSocialGrowthSlide() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="bg-gray-50 rounded-3xl p-5 border border-gray-100"
           >
-            <h3 className="text-xl font-bold text-gray-800 mb-4 text-right">
-              إنستجرام
+            <h3 className="text-xl font-bold text-gray-800 mb-4">
+              إنستجرام | Instagram
             </h3>
             <div className="h-[280px]">
               <ResponsiveContainer width="100%" height="100%">
@@ -77,8 +78,8 @@ export function ArabyPostSocialGrowthSlide() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="bg-gray-50 rounded-3xl p-5 border border-gray-100"
           >
-            <h3 className="text-xl font-bold text-gray-800 mb-4 text-right">
-              تيكتوك
+            <h3 className="text-xl font-bold text-gray-800 mb-4">
+              تيكتوك | TikTok
             </h3>
             <div className="h-[280px]">
               <ResponsiveContainer width="100%" height="100%">
@@ -111,12 +112,12 @@ export function ArabyPostSocialGrowthSlide() {
           className="flex justify-center gap-12 mt-6"
         >
           <div className="text-center">
-            <p className="text-sm text-gray-500">ذروة إنستجرام 2025</p>
-            <p className="text-xl font-bold text-[#08b2e3]">38.7M مشاهدة</p>
+            <p className="text-sm text-gray-500">ذروة إنستجرام 2025 | Peak Instagram 2025</p>
+            <p className="text-xl font-bold text-[#08b2e3]">38.7 مليون مشاهدة | 38.7M views</p>
           </div>
           <div className="text-center">
-            <p className="text-sm text-gray-500">ذروة تيكتوك 2024</p>
-            <p className="text-xl font-bold text-gray-400">41.1M مشاهدة</p>
+            <p className="text-sm text-gray-500">ذروة تيكتوك 2024 | Peak TikTok 2024</p>
+            <p className="text-xl font-bold text-gray-400">41.1 مليون مشاهدة | 41.1M views</p>
           </div>
         </motion.div>
       </div>

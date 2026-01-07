@@ -2,10 +2,9 @@ import { motion } from 'framer-motion';
 
 export function ArabyPostNewDirectionSlide() {
   const directions = [
-    'إلغاء أهداف الانتشار العددي والكمي واستبدالها بأهداف الانتشار المؤثر.',
-    'إلغاء أقسام الأخبار والتواصل الاجتماعي الموازي والتحليلات والمدونات.',
-    'تعزيز العمل الصحفي الاستقصائي والتحققي والتقارير الحصرية والمواد الشارحة.',
-    'إبقاء رؤى عربي بوست الصحفية والإعلامية منفتحة تجاه المنصات والمنتجات الجديدة التي يستهلكها الجمهور.',
+    { en: 'Abandoning numerical and volume-based reach targets in favor of influence-driven impact goals.', ar: 'إلغاء أهداف الانتشار العددي والكمي واستبدالها بأهداف الانتشار المؤثر.' },
+    { en: 'Strengthening investigative journalism, verification-based reporting, exclusive stories, and in-depth explanatory content.', ar: 'تعزيز العمل الصحفي الاستقصائي والتحققي والتقارير الحصرية والمواد الشارحة.' },
+    { en: 'Maintaining ArabicPost\'s editorial and journalistic vision as open and adaptive to new platforms and media products consumed by audiences.', ar: 'إبقاء رؤى عربي بوست الصحفية والإعلامية منفتحة تجاه المنصات والمنتجات الجديدة التي يستهلكها الجمهور.' },
   ];
 
   return (
@@ -37,11 +36,21 @@ export function ArabyPostNewDirectionSlide() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-8"
+          className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-2"
         >
-          وذلك من{' '}
-          <span className="text-[#08b2e3]">خلال</span>
+          التوجه{' '}
+          <span className="text-[#08b2e3]">الاستراتيجي</span>
         </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.25 }}
+          className="text-xl text-gray-500 mb-8"
+          dir="ltr"
+          style={{ textAlign: 'left' }}
+        >
+          Strategic Direction
+        </motion.p>
 
         {/* Content */}
         <div className="space-y-4">
@@ -56,9 +65,14 @@ export function ArabyPostNewDirectionSlide() {
               <span className="flex-shrink-0 w-10 h-10 rounded-xl bg-[#08b2e3] text-white flex items-center justify-center text-lg font-bold">
                 {index + 1}
               </span>
-              <p className="text-lg sm:text-xl leading-relaxed text-gray-700 text-right flex-1" style={{ textAlign: 'justify', direction: 'rtl' }}>
-                {direction}
-              </p>
+              <div className="flex-1">
+                <p className="text-lg sm:text-xl leading-relaxed text-gray-700 text-right" style={{ textAlign: 'justify', direction: 'rtl' }}>
+                  {direction.ar}
+                </p>
+                <p className="text-base leading-relaxed text-gray-400 mt-2" dir="ltr" style={{ textAlign: 'justify' }}>
+                  {direction.en}
+                </p>
+              </div>
             </motion.div>
           ))}
         </div>

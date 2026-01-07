@@ -4,32 +4,44 @@ import type { ReactNode } from 'react';
 const departments = [
   {
     title: 'مواقع إعلامية متخصصة',
+    titleEn: 'Specialized Media Platforms',
     subtitle: '( عربي بوست وأسباب )',
+    subtitleEn: '(Arabi Post & Asbab)',
     icon: 'globe', // Globe/world icon for media websites
   },
   {
     title: 'شبكة دعم وشراكة مع مواقع صديقة',
+    titleEn: 'Support & Partnership Network',
     subtitle: '',
+    subtitleEn: 'with allied media outlets',
     icon: 'network', // Connected nodes for partnerships
   },
   {
     title: 'حاضنة البودكاست',
+    titleEn: 'Podcast Incubator',
     subtitle: '( بث حديث )',
+    subtitleEn: '(Bath Hadeeth)',
     icon: 'mic', // Microphone for podcasts
   },
   {
     title: 'الإنتاج للمشاريع الشقيقة',
+    titleEn: 'Production Services',
     subtitle: '',
+    subtitleEn: 'for sister projects',
     icon: 'film', // Film/video for production
   },
   {
     title: 'تشغيل وعمليات الطابق السادس',
+    titleEn: 'Operations & Management',
     subtitle: '',
+    subtitleEn: 'of the Sixth Floor',
     icon: 'building', // Building for operations
   },
   {
     title: 'مكتب الأستاذ وضاح خنفر',
+    titleEn: 'Office of Mr. Wadah Khanfar',
     subtitle: '',
+    subtitleEn: '',
     icon: 'briefcase', // Briefcase for executive office
   },
 ];
@@ -93,11 +105,14 @@ export function IntegralAboutSlide() {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-10"
         >
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-2">
             ماهي شركة{' '}
             <span className="text-orange-500">انتجرال ميديا</span>
             {' '}اليوم؟
           </h2>
+          <p className="text-2xl sm:text-3xl font-medium text-gray-600" dir="ltr" style={{ textAlign: 'left' }}>
+            What Is <span className="text-orange-500">Integral Media</span> Today?
+          </p>
         </motion.div>
 
         {/* Team Count */}
@@ -109,7 +124,10 @@ export function IntegralAboutSlide() {
         >
           <div className="inline-flex items-center gap-6 bg-gradient-to-r from-orange-500 to-orange-600 text-white px-12 py-6 rounded-2xl shadow-xl">
             <span className="text-6xl font-bold">80</span>
-            <span className="text-3xl font-medium">مبدعاً</span>
+            <div className="flex flex-col text-right">
+              <span className="text-3xl font-medium">مبدعاً</span>
+              <span className="text-lg opacity-80" dir="ltr" style={{ textAlign: 'left' }}>Creatives</span>
+            </div>
           </div>
         </motion.div>
 
@@ -133,11 +151,15 @@ export function IntegralAboutSlide() {
                 {icons[dept.icon]}
               </span>
               <div className="flex-1">
-                <h3 className="text-xl font-bold text-gray-900">
+                <h3 className="text-lg font-bold text-gray-900">
                   {dept.title}
                 </h3>
-                {dept.subtitle && (
-                  <p className="text-base text-orange-500 font-medium mt-1">{dept.subtitle}</p>
+                <p className="text-sm text-gray-500 font-medium" dir="ltr" style={{ textAlign: 'left' }}>{dept.titleEn}</p>
+                {(dept.subtitle || dept.subtitleEn) && (
+                  <p className="text-sm text-orange-500 font-medium mt-1">
+                    {dept.subtitle}
+                    {dept.subtitleEn && <span className="text-orange-400 text-xs mr-1" dir="ltr"> {dept.subtitleEn}</span>}
+                  </p>
                 )}
               </div>
             </motion.div>

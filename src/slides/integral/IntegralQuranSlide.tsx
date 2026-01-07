@@ -1,6 +1,10 @@
 import { motion } from 'framer-motion';
 
-export function IntegralQuranSlide() {
+interface IntegralQuranSlideProps {
+  onNavigate?: (slideIndex: number) => void;
+}
+
+export function IntegralQuranSlide({ onNavigate }: IntegralQuranSlideProps) {
   return (
     <div className="slide relative overflow-hidden bg-white">
       {/* Background */}
@@ -30,24 +34,62 @@ export function IntegralQuranSlide() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-8"
+          className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-2"
         >
           القرآن الكريم{' '}
           <span className="text-orange-500">مصدر إلهامنا</span>
         </motion.h2>
-
-        {/* Content */}
-        <motion.div
+        <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="bg-gray-50 rounded-3xl p-8 border border-gray-100"
+          transition={{ duration: 0.5, delay: 0.25 }}
+          className="text-xl text-gray-500 mb-8"
+          dir="ltr"
+          style={{ textAlign: 'left' }}
         >
-          <p className="text-xl sm:text-2xl leading-relaxed text-gray-700 text-right" style={{ textAlign: 'justify', direction: 'rtl' }}>
-            فكلمات الله مركز الهداية والحكمة وفهمنا للكليات، تعزز أفهامنا، وتزكينا، وتذكرنا بالمنشأ والمآل، تحثنا على المسير والتفكر، وتربط وعي المسلمين معاً، فهو المرجعية الفكرية والأخلاقية في حياتنا الأولى وبشرى في حياتنا الأخرى وسيرة النبي صلى الله عليه وسلم هي المثال الحركي والخلقي والتعبدي الأسمى الذي نقتدي به.
-          </p>
-        </motion.div>
+          The Holy Qur'an as Our Source of Inspiration
+        </motion.p>
+
+        {/* Content */}
+        <div className="grid grid-cols-2 gap-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="bg-gray-50 rounded-3xl p-8 border border-gray-100"
+          >
+            <p className="text-lg sm:text-xl leading-relaxed text-gray-700 text-right" style={{ textAlign: 'justify', direction: 'rtl' }}>
+              فكلمات الله مركز الهداية والحكمة وفهمنا للكليات، تعزز أفهامنا، وتزكينا، وتذكرنا بالمنشأ والمآل، تحثنا على المسير والتفكر، وتربط وعي المسلمين معاً، فهو المرجعية الفكرية والأخلاقية في حياتنا الأولى وبشرى في حياتنا الأخرى وسيرة النبي صلى الله عليه وسلم هي المثال الحركي والخلقي والتعبدي الأسمى الذي نقتدي به.
+            </p>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="bg-orange-50 rounded-3xl p-8 border border-orange-100"
+          >
+            <p className="text-lg sm:text-xl leading-relaxed text-gray-700" dir="ltr" style={{ textAlign: 'justify' }}>
+              The words of God are the center of guidance, wisdom, and our understanding of universal principles. They refine our perception, purify our inner selves, and remind us of our origin and ultimate destiny. The Qur'an urges us to reflect, to move forward consciously, and to think deeply. It binds the awareness of Muslims together, serving as the intellectual and ethical reference for our worldly life and a promise for the life to come. The life (Sīrah) of the Prophet Muhammad (peace be upon him) represents the highest practical, moral, and devotional model that we seek to follow.
+            </p>
+          </motion.div>
+        </div>
+
       </div>
+
+      {/* Back Button - Fixed Left */}
+      {onNavigate && (
+        <motion.button
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.6 }}
+          onClick={() => onNavigate(2)}
+          className="absolute left-6 bottom-6 w-12 h-12 flex items-center justify-center bg-orange-500 hover:bg-orange-600 text-white rounded-full shadow-lg transition-colors z-20"
+        >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </motion.button>
+      )}
     </div>
   );
 }

@@ -30,22 +30,44 @@ export function ArabyPostStorySlide() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-8"
+          className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-2"
         >
           <span className="text-[#08b2e3]">البداية</span>
         </motion.h2>
-
-        {/* Content */}
-        <motion.div
+        <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="bg-gray-50 rounded-3xl p-8 border border-gray-100"
+          transition={{ duration: 0.5, delay: 0.25 }}
+          className="text-xl text-gray-500 mb-8"
+          dir="ltr"
+          style={{ textAlign: 'left' }}
         >
-          <p className="text-xl sm:text-2xl leading-relaxed text-gray-700 text-right" style={{ textAlign: 'justify', direction: 'rtl' }}>
-            بدأ موقع عربي بوست العمل في أبريل 2018 مسترشداً بالهيكل الإنتاجي لموقع هاف بوست العربي والذي لاقت (خلطته رواجاً كبيراً) في تلك الفترة بالإضافة إلى ضخ إعلاني مدفوع على منصات التواصل الاجتماعي.
-          </p>
-        </motion.div>
+          The Beginning
+        </motion.p>
+
+        {/* Content */}
+        <div className="grid grid-cols-2 gap-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="bg-gray-50 rounded-3xl p-8 border border-gray-100"
+          >
+            <p className="text-xl sm:text-2xl leading-relaxed text-gray-700 text-right" style={{ textAlign: 'justify', direction: 'rtl' }}>
+              بدأ موقع عربي بوست العمل في أبريل 2018 مسترشداً بالهيكل الإنتاجي لموقع هاف بوست العربي والذي لاقت (خلطته رواجاً كبيراً) في تلك الفترة بالإضافة إلى ضخ إعلاني مدفوع على منصات التواصل الاجتماعي.
+            </p>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="bg-[#08b2e3]/5 rounded-3xl p-8 border border-[#08b2e3]/20"
+          >
+            <p className="text-xl sm:text-2xl leading-relaxed text-gray-700" dir="ltr" style={{ textAlign: 'justify' }}>
+              ArabicPost launched in April 2018, guided by the production model of HuffPost Arabic, whose formula—at the time—gained wide popularity. This was supported by paid advertising campaigns on social media platforms.
+            </p>
+          </motion.div>
+        </div>
       </div>
     </div>
   );

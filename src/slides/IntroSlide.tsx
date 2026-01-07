@@ -28,14 +28,19 @@ export function IntroSlide() {
         </motion.div>
 
         {/* Subtitle */}
-        <motion.p
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-xl sm:text-2xl text-[#9a6dd7] font-medium mb-1"
+          className="text-center mb-1"
         >
-          حاضنة البودكاست العربي
-        </motion.p>
+          <p className="text-xl sm:text-2xl text-[#9a6dd7] font-medium">
+            حاضنة البودكاست العربي
+          </p>
+          <p className="text-xs text-gray-400 mt-0.5" dir="ltr" style={{ textAlign: 'center' }}>
+            The Arabic Podcast Incubator
+          </p>
+        </motion.div>
 
         {/* Big Number */}
         <motion.div
@@ -50,6 +55,9 @@ export function IntroSlide() {
           <p className="text-base sm:text-lg text-gray-500 mt-2">
             مليار مشاهدة في 2025
           </p>
+          <p className="text-xs text-gray-400" dir="ltr" style={{ textAlign: 'center' }}>
+            Billion Views in 2025
+          </p>
         </motion.div>
 
         {/* Stats Cards */}
@@ -60,12 +68,14 @@ export function IntroSlide() {
           className="flex flex-wrap justify-center gap-4"
         >
           <div className="bg-gray-50 border border-gray-100 rounded-2xl px-6 py-3 text-center">
-            <p className="text-2xl sm:text-3xl font-bold text-[#9a6dd7]">12</p>
+            <p className="text-2xl sm:text-3xl font-bold text-[#9a6dd7]">10</p>
             <p className="text-sm text-gray-500">برنامج</p>
+            <p className="text-[10px] text-gray-400" dir="ltr" style={{ textAlign: 'center' }}>Programs</p>
           </div>
           <div className="bg-gray-50 border border-gray-100 rounded-2xl px-6 py-3 text-center">
             <p className="text-2xl sm:text-3xl font-bold text-[#9a6dd7]">+8.2M</p>
             <p className="text-sm text-gray-500">متابع</p>
+            <p className="text-[10px] text-gray-400" dir="ltr" style={{ textAlign: 'center' }}>Followers</p>
           </div>
         </motion.div>
 

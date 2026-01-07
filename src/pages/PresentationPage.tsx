@@ -2,17 +2,20 @@ import { useState, useEffect, useCallback } from 'react';
 import { SlideContainer } from '../components/presentation/SlideContainer';
 import { SlideNav } from '../components/presentation/SlideNav';
 
+// Slides - Opening & Closing
+import { BismillahSlide } from '../slides/BismillahSlide';
+import { AlhamdulillahSlide } from '../slides/AlhamdulillahSlide';
+
 // Slides - Bath Hadeeth
 import { IntroSlide } from '../slides/IntroSlide';
 import { ComparisonSlide } from '../slides/ComparisonSlide';
-import { MonthlyTrendSlide } from '../slides/MonthlyTrendSlide';
 import { ProgramsRankingSlide } from '../slides/ProgramsRankingSlide';
 import { PodcastSlide } from '../slides/PodcastSlide';
 import { MasterDashboardSlide } from '../slides/MasterDashboardSlide';
 import { ProgramsSystemSlide } from '../slides/ProgramsSystemSlide';
 import { ContentStrategySlide } from '../slides/ContentStrategySlide';
 import { AutomationSlide } from '../slides/AutomationSlide';
-import { ConclusionSlide } from '../slides/ConclusionSlide';
+import { CompetitiveAnalysisSlide } from '../slides/CompetitiveAnalysisSlide';
 
 // Slides - Integral Media
 import { IntegralIntroSlide } from '../slides/integral/IntegralIntroSlide';
@@ -37,9 +40,10 @@ import { IntegralDecentralSlide } from '../slides/integral/IntegralDecentralSlid
 import { IntegralAdaptSlide } from '../slides/integral/IntegralAdaptSlide';
 import { IntegralDocumentSlide } from '../slides/integral/IntegralDocumentSlide';
 import { IntegralDataSlide } from '../slides/integral/IntegralDataSlide';
-import { IntegralTimelineSlide } from '../slides/integral/IntegralTimelineSlide';
-import { IntegralTeamSlide } from '../slides/integral/IntegralTeamSlide';
+// import { IntegralTimelineSlide } from '../slides/integral/IntegralTimelineSlide';
+// import { IntegralTeamSlide } from '../slides/integral/IntegralTeamSlide';
 import { IntegralVision2028Slide } from '../slides/integral/IntegralVision2028Slide';
+import { IntegralThanksSlide } from '../slides/integral/IntegralThanksSlide';
 
 // Slides - Araby Post
 import { ArabyPostIntroSlide } from '../slides/arabypost/ArabyPostIntroSlide';
@@ -59,33 +63,36 @@ import { ArabyPostInvestigationsSlide } from '../slides/arabypost/ArabyPostInves
 import { ArabyPostExclusiveNewsSlide } from '../slides/arabypost/ArabyPostExclusiveNewsSlide';
 
 const slides = [
+  // Opening
+  { component: BismillahSlide, title: 'بسم الله الرحمن الرحيم' },
+
   // Integral Media Slides
   { component: IntegralIntroSlide, title: 'Integral Media' },
   { component: IntegralAboutSlide, title: 'ماهي انتجرال ميديا' },
 
   // المضامين والرسالة
-  { component: IntegralValuesIntroSlide, title: 'المضامين والرسالة' },
-  { component: IntegralQuranSlide, title: 'القرآن الكريم' },
-  { component: IntegralUmmaSlide, title: 'وحدة الأمة' },
-  { component: IntegralSocietySlide, title: 'المجتمع' },
-  { component: IntegralTrustSlide, title: 'الإنسان مؤتمن' },
-  { component: IntegralTyrannySlide, title: 'الاستبداد' },
-  { component: IntegralPalestineSlide, title: 'تحرير فلسطين' },
-  { component: IntegralFaithSlide, title: 'التدين فطرة' },
-  { component: IntegralFamilySlide, title: 'الأسرة' },
-  { component: IntegralWomanSlide, title: 'المرأة الركيزة' },
-  { component: IntegralEconomySlide, title: 'الاقتصاد' },
+  { component: IntegralValuesIntroSlide, title: 'المضامين والرسالة', needsNavigate: true },
+  { component: IntegralQuranSlide, title: 'القرآن الكريم', needsNavigate: true },
+  { component: IntegralUmmaSlide, title: 'وحدة الأمة', needsNavigate: true },
+  { component: IntegralSocietySlide, title: 'المجتمع', needsNavigate: true },
+  { component: IntegralTrustSlide, title: 'الإنسان مؤتمن', needsNavigate: true },
+  { component: IntegralTyrannySlide, title: 'الاستبداد', needsNavigate: true },
+  { component: IntegralPalestineSlide, title: 'تحرير فلسطين', needsNavigate: true },
+  { component: IntegralFaithSlide, title: 'التدين فطرة', needsNavigate: true },
+  { component: IntegralFamilySlide, title: 'الأسرة', needsNavigate: true },
+  { component: IntegralWomanSlide, title: 'المرأة الركيزة', needsNavigate: true },
+  { component: IntegralEconomySlide, title: 'الاقتصاد', needsNavigate: true },
 
   // ثقافة العمل التوجيهية
-  { component: IntegralCultureIntroSlide, title: 'ثقافة العمل التوجيهية' },
-  { component: IntegralNamingSlide, title: 'التسمية' },
-  { component: IntegralInnovationSlide, title: 'الابتكارية' },
-  { component: IntegralCommunicationSlide, title: 'التواصل' },
-  { component: IntegralCriticalSlide, title: 'النقدية' },
-  { component: IntegralDecentralSlide, title: 'اللامركزية' },
-  { component: IntegralAdaptSlide, title: 'التكيف' },
-  { component: IntegralDocumentSlide, title: 'التوثيق' },
-  { component: IntegralDataSlide, title: 'قراءة البيانات' },
+  { component: IntegralCultureIntroSlide, title: 'ثقافة العمل التوجيهية', needsNavigate: true },
+  { component: IntegralNamingSlide, title: 'التسمية', needsNavigate: true },
+  { component: IntegralInnovationSlide, title: 'الابتكارية', needsNavigate: true },
+  { component: IntegralCommunicationSlide, title: 'التواصل', needsNavigate: true },
+  { component: IntegralCriticalSlide, title: 'النقدية', needsNavigate: true },
+  { component: IntegralDecentralSlide, title: 'اللامركزية', needsNavigate: true },
+  { component: IntegralAdaptSlide, title: 'التكيف', needsNavigate: true },
+  { component: IntegralDocumentSlide, title: 'التوثيق', needsNavigate: true },
+  { component: IntegralDataSlide, title: 'قراءة البيانات', needsNavigate: true },
 
   // Araby Post Slides
   { component: ArabyPostIntroSlide, title: 'عربي بوست' },
@@ -97,9 +104,9 @@ const slides = [
   { component: ArabyPostWhyChangeSlide, title: 'لماذا التغيير' },
   { component: ArabyPostReasonsSlide, title: 'أسباب التغيير' },
   { component: ArabyPostNewDirectionSlide, title: 'الاتجاه الجديد' },
-  { component: ArabyPostWebsiteStatsSlide, title: 'زيارات الموقع' },
   { component: ArabyPostSocialGrowthSlide, title: 'نمو السوشيال' },
   { component: ArabyPostEngagementSlide, title: 'التفاعل' },
+  { component: ArabyPostWebsiteStatsSlide, title: 'زيارات الموقع' },
   { component: ArabyPostTransformSummarySlide, title: 'ملخص التحول' },
   { component: ArabyPostInvestigationsSlide, title: 'تحقيقات مفتوحة المصدر' },
   { component: ArabyPostExclusiveNewsSlide, title: 'أخبار حصرية' },
@@ -107,19 +114,22 @@ const slides = [
   // Bath Hadeeth Slides
   { component: IntroSlide, title: 'بث حديث' },
   { component: ComparisonSlide, title: 'مقارنة 2024 vs 2025' },
-  { component: MonthlyTrendSlide, title: 'النمو الشهري' },
+  { component: CompetitiveAnalysisSlide, title: 'المشهد التنافسي' },
+  { component: ProgramsSystemSlide, title: 'منظومة البرامج' },
+  { component: ContentStrategySlide, title: 'استراتيجية المحتوى' },
   { component: ProgramsRankingSlide, title: 'ترتيب البرامج' },
   { component: PodcastSlide, title: 'المنصات الصوتية' },
   { component: MasterDashboardSlide, title: 'لوحة التحكم الرئيسية' },
-  { component: ProgramsSystemSlide, title: 'منظومة البرامج' },
-  { component: ContentStrategySlide, title: 'استراتيجية المحتوى' },
   { component: AutomationSlide, title: 'الأتمتة والذكاء الاصطناعي' },
-  { component: ConclusionSlide, title: 'الخاتمة' },
 
   // Timeline & Vision Slides
-  { component: IntegralTimelineSlide, title: 'الخط الزمني والمؤشرات' },
-  { component: IntegralTeamSlide, title: 'فريق العمل' },
+  // { component: IntegralTimelineSlide, title: 'الخط الزمني والمؤشرات' },
+  // { component: IntegralTeamSlide, title: 'فريق العمل' },
   { component: IntegralVision2028Slide, title: 'رؤية 2026-2028' },
+  { component: IntegralThanksSlide, title: 'شكراً لكم' },
+
+  // Closing
+  { component: AlhamdulillahSlide, title: 'الحمد لله رب العالمين' },
 ];
 
 export function PresentationPage() {
@@ -195,12 +205,17 @@ export function PresentationPage() {
     };
   }, [goToNext, goToPrev]);
 
-  const CurrentSlideComponent = slides[currentSlide].component;
+  const currentSlideData = slides[currentSlide];
+  const CurrentSlideComponent = currentSlideData.component;
 
   return (
     <div className="w-full h-screen overflow-hidden flex flex-col">
       <SlideContainer slideKey={currentSlide}>
-        <CurrentSlideComponent />
+        {currentSlideData.needsNavigate ? (
+          <CurrentSlideComponent onNavigate={setCurrentSlide} />
+        ) : (
+          <CurrentSlideComponent />
+        )}
       </SlideContainer>
 
       <SlideNav

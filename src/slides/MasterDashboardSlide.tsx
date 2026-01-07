@@ -201,14 +201,14 @@ export function MasterDashboardSlide() {
         >
           <div className="card-compact px-2 py-2 text-center">
             <p className="text-xs sm:text-sm font-bold text-primary">{formatNumber(totals.views)}</p>
-            <p className="text-[9px] sm:text-[10px] text-notion-text-secondary">مشاهدة</p>
+            <p className="text-[9px] sm:text-[10px] text-notion-text-secondary">مشاهدة عبر كل المنصات</p>
           </div>
           <div className="card-compact px-2 py-2 text-center">
             <p className="text-xs sm:text-sm font-bold text-accent-pink">{formatNumber(totals.followers)}</p>
             <p className="text-[9px] sm:text-[10px] text-notion-text-secondary">متابع</p>
           </div>
           <div className="card-compact px-2 py-2 text-center">
-            <p className="text-xs sm:text-sm font-bold text-primary">{filteredPrograms.length}</p>
+            <p className="text-xs sm:text-sm font-bold text-primary">10</p>
             <p className="text-[9px] sm:text-[10px] text-notion-text-secondary">برنامج</p>
           </div>
           <div className="card-compact px-2 py-2 text-center">
@@ -322,7 +322,7 @@ export function MasterDashboardSlide() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="grid grid-cols-2 sm:grid-cols-4 gap-4 flex-1 content-start overflow-auto"
+              className="grid grid-cols-2 sm:grid-cols-4 gap-3 flex-1 content-start overflow-auto"
             >
               {filteredPrograms.map((program, index) => {
                 const logoPath = programLogos[program.id];
@@ -335,41 +335,41 @@ export function MasterDashboardSlide() {
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: index * 0.03 }}
                     whileHover={{ scale: 1.02, y: -2 }}
-                    className={`card-compact p-3 cursor-pointer hover:shadow-md transition-all ${isStopped ? 'opacity-50 grayscale' : ''}`}
+                    className={`card-compact p-2 cursor-pointer hover:shadow-md transition-all ${isStopped ? 'opacity-50 grayscale' : ''}`}
                   >
                     {/* Header with rank, logo and name */}
-                    <div className="flex items-center gap-2 mb-2">
+                    <div className="flex items-center gap-1.5 mb-1.5">
                       {/* Rank Badge */}
-                      <span className={`w-8 h-8 rounded-full text-white text-sm font-bold flex items-center justify-center shadow-sm flex-shrink-0 ${
+                      <span className={`w-6 h-6 rounded-full text-white text-xs font-bold flex items-center justify-center shadow-sm flex-shrink-0 ${
                         isStopped ? 'bg-gray-400' : 'bg-[#9a6dd7]'
                       }`}>
                         {index + 1}
                       </span>
                       {logoPath ? (
-                        <img src={logoPath} alt="" className="w-10 h-10 rounded-lg object-contain shadow-sm" />
+                        <img src={logoPath} alt="" className="w-8 h-8 rounded-lg object-contain shadow-sm" />
                       ) : (
-                        <div className="w-10 h-10 rounded-lg bg-notion-secondary" />
+                        <div className="w-8 h-8 rounded-lg bg-notion-secondary" />
                       )}
                       <div className="flex-1 min-w-0">
-                        <span className="font-bold text-sm text-notion-text block truncate">
+                        <span className="font-bold text-xs text-notion-text block truncate">
                           {program.name}
                         </span>
                         {isStopped && (
-                          <span className="text-[10px] text-red-500 font-medium">برنامج متوقف</span>
+                          <span className="text-[8px] text-red-500 font-medium">برنامج متوقف</span>
                         )}
                       </div>
                     </div>
 
                     {/* Main metric */}
-                    <div className="mb-2">
-                      <p className="text-2xl font-bold text-primary">
+                    <div className="mb-1.5">
+                      <p className="text-xl font-bold text-primary">
                         {formatNumber(program.filteredViews)}
                       </p>
-                      <p className="text-xs text-notion-text-secondary">مشاهدة</p>
+                      <p className="text-[10px] text-notion-text-secondary">مشاهدة</p>
                     </div>
 
                     {/* Progress bar */}
-                    <div className="h-2 bg-notion-secondary rounded-full overflow-hidden mb-2">
+                    <div className="h-1.5 bg-notion-secondary rounded-full overflow-hidden mb-1.5">
                       <motion.div
                         initial={{ width: 0 }}
                         animate={{ width: `${Math.min(100, (program.filteredViews / maxViews) * 100)}%` }}
@@ -379,27 +379,33 @@ export function MasterDashboardSlide() {
                     </div>
 
                     {/* Secondary metrics */}
-                    <div className="grid grid-cols-2 gap-2 text-sm">
+                    <div className="grid grid-cols-2 gap-1.5 text-sm">
                       <div>
-                        <p className="text-notion-text-secondary text-[10px]">متابعين</p>
-                        <p className="font-bold text-accent-pink text-base">{formatNumber(program.filteredFollowers)}</p>
+                        <p className="text-notion-text-secondary text-[9px]">متابعين</p>
+                        <p className="font-bold text-accent-pink text-sm">{formatNumber(program.filteredFollowers)}</p>
                       </div>
                       {program.filteredWatchTime > 0 && (
                         <div>
-                          <p className="text-notion-text-secondary text-[10px]">ساعات</p>
-                          <p className="font-bold text-primary text-base">{formatNumber(program.filteredWatchTime)}</p>
+                          <p className="text-notion-text-secondary text-[9px]">ساعات</p>
+                          <p className="font-bold text-primary text-sm">{formatNumber(program.filteredWatchTime)}</p>
                         </div>
                       )}
                       {program.filteredShorts > 0 && (
                         <div>
-                          <p className="text-notion-text-secondary text-[10px]">مشاهدات Shorts</p>
-                          <p className="font-bold text-accent-pink text-base">{formatNumber(program.filteredShorts)}</p>
+                          <p className="text-notion-text-secondary text-[9px] flex items-center gap-0.5">
+                            <PlatformIcon platform="youtube" size="sm" />
+                            مشاهدات Shorts
+                          </p>
+                          <p className="font-bold text-accent-pink text-sm">{formatNumber(program.filteredShorts)}</p>
                         </div>
                       )}
                       {program.filteredVideos > 0 && (
                         <div>
-                          <p className="text-notion-text-secondary text-[10px]">حلقات طويلة</p>
-                          <p className="font-bold text-primary text-base">{formatNumber(program.filteredVideos)}</p>
+                          <p className="text-notion-text-secondary text-[9px] flex items-center gap-0.5">
+                            <PlatformIcon platform="youtube" size="sm" />
+                            حلقات طويلة
+                          </p>
+                          <p className="font-bold text-primary text-sm">{formatNumber(program.filteredVideos)}</p>
                         </div>
                       )}
                     </div>

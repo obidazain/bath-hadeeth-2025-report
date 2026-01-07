@@ -30,23 +30,45 @@ export function ArabyPostWhyChangeSlide() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-8"
+          className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-2"
         >
           لماذا{' '}
           <span className="text-[#08b2e3]">التغيير؟</span>
         </motion.h2>
-
-        {/* Content */}
-        <motion.div
+        <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="bg-gray-50 rounded-3xl p-8 border border-gray-100"
+          transition={{ duration: 0.5, delay: 0.25 }}
+          className="text-xl text-gray-500 mb-8"
+          dir="ltr"
+          style={{ textAlign: 'left' }}
         >
-          <p className="text-xl sm:text-2xl leading-relaxed text-gray-700 text-right" style={{ textAlign: 'justify', direction: 'rtl' }}>
-            إن الوظائف التي قام بها الموقع متنوعة بين صناعة المحتوى الرقمي والعمل الصحفي المكتبي وإدارة المراسلين على الأرض والتغطية الخبرية اليومية المستمرة، نعتقد أن التغيير الوظيفي يتوجب في هذه اللحظة وذلك للاعتبارات التالية:
-          </p>
-        </motion.div>
+          Why the Change?
+        </motion.p>
+
+        {/* Content */}
+        <div className="grid grid-cols-2 gap-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="bg-gray-50 rounded-3xl p-8 border border-gray-100"
+          >
+            <p className="text-xl sm:text-2xl leading-relaxed text-gray-700 text-right" style={{ textAlign: 'justify', direction: 'rtl' }}>
+              إن الوظائف التي قام بها الموقع متنوعة بين صناعة المحتوى الرقمي والعمل الصحفي المكتبي وإدارة المراسلين على الأرض والتغطية الخبرية اليومية المستمرة.
+            </p>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="bg-[#08b2e3]/5 rounded-3xl p-8 border border-[#08b2e3]/20"
+          >
+            <p className="text-xl sm:text-2xl leading-relaxed text-gray-700" dir="ltr" style={{ textAlign: 'justify' }}>
+              ArabicPost has historically performed a wide range of functions, spanning digital content production, desk-based journalism, coordination with on-the-ground correspondents, and continuous daily news coverage.
+            </p>
+          </motion.div>
+        </div>
       </div>
     </div>
   );

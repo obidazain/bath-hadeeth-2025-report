@@ -72,4 +72,16 @@ export const exclusiveNewsData = [
     url: 'https://arabicpost.net/تقارير-خاصة/2024/12/06/عملية-البحر-الميت-الأردن-2/',
     thumbnail: 'https://arabicpost.net/wp-content/uploads/2024/10/-1-11.jpg',
   },
+  {
+    title: 'الاتفاق الأمني بين سوريا وإسرائيل',
+    description: 'تفاصيل الاتفاق الأمني المحتمل بين سوريا وإسرائيل',
+    url: 'https://arabicpost.net/تقارير-خاصة/2025/09/19/الاتفاق-الأمني-بين-سوريا-وإسرائيل/',
+    thumbnail: 'https://arabicpost.net/wp-content/uploads/2025/09/artboard-1-8.jpg',
+  },
+  {
+    title: 'فلول نظام الأسد في لبنان',
+    description: 'تفاصيل عن فلول نظام الأسد في لبنان',
+    url: 'https://arabicpost.net/تقارير-خاصة/2025/12/26/فلول-نظام-الأسد-لبنان/',
+    thumbnail: 'https://arabicpost.net/wp-content/uploads/2025/12/artboard-1-39-5.jpg',
+  },
 ];

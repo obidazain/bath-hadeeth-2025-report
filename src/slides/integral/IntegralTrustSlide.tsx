@@ -1,6 +1,10 @@
 import { motion } from 'framer-motion';
 
-export function IntegralTrustSlide() {
+interface IntegralTrustSlideProps {
+  onNavigate?: (slideIndex: number) => void;
+}
+
+export function IntegralTrustSlide({ onNavigate }: IntegralTrustSlideProps) {
   return (
     <div className="slide relative overflow-hidden bg-white">
       {/* Background */}
@@ -30,24 +34,62 @@ export function IntegralTrustSlide() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-8"
+          className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-2"
         >
           الإنسان{' '}
           <span className="text-orange-500">مؤتمن</span>
         </motion.h2>
-
-        {/* Content */}
-        <motion.div
+        <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="bg-gray-50 rounded-3xl p-8 border border-gray-100"
+          transition={{ duration: 0.5, delay: 0.25 }}
+          className="text-xl text-gray-500 mb-8"
+          dir="ltr"
+          style={{ textAlign: 'left' }}
         >
-          <p className="text-xl sm:text-2xl leading-relaxed text-gray-700 text-right" style={{ textAlign: 'justify', direction: 'rtl' }}>
-            حمل الإنسان الأمانة، وأصبح مسؤولاً عنها، هذه المسؤولية هي مظلة حريته لا معادلة لها، توسع آفاقه بحيث يصبح الهواء والماء والحجر والشجر وكل الكائنات الحية جزء من مسيرته الحضارية.
-          </p>
-        </motion.div>
+          The Human Being as a Trustee (Amanah)
+        </motion.p>
+
+        {/* Content */}
+        <div className="grid grid-cols-2 gap-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="bg-gray-50 rounded-3xl p-8 border border-gray-100"
+          >
+            <p className="text-xl sm:text-2xl leading-relaxed text-gray-700 text-right" style={{ textAlign: 'justify', direction: 'rtl' }}>
+              حمل الإنسان الأمانة، وأصبح مسؤولاً عنها، هذه المسؤولية هي مظلة حريته لا معادلة لها، توسع آفاقه بحيث يصبح الهواء والماء والحجر والشجر وكل الكائنات الحية جزء من مسيرته الحضارية.
+            </p>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="bg-orange-50 rounded-3xl p-8 border border-orange-100"
+          >
+            <p className="text-xl sm:text-2xl leading-relaxed text-gray-700" dir="ltr" style={{ textAlign: 'justify' }}>
+              Human beings have been entrusted with a divine responsibility (Amanah) and are accountable for it. This responsibility is the true framework of human freedom. It expands human horizons such that air, water, land, trees, and all living beings become integral to humanity's civilizational journey.
+            </p>
+          </motion.div>
+        </div>
+
       </div>
+
+      {/* Back Button - Fixed Left */}
+      {onNavigate && (
+        <motion.button
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.6 }}
+          onClick={() => onNavigate(2)}
+          className="absolute left-6 bottom-6 w-12 h-12 flex items-center justify-center bg-orange-500 hover:bg-orange-600 text-white rounded-full shadow-lg transition-colors z-20"
+        >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </motion.button>
+      )}
     </div>
   );
 }

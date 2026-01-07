@@ -47,11 +47,12 @@ export function ProgramsRankingSlide() {
         animate={{ opacity: 1, y: 0 }}
         className="text-center mb-6"
       >
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-2">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-1">
           <span className="text-gradient">ترتيب البرامج</span>
         </h2>
-        <p className="text-notion-text-secondary text-sm sm:text-base md:text-lg">
-          البرامج الـ {sortedPrograms.length} مرتبة حسب إجمالي المشاهدات في جميع المنصات
+        <p className="text-notion-text-secondary text-base" dir="ltr" style={{ textAlign: 'center' }}>Programs Ranking</p>
+        <p className="text-notion-text-secondary text-sm sm:text-base mt-1">
+          البرامج مرتبة حسب إجمالي المشاهدات | Programs ranked by total views
         </p>
       </motion.div>
 

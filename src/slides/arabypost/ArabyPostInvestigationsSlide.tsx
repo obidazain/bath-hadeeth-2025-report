@@ -19,11 +19,12 @@ export function ArabyPostInvestigationsSlide() {
           transition={{ duration: 0.5 }}
           className="mb-6"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 text-right">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900">
             تحقيقات{' '}
             <span className="text-[#08b2e3]">مفتوحة المصدر</span>
           </h2>
-          <p className="text-lg text-gray-500 mt-2 text-right">تحقيقات استقصائية حصرية من عربي بوست</p>
+          <p className="text-xl text-gray-500 mt-1" dir="ltr" style={{ textAlign: 'left' }}>Open Source Investigations</p>
+          <p className="text-lg text-gray-400 mt-2">تحقيقات استقصائية حصرية من عربي بوست | Exclusive investigative reports from ArabicPost</p>
         </motion.div>
 
         {/* Grid */}
@@ -55,7 +56,7 @@ export function ArabyPostInvestigationsSlide() {
                 {'viral' in item && item.viral && (
                   <div className="absolute top-2 right-2">
                     <div className="bg-orange-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
-                      انتشار واسع
+                      انتشار واسع | Viral
                     </div>
                   </div>
                 )}
@@ -90,7 +91,7 @@ export function ArabyPostInvestigationsSlide() {
           className="mt-6 text-center"
         >
           <p className="text-sm text-gray-400">
-            انقر على أي تحقيق لفتحه في نافذة جديدة
+            انقر على أي تحقيق لفتحه في نافذة جديدة | Click any investigation to open in a new tab
           </p>
         </motion.div>
       </div>

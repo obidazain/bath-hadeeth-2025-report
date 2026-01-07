@@ -48,11 +48,16 @@ export function IntegralTeamSlide() {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-8"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-1">
             فريق العمل
           </h2>
-          <p className="text-gray-600 text-base">
+          <p className="text-gray-600 text-lg font-medium" dir="ltr">
+            Human Resources Overview
+          </p>
+          <p className="text-gray-500 text-sm mt-1">
             تطور الموارد البشرية في انتجرال ميديا
+            <span className="mx-2">|</span>
+            <span dir="ltr">HR Evolution at Integral Media</span>
           </p>
         </motion.div>
 
@@ -91,7 +96,10 @@ export function IntegralTeamSlide() {
                         <span className="text-blue-600">
                           <BriefcaseIcon />
                         </span>
-                        <span className="text-sm font-medium text-gray-600">موظفين بدوام كامل</span>
+                        <div className="flex flex-col">
+                          <span className="text-sm font-medium text-gray-600">موظفين بدوام كامل</span>
+                          <span className="text-xs text-gray-400" dir="ltr">Full-time employees</span>
+                        </div>
                       </div>
                       <div className="text-left">
                         <span className="text-2xl font-bold text-blue-600">{year.fullTime}</span>
@@ -106,7 +114,10 @@ export function IntegralTeamSlide() {
                         <span className="text-purple-600">
                           <UsersIcon />
                         </span>
-                        <span className="text-sm font-medium text-gray-600">متعاونين</span>
+                        <div className="flex flex-col">
+                          <span className="text-sm font-medium text-gray-600">متعاونين</span>
+                          <span className="text-xs text-gray-400" dir="ltr">Contributors / Freelancers</span>
+                        </div>
                       </div>
                       <div className="text-left">
                         <span className="text-2xl font-bold text-purple-600">{year.contractors}</span>
@@ -125,7 +136,10 @@ export function IntegralTeamSlide() {
                         <span className={year.year === '2025' ? 'text-orange-600' : 'text-gray-600'}>
                           <UserGroupIcon />
                         </span>
-                        <span className="text-sm font-bold text-gray-700">المجموع</span>
+                        <div className="flex flex-col">
+                          <span className="text-sm font-bold text-gray-700">المجموع</span>
+                          <span className="text-xs text-gray-400" dir="ltr">Total</span>
+                        </div>
                       </div>
                       <div className="text-left">
                         <span className={`text-3xl font-bold ${

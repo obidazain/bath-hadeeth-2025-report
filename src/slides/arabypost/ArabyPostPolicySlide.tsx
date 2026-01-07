@@ -30,23 +30,45 @@ export function ArabyPostPolicySlide() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-8"
+          className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-2"
         >
           تغير{' '}
           <span className="text-[#08b2e3]">سياسة التحرير</span>
         </motion.h2>
-
-        {/* Content */}
-        <motion.div
+        <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="bg-gray-50 rounded-3xl p-8 border border-gray-100"
+          transition={{ duration: 0.5, delay: 0.25 }}
+          className="text-xl text-gray-500 mb-8"
+          dir="ltr"
+          style={{ textAlign: 'left' }}
         >
-          <p className="text-xl sm:text-2xl leading-relaxed text-gray-700 text-right" style={{ textAlign: 'justify', direction: 'rtl' }}>
-            بسبب التغير التدريجي في سياسة التحرير من المساحات الترفيهية التي كان يعتمدها هاف بوست وتبني عمل إخباري أكبر، تقلصت قدرات الموقع في الوصول لمزيد من الجمهور وتحقيق زيارات أكبر.
-          </p>
-        </motion.div>
+          Change in Editorial Policy
+        </motion.p>
+
+        {/* Content */}
+        <div className="grid grid-cols-2 gap-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="bg-gray-50 rounded-3xl p-8 border border-gray-100"
+          >
+            <p className="text-xl sm:text-2xl leading-relaxed text-gray-700 text-right" style={{ textAlign: 'justify', direction: 'rtl' }}>
+              بسبب التغير التدريجي في سياسة التحرير من المساحات الترفيهية التي كان يعتمدها هاف بوست وتبني عمل إخباري أكبر، تقلصت قدرات الموقع في الوصول لمزيد من الجمهور وتحقيق زيارات أكبر.
+            </p>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="bg-[#08b2e3]/5 rounded-3xl p-8 border border-[#08b2e3]/20"
+          >
+            <p className="text-xl sm:text-2xl leading-relaxed text-gray-700" dir="ltr" style={{ textAlign: 'justify' }}>
+              As editorial policies gradually shifted away from the entertainment-oriented spaces that HuffPost had relied on, toward more news-focused content, the website's ability to reach wider audiences and generate higher traffic declined.
+            </p>
+          </motion.div>
+        </div>
       </div>
     </div>
   );
